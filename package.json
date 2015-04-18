@@ -1,0 +1,31 @@
+{
+  "name": "pro-array",
+  "version": "1.0.0",
+  "description": "Extends the native Array object with several helpful utility functions",
+  "main": "pro-array.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/woollybogger/pro-array"
+  },
+  "keywords": [
+    "ProArray",
+    "Array",
+    "prototype",
+    "pro"
+  ],
+  "author": "Nathan Woltman",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/woollybogger/pro-array/issues"
+  },
+  "homepage": "https://github.com/woollybogger/pro-array",
+  "dependencies": {
+    "natural-compare-lite": "^1.3.1"
+  },
+  "devDependencies": {
+    "should": "^6.0.1"
+  }
+}
