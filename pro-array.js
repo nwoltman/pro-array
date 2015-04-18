@@ -10,7 +10,40 @@ function natcompCaseInsensitive(a, b){
   return String.naturalCompare(a.toLowerCase(), b.toLowerCase());
 }
 
+function numericalCompare(a, b) {
+  return a - b;
+}
+
+function numericalCompareReverse(a, b) {
+  return b - a;
+}
+
+function retval(v) {
+  return v;
+}
+
 var properties = {
+  /**
+   * Creates an array of elements split into groups the length of `size`. If the array
+   * can't be split evenly, the final chunk will be the remaining elements.
+   *
+   * @function Array#chunk
+   * @param {number} [size=1] - The length of each chunk.
+   * @returns {Array} An array containing the chunks.
+   */
+  chunk: function(size) {
+    size = size || 1;
+
+    var numChunks = Math.ceil(this.length / size);
+    var res = new Array(numChunks);
+
+    for (var i = 0, index = 0; i < numChunks; i++) {
+      res[i] = this.slice(index, index += size);
+    }
+
+    return res;
+  },
+
   /**
    * Removes all elements from the array.
    *
@@ -35,6 +68,17 @@ var properties = {
     }
 
     return array;
+  },
+
+  /**
+   * Returns a new array with all falsey values removed. Falsey values
+   * are `false`, `0`, `""`, `null`, `undefined`, and `NaN`.
+   *
+   * @function Array#compact
+   * @returns {Array} A new array containing only the truthy values of the original array.
+   */
+  compact: function() {
+    return this.filter(retval);
   },
 
   /**
@@ -186,6 +230,26 @@ var properties = {
    */
   natsort: function(caseInsensitive) {
     return this.sort(caseInsensitive ? natcompCaseInsensitive : String.naturalCompare);
+  },
+
+  /**
+   * Sorts an array in place using a numerical comparison algorithm
+   * (sorts numbers from lowest to highest) and returns the array.
+   *
+   * @returns {Array} The array.
+   */
+  numsort: function() {
+    return this.sort(numericalCompare);
+  },
+
+  /**
+   * Sorts an array in place using a reverse numerical comparison algorithm
+   * (sorts numbers from highest to lowest) and returns the array.
+   *
+   * @returns {Array} The array.
+   */
+  rnumsort: function() {
+    return this.sort(numericalCompareReverse);
   },
 
   /**

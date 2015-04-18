@@ -15,6 +15,25 @@ describe('Array', function() {
     });
   });
 
+  describe('#chunk()', function() {
+    var array = [0, 1, 2, 3, 4, 5];
+
+    it('should return an array of chunks', function() {
+      var chunks = array.chunk(3);
+      should.deepEqual(chunks, [[0, 1, 2], [3, 4, 5]]);
+    });
+
+    it('should return the last chunk as remaining elements', function() {
+      var chunks = array.chunk(4);
+      should.deepEqual(chunks, [[0, 1, 2, 3], [4, 5]]);
+    });
+
+    it('should run with a default chunk size of 1', function() {
+      var chunks = array.chunk();
+      should.deepEqual(chunks, [[0], [1], [2], [3], [4], [5]]);
+    });
+  });
+
   describe('#clean()', function() {
     var array = [1, 2, 3];
 
@@ -31,6 +50,15 @@ describe('Array', function() {
       var clone = array.clone();
       clone.should.not.equal(array);
       should.deepEqual(clone, array);
+    });
+  });
+
+  describe('#compact()', function() {
+    var array = ['a', '', 1, 2, 0, null, true, undefined, false, NaN, should];
+
+    it('should return an array with falsey values filtered out', function() {
+      var compacted = array.compact();
+      should.deepEqual(compacted, ['a', 1, 2, true, should]);
     });
   });
 
@@ -177,6 +205,30 @@ describe('Array', function() {
         'A3',
         'a10'
       ]);
+    });
+  });
+
+  describe('#numsort()', function() {
+    var array = [1, 10, 2, 0, 3];
+
+    it('should return the array it was called on', function() {
+      array.numsort().should.equal(array);
+    });
+
+    it('should sort the array using numerical comparison', function() {
+      should.deepEqual(array, [0, 1, 2, 3, 10]);
+    });
+  });
+
+  describe('#rnumsort()', function() {
+    var array = [1, 10, 2, 0, 3];
+
+    it('should return the array it was called on', function() {
+      array.rnumsort().should.equal(array);
+    });
+
+    it('should sort the array using reverse numerical comparison', function() {
+      should.deepEqual(array, [10, 3, 2, 1, 0]);
     });
   });
 
