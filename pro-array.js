@@ -90,7 +90,8 @@ var properties = {
    * @returns {Array}
    *
    * @example
-   * [1, 2, 3, 4, 5].diff([5, 2, 10]); // -> [1, 3, 4]
+   * [1, 2, 3, 4, 5].diff([5, 2, 10]);
+   * // -> [1, 3, 4]
    */
   difference: function() {
     var difference = [];
@@ -142,15 +143,21 @@ var properties = {
    * for the arrays to be considered equal.
    *
    * @function Array#equals
-   * @param {Array} array - Array or array-like object.
+   * @param {Array} array - An array to compare for equality.
    * @returns {boolean} `true` if the arrays are equal, `false` otherwise.
    * @throws {TypeError} Throws an error if the input value is `null` or `undefined`.
    *
    * @example
    * var array = [1, 2, 3];
-   * array.equals(array);     // -> true
-   * array.equals([1, 2, 3]); // -> true
-   * array.equals([3, 2, 1]); // -> false
+   *
+   * array.equals(array);
+   * // -> true
+   *
+   * array.equals([1, 2, 3]);
+   * // -> true
+   *
+   * array.equals([3, 2, 1]);
+   * // -> false
    */
   equals: function(array) {
     if (this === array) {
@@ -179,11 +186,21 @@ var properties = {
    *
    * @example
    * var array = [1, 2, 3];
-   * array.get(0);  // 1
-   * array.get(1);  // 2
-   * array.get(-1); // 3
-   * array.get(-2); // 2
-   * array.get(5);  // undefined
+   *
+   * array.get(0);
+   * // -> 1
+   *
+   * array.get(1);
+   * // -> 2
+   *
+   * array.get(-1);
+   * // -> 3
+   *
+   * array.get(-2);
+   * // -> 2
+   *
+   * array.get(5);
+   * // -> undefined
    */
   get: function(index) {
     return this[index < 0 ? index + this.length : index];
@@ -197,8 +214,11 @@ var properties = {
    * @returns {Array} An array that is the intersection of this array and the input array(s).
    *
    * @example
-   * [1, 2, 3].intersect([2, 3, 4]); // -> [2, 3]
-   * [1, 2, 3].intersect([101, 2, 50, 1], [2, 1]); // -> [1, 2]
+   * [1, 2, 3].intersect([2, 3, 4]);
+   * // -> [2, 3]
+   *
+   * [1, 2, 3].intersect([101, 2, 50, 1], [2, 1]);
+   * // -> [1, 2]
    */
   intersect: function() {
     var intersection = [];
@@ -255,15 +275,21 @@ var properties = {
   /**
    * Removes all occurrences of the passed in items from the array if they exist in the array.
    *
-   * @example
-   * var array = [1, 2, 3, 3, 4, 3, 5];
-   * array.remove(1);    // -> [2, 3, 3, 4, 3, 5]
-   * array.remove(3);    // -> [2, 4, 5]
-   * array.remove(2, 5); // -> [4]
-   *
    * @function Array#remove
    * @param {...*} *items - Items to remove from the array.
    * @returns {Array} A reference to the array (so it's chainable).
+   *
+   * @example
+   * var array = [1, 2, 3, 3, 4, 3, 5];
+   *
+   * array.remove(1);
+   * // -> [2, 3, 3, 4, 3, 5]
+   *
+   * array.remove(3);
+   * // -> [2, 4, 5]
+   *
+   * array.remove(2, 5);
+   * // -> [4]
    */
   remove: function() {
     for (var i = 0; i < arguments.length; i++) {
@@ -280,12 +306,13 @@ var properties = {
   /**
    * Returns an array containing every distinct item that is in either this array or the input array(s).
    *
-   * @example
-   * [1, 2, 3].union([2, 3, 4, 5]); // -> [1, 2, 3, 4, 5]
-   *
    * @function Array#union
-   * @param {...Array} *arrays - A variable number of arrays or array-like objects.
+   * @param {...Array} *arrays - A variable number of arrays.
    * @returns {Array} An array that is the union of this array and the input array(s).
+   *
+   * @example
+   * [1, 2, 3].union([2, 3, 4, 5]);
+   * // -> [1, 2, 3, 4, 5]
    */
   union: function() {
     var union = this.unique();
@@ -312,11 +339,15 @@ var properties = {
    *
    * @example
    * // Unsorted
-   * [4, 2, 3, 2, 1, 4].unique(); // -> [4, 2, 3, 1]
+   * [4, 2, 3, 2, 1, 4].unique();
+   * // -> [4, 2, 3, 1]
    *
    * // Sorted
-   * [1, 2, 2, 3, 4, 4].unique();     // -> [1, 2, 3, 4]
-   * [1, 2, 2, 3, 4, 4].unique(true); // -> [1, 2, 3, 4] (but faster than the previous example)
+   * [1, 2, 2, 3, 4, 4].unique();
+   * // -> [1, 2, 3, 4]
+   *
+   * [1, 2, 2, 3, 4, 4].unique(true);
+   * // -> [1, 2, 3, 4] (but faster than the previous example)
    */
   unique: function(isSorted) {
     var unique = [];
@@ -352,7 +383,8 @@ var properties = {
    * @returns {Array}
    *
    * @example
-   * [1, 2, 3, 4].without(2, 4); // -> [1, 3]
+   * [1, 2, 3, 4].without(2, 4);
+   * // -> [1, 3]
    */
   without: function() {
     var array = [];
