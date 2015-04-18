@@ -9,6 +9,12 @@ var should = require('should');
 
 describe('Array', function() {
 
+  describe('.prototype', function() {
+    it('should not have enumerable properties', function() {
+      Array.prototype.should.have.keys();
+    });
+  });
+
   describe('#clean()', function() {
     var array = [1, 2, 3];
 
