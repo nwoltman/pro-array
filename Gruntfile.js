@@ -43,7 +43,8 @@ module.exports = function(grunt) {
     jsdoc2md: {
       docs: {
         options: {
-          partial: ['jsdoc2md/partials/body.hbs'],
+          partial: ['jsdoc2md/partials/body.hbs', 'jsdoc2md/partials/examples.hbs'],
+          separators: true,
           'sort-by': ['name'],
           template: require('fs').readFileSync('jsdoc2md/README.hbs', {encoding: 'utf8'})
         },
