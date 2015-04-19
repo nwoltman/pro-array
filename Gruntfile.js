@@ -32,8 +32,7 @@ module.exports = function(grunt) {
       },
       test_coverage: {
         options: {
-          coveralls: true,
-          reporter: 'spec'
+          coveralls: true
         }
       },
       options: {
@@ -70,7 +69,7 @@ module.exports = function(grunt) {
 
   // Register tasks
   grunt.registerTask('lint', ['jsonlint', 'jshint']);
-  grunt.registerTask('test', ['mochacov:test' + (process.env.CI ? '_coverage' : '')]);
+  grunt.registerTask('test', ['mochacov:test'].concat(process.env.CI ? ['mochacov:test_coverage'] : []));
   grunt.registerTask('coverage', ['mochacov:coverage']);
   grunt.registerTask('docs', ['jsdoc2md', 'format_docs']);
   grunt.registerTask('default', ['lint', 'test', 'docs']);

@@ -11,7 +11,7 @@ describe('Array', function() {
 
   describe('.prototype', function() {
     it('should not have enumerable properties', function() {
-      Array.prototype.should.not.have.keys();
+      Array.prototype.should.have.keys();
     });
   });
 
