@@ -69,7 +69,7 @@ module.exports = function(grunt) {
 
   // Register tasks
   grunt.registerTask('lint', ['jsonlint', 'jshint']);
-  grunt.registerTask('test', ['mochacov:test' + (process.env.CI_BUILD_NUMBER ? '_coverage' : '')]);
+  grunt.registerTask('test', ['mochacov:test' + (process.env.CI ? '_coverage' : '')]);
   grunt.registerTask('coverage', ['mochacov:coverage']);
   grunt.registerTask('docs', ['jsdoc2md', 'format_docs']);
   grunt.registerTask('default', ['lint', 'test', 'docs']);
