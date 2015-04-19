@@ -22,6 +22,12 @@ function retval(v) {
   return v;
 }
 
+/**
+ * @class Array
+ * @classdesc The native Array object.
+ * @see {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array|Array - JavaScript | MDN}
+ */
+
 var properties = {
   /**
    * Creates an array of elements split into groups the length of `size`. If the array
@@ -30,6 +36,13 @@ var properties = {
    * @function Array#chunk
    * @param {number} [size=1] - The length of each chunk.
    * @returns {Array} An array containing the chunks.
+   *
+   * @example
+   * [1, 2, 3, 4].chunk(2);
+   * // -> [[1, 2], [3, 4]]
+   *
+   * [1, 2, 3, 4].chunk(3);
+   * // -> [[1, 2, 3], [4]]
    */
   chunk: function(size) {
     size = size || 1;
@@ -48,6 +61,12 @@ var properties = {
    * Removes all elements from the array.
    *
    * @function Array#clear
+   *
+   * @example
+   * var array = [1, 2, 3];
+   * array.clear();
+   * console.log(array);
+   * // -> []
    */
   clear: function() {
     this.length = 0;
@@ -76,6 +95,10 @@ var properties = {
    *
    * @function Array#compact
    * @returns {Array} A new array containing only the truthy values of the original array.
+   *
+   * @example
+   * [0, 1, false, 2, '', 3].compact();
+   * // -> [1, 2, 3]
    */
   compact: function() {
     return this.filter(retval);
@@ -113,10 +136,9 @@ var properties = {
   },
 
   /**
-   * @summary Executes a function on each item in the array.
+   * Invokes a callback function on each item in the array.
    *
-   * @description
-   * A generic iterator function is similar to `Array#forEach()` but with the following differences:
+   * A generic iterator method similar to `Array#forEach()` but with the following differences:
    *
    * 1. `this` always refers to the current item in the iteration (the `value` argument to the callback).
    * 2. Returning `false` in the callback will cancel the iteration (similar to a `break` statement).
@@ -126,7 +148,25 @@ var properties = {
    * @function Array#each
    * @param {function(*, number, Array)} callback(value,index,array) - A function to be executed on each
    *                                                                   item in the array.
-   * @returns {Array} this
+   * @returns {Array} `this`
+   *
+   * @example
+   * ['a', 'b', 'c'].each(console.log.bind(console));
+   * // -> 'a' 0 ['a', 'b', 'c']
+   * // -> 'b' 1 ['a', 'b', 'c']
+   * // -> 'c' 2 ['a', 'b', 'c']
+   * // -> ['a', 'b', 'c'] (return value)
+   *
+   * ['a', 'b', 'c'].each(function(value, index) {
+   *   console.log(value);
+   *   if (index === 1) return false;
+   * });
+   * // -> 'a'
+   * // -> 'b'
+   * // -> ['a', 'b', 'c'] (return value)
+   *
+   * [[1, 2], [3, 4, 5]].each(Array.prototype.pop);
+   * // -> [[1], [3, 4]]
    */
   each: function(callback) {
     var i = 0;
@@ -245,8 +285,15 @@ var properties = {
   /**
    * Sorts an array in place using a natural string comparison algorithm and returns the array.
    *
+   * @function Array#natsort
    * @param {boolean} [caseInsensitive=false] - Set this to `true` to ignore letter casing when sorting.
    * @returns {Array} The array.
+   *
+   * @example
+   * var files = ['a.txt', 'a10.txt', 'a2.txt', 'a1.txt'];
+   * files.natsort();
+   * console.log(files);
+   * // -> ['a.txt', 'a1.txt', 'a2.txt', 'a10.txt']
    */
   natsort: function(caseInsensitive) {
     return this.sort(caseInsensitive ? natcompCaseInsensitive : String.naturalCompare);
@@ -256,20 +303,17 @@ var properties = {
    * Sorts an array in place using a numerical comparison algorithm
    * (sorts numbers from lowest to highest) and returns the array.
    *
+   * @function Array#numsort
    * @returns {Array} The array.
+   *
+   * @example
+   * var files = [10, 0, 2, 1];
+   * files.numsort();
+   * console.log(files);
+   * // -> [0, 1, 2, 3]
    */
   numsort: function() {
     return this.sort(numericalCompare);
-  },
-
-  /**
-   * Sorts an array in place using a reverse numerical comparison algorithm
-   * (sorts numbers from highest to lowest) and returns the array.
-   *
-   * @returns {Array} The array.
-   */
-  rnumsort: function() {
-    return this.sort(numericalCompareReverse);
   },
 
   /**
@@ -301,6 +345,23 @@ var properties = {
     }
 
     return this;
+  },
+
+  /**
+   * Sorts an array in place using a reverse numerical comparison algorithm
+   * (sorts numbers from highest to lowest) and returns the array.
+   *
+   * @function Array#rnumsort
+   * @returns {Array} The array.
+   *
+   * @example
+   * var files = [10, 0, 2, 1];
+   * files.rnumsort();
+   * console.log(files);
+   * // -> [3, 2, 1, 0]
+   */
+  rnumsort: function() {
+    return this.sort(numericalCompareReverse);
   },
 
   /**
