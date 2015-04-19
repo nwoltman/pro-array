@@ -79,7 +79,7 @@ Invokes a callback function on each item in the array.A generic iterator metho
 
 | Param | Type | Description |
 | --- | --- | --- |
-| callback(value,index,array) | <code>function</code> | A function to be executed on each                                                                  item in the array. |
+| callback(value,index,array) | <code>function</code> | A function to be executed on each item in the array. |
 
 **Example**  
 ```js
@@ -198,7 +198,7 @@ Returns a duplicate-free clone of the array.
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| [isSorted] | <code>boolean</code> | <code>false</code> | If the input array's contents are sorted and this is set to `true`,    a faster algorithm will be used to create the unique array. |
+| [isSorted] | <code>boolean</code> | <code>false</code> | If the input array's contents are sorted and this is set to `true`, a faster algorithm will be used to create the unique array. |
 
 **Example**  
 ```js

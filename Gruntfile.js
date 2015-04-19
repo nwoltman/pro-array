@@ -41,7 +41,8 @@ module.exports = function(grunt) {
   grunt.registerTask('format_docs', function() {
     var fs = require('fs');
     var doc = fs.readFileSync('docs/Array.md', {encoding: 'utf8'});
-    doc = doc.replace(/[*]{2}Kind[*]{2}:.*\n/g, '');
+    doc = doc.replace(/\*{2}Kind\*{2}:.*\n/g, '');
+    doc = doc.replace(/\s{4,}(?= [^|]+\|$)/gm, '');
     fs.writeFileSync('docs/Array.md', doc);
     grunt.log.ok('Formatted documentation.');
   });
