@@ -24,7 +24,23 @@ require('pro-array');
 
 ##### Browser:
 
-> Currently untested
+HTML:
+
+```html
+<script src="pro-array.js"></script>
+```
+
+If you plan on using [.natsort()](https://github.com/woollybogger/pro-array#Array#natsort), you'll also need the [natural-compare-lite](https://www.npmjs.com/package/natural-compare-lite) module.
+
+```html
+<script src="min.natural-compare.js"></script>
+```
+
+JS (with [browserify](https://www.npmjs.com/package/browserify)):
+
+```js
+require('pro-array');
+```
 
 
 # API Reference
