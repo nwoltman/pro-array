@@ -6,7 +6,7 @@
 
 require('natural-compare-lite');
 
-function natcompCaseInsensitive(a, b){
+function natcompCaseInsensitive(a, b) {
   return String.naturalCompare(a.toLowerCase(), b.toLowerCase());
 }
 
@@ -25,7 +25,7 @@ function retval(v) {
 /**
  * @class Array
  * @classdesc The native Array object.
- * @see {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array}
+ * @see {@link http://goo.gl/Ijd3ks|MDN JavaScript Array Reference}
  */
 
 var properties = {

@@ -44,10 +44,11 @@ module.exports = function(grunt) {
       docs: {
         options: {
           partial: ['jsdoc2md/partials/body.hbs'],
-          'sort-by': 'name'
+          'sort-by': ['name'],
+          template: require('fs').readFileSync('jsdoc2md/README.hbs', {encoding: 'utf8'})
         },
         src: 'pro-array.js',
-        dest: 'docs/Array.md'
+        dest: 'README.md'
       }
     }
   });
@@ -62,9 +63,9 @@ module.exports = function(grunt) {
   // This will be unnecessary when https://github.com/jsdoc2md/ddata/pull/1 gets merged
   grunt.registerTask('format_docs', function() {
     var fs = require('fs');
-    var doc = fs.readFileSync('docs/Array.md', {encoding: 'utf8'});
+    var doc = fs.readFileSync('README.md', {encoding: 'utf8'});
     doc = doc.replace(/\s{4,}(?= [^|]+\|$)/gm, '');
-    fs.writeFileSync('docs/Array.md', doc);
+    fs.writeFileSync('README.md', doc);
     grunt.log.ok('Formatted documentation.');
   });
 
