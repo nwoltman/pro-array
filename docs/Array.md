@@ -28,12 +28,12 @@ The native Array object.
 ### array.chunk([size]) ⇒ <code>[Array](#Array)</code>
 Creates an array of elements split into groups the length of `size`. If the arraycan't be split evenly, the final chunk will be the remaining elements.
 
-**Returns**: <code>[Array](#Array)</code> - An array containing the chunks.  
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
 | [size] | <code>number</code> | <code>1</code> | The length of each chunk. |
 
+**Returns**: <code>[Array](#Array)</code> - An array containing the chunks.  
 **Example**  
 ```js
 [1, 2, 3, 4].chunk(2);// -> [[1, 2], [3, 4]][1, 2, 3, 4].chunk(3);// -> [[1, 2, 3], [4]]
@@ -82,12 +82,12 @@ Returns a new array with all of the values of this array that are not inany of 
 ### array.each(callback(value,index,array)) ⇒ <code>[Array](#Array)</code>
 Invokes a callback function on each item in the array.A generic iterator method similar to `Array#forEach()` but with the following differences:1. `this` always refers to the current item in the iteration (the `value` argument to the callback).2. Returning `false` in the callback will cancel the iteration (similar to a `break` statement).3. The array is returned to allow for function chaining.4. The callback __is__ invoked for indexes that have been deleted or elided.
 
-**Returns**: <code>[Array](#Array)</code> - `this`  
 
 | Param | Type | Description |
 | --- | --- | --- |
 | callback(value,index,array) | <code>function</code> | A function to be executed on each item in the array. |
 
+**Returns**: <code>[Array](#Array)</code> - `this`  
 **Example**  
 ```js
 ['a', 'b', 'c'].each(console.log.bind(console));// -> 'a' 0 ['a', 'b', 'c']// -> 'b' 1 ['a', 'b', 'c']// -> 'c' 2 ['a', 'b', 'c']// -> ['a', 'b', 'c'] (return value)['a', 'b', 'c'].each(function(value, index) {  console.log(value);  if (index === 1) return false;});// -> 'a'// -> 'b'// -> ['a', 'b', 'c'] (return value)[[1, 2], [3, 4, 5]].each(Array.prototype.pop);// -> [[1], [3, 4]]
@@ -96,15 +96,15 @@ Invokes a callback function on each item in the array.A generic iterator metho
 ### array.equals(array) ⇒ <code>boolean</code>
 Determines if the arrays are equal by doing a shallow comparison of their elements using strict equality.__Note:__ The order of elements in the arrays DOES matter. The elements must be found in the same orderfor the arrays to be considered equal.
 
-**Returns**: <code>boolean</code> - `true` if the arrays are equal, `false` otherwise.  
-**Throws**:
-
-- <code>TypeError</code> Throws an error if the input value is `null` or `undefined`.
-
 
 | Param | Type | Description |
 | --- | --- | --- |
 | array | <code>[Array](#Array)</code> | An array to compare for equality. |
+
+**Returns**: <code>boolean</code> - `true` if the arrays are equal, `false` otherwise.  
+**Throws**:
+
+- <code>TypeError</code> Throws an error if the input value is `null` or `undefined`.
 
 **Example**  
 ```js
@@ -114,12 +114,12 @@ var array = [1, 2, 3];array.equals(array);// -> truearray.equals([1, 2, 3])
 ### array.get(index) ⇒ <code>\*</code>
 Retrieve an item in the array.
 
-**Returns**: <code>\*</code> - The item at the specified index.  
 
 | Param | Type | Description |
 | --- | --- | --- |
 | index | <code>number</code> | A zero-based integer indicating which item to retrieve. |
 
+**Returns**: <code>\*</code> - The item at the specified index.  
 **Example**  
 ```js
 var array = [1, 2, 3];array.get(0);// -> 1array.get(1);// -> 2array.get(-1);// -> 3array.get(-2);// -> 2array.get(5);// -> undefined
@@ -128,12 +128,12 @@ var array = [1, 2, 3];array.get(0);// -> 1array.get(1);// -> 2array.get(
 ### array.intersect(...*arrays) ⇒ <code>[Array](#Array)</code>
 Performs a set intersection on this array and the input array(s).
 
-**Returns**: <code>[Array](#Array)</code> - An array that is the intersection of this array and the input array(s).  
 
 | Param | Type | Description |
 | --- | --- | --- |
 | ...*arrays | <code>[Array](#Array)</code> | A variable number of arrays. |
 
+**Returns**: <code>[Array](#Array)</code> - An array that is the intersection of this array and the input array(s).  
 **Example**  
 ```js
 [1, 2, 3].intersect([2, 3, 4]);// -> [2, 3][1, 2, 3].intersect([101, 2, 50, 1], [2, 1]);// -> [1, 2]
@@ -142,12 +142,12 @@ Performs a set intersection on this array and the input array(s).
 ### array.natsort([caseInsensitive]) ⇒ <code>[Array](#Array)</code>
 Sorts an array in place using a natural string comparison algorithm and returns the array.
 
-**Returns**: <code>[Array](#Array)</code> - The array.  
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
 | [caseInsensitive] | <code>boolean</code> | <code>false</code> | Set this to `true` to ignore letter casing when sorting. |
 
+**Returns**: <code>[Array](#Array)</code> - The array.  
 **Example**  
 ```js
 var files = ['a.txt', 'a10.txt', 'a2.txt', 'a1.txt'];files.natsort();console.log(files);// -> ['a.txt', 'a1.txt', 'a2.txt', 'a10.txt']
@@ -165,12 +165,12 @@ var files = [10, 0, 2, 1];files.numsort();console.log(files);// -> [0, 1, 2, 
 ### array.remove(...*items) ⇒ <code>[Array](#Array)</code>
 Removes all occurrences of the passed in items from the array if they exist in the array.
 
-**Returns**: <code>[Array](#Array)</code> - A reference to the array (so it's chainable).  
 
 | Param | Type | Description |
 | --- | --- | --- |
 | ...*items | <code>\*</code> | Items to remove from the array. |
 
+**Returns**: <code>[Array](#Array)</code> - A reference to the array (so it's chainable).  
 **Example**  
 ```js
 var array = [1, 2, 3, 3, 4, 3, 5];array.remove(1);// -> [2, 3, 3, 4, 3, 5]array.remove(3);// -> [2, 4, 5]array.remove(2, 5);// -> [4]
@@ -188,12 +188,12 @@ var files = [10, 0, 2, 1];files.rnumsort();console.log(files);// -> [3, 2, 1,
 ### array.union(...*arrays) ⇒ <code>[Array](#Array)</code>
 Returns an array containing every distinct item that is in either this array or the input array(s).
 
-**Returns**: <code>[Array](#Array)</code> - An array that is the union of this array and the input array(s).  
 
 | Param | Type | Description |
 | --- | --- | --- |
 | ...*arrays | <code>[Array](#Array)</code> | A variable number of arrays. |
 
+**Returns**: <code>[Array](#Array)</code> - An array that is the union of this array and the input array(s).  
 **Example**  
 ```js
 [1, 2, 3].union([2, 3, 4, 5]);// -> [1, 2, 3, 4, 5]

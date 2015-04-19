@@ -43,6 +43,7 @@ module.exports = function(grunt) {
     jsdoc2md: {
       docs: {
         options: {
+          partial: ['jsdoc2md/partials/body.hbs'],
           'sort-by': 'name'
         },
         src: 'pro-array.js',
