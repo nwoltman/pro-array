@@ -15,6 +15,7 @@ describe('Array', function() {
     });
   });
 
+
   describe('#chunk()', function() {
     var array = [0, 1, 2, 3, 4, 5];
 
@@ -34,6 +35,7 @@ describe('Array', function() {
     });
   });
 
+
   describe('#clean()', function() {
     var array = [1, 2, 3];
 
@@ -42,6 +44,7 @@ describe('Array', function() {
       array.should.be.empty;
     });
   });
+
 
   describe('#clone()', function() {
     var array = [1, 99, '', {}, ['a', 'b'], false, /regex/];
@@ -53,6 +56,7 @@ describe('Array', function() {
     });
   });
 
+
   describe('#compact()', function() {
     var array = ['a', '', 1, 2, 0, null, true, undefined, false, NaN, should];
 
@@ -61,6 +65,7 @@ describe('Array', function() {
       should.deepEqual(compacted, ['a', 1, 2, true, should]);
     });
   });
+
 
   describe('#difference()', function() {
     var array = [1, 2, 3, 4, 5, 2];
@@ -82,12 +87,14 @@ describe('Array', function() {
     });
   });
 
+
   describe('#diff()', function() {
     it('should be an alias of #difference()', function() {
       var array = [];
       array.diff.should.equal(array.difference);
     });
   });
+
 
   describe('#each()', function() {
     it('should return the array it was called on', function() {
@@ -155,6 +162,7 @@ describe('Array', function() {
     });
   });
 
+
   describe('#equals()', function() {
     var array = [1, 2, 3];
 
@@ -179,6 +187,7 @@ describe('Array', function() {
     });
   });
 
+
   describe('#get()', function() {
     var array = [1, 2, 3];
 
@@ -193,6 +202,7 @@ describe('Array', function() {
       should.strictEqual(array.get(-4), undefined);
     });
   });
+
 
   describe('#intersect()', function() {
     var array = [1, 2, 3];
@@ -213,6 +223,7 @@ describe('Array', function() {
       should.deepEqual(inter, [1, 2]);
     });
   });
+
 
   describe('#natsort()', function() {
     var array = [
@@ -249,6 +260,7 @@ describe('Array', function() {
     });
   });
 
+
   describe('#numsort()', function() {
     var array = [1, 10, 2, 0, 3];
 
@@ -261,6 +273,7 @@ describe('Array', function() {
     });
   });
 
+
   describe('#rnumsort()', function() {
     var array = [1, 10, 2, 0, 3];
 
@@ -272,6 +285,7 @@ describe('Array', function() {
       should.deepEqual(array, [10, 3, 2, 1, 0]);
     });
   });
+
 
   describe('#remove()', function() {
     var array = [1, 2, 3, 3, 4, 3, 4];
@@ -300,6 +314,7 @@ describe('Array', function() {
     });
   });
 
+
   describe('#union()', function() {
     var array = [1, 2, 3];
 
@@ -319,6 +334,7 @@ describe('Array', function() {
       should.deepEqual(union, [1, 2, 3, 4, 50, 9]);
     });
   });
+
 
   describe('#unique()', function() {
     it('should return a clone when called with no parameters', function() {
@@ -350,12 +366,14 @@ describe('Array', function() {
     });
   });
 
+
   describe('#uniq()', function() {
     it('should be an alias of #unique()', function() {
       var array = [];
       array.uniq.should.equal(array.unique);
     });
   });
+
 
   describe('#without()', function() {
     var array = [1, 2, 3, 3, 4, 3];
