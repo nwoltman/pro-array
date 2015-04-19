@@ -17,9 +17,26 @@ module.exports = function(grunt) {
       }
     },
 
-    mochaTest: {
+    mochacov: {
       test: {
-        src: ['test/**/*.js']
+        options: {
+          reporter: 'spec'
+        }
+      },
+      coverage: {
+        options: {
+          reporter: 'html-cov',
+          quiet: true,
+          output: 'coverage/coverage.html'
+        }
+      },
+      test_coverage: {
+        options: {
+          coveralls: true
+        }
+      },
+      options: {
+        files: 'test/*.js'
       }
     },
 
@@ -34,7 +51,7 @@ module.exports = function(grunt) {
   // Load the Grunt plugins
   grunt.loadNpmTasks('grunt-jsonlint');
   grunt.loadNpmTasks('grunt-contrib-jshint');
-  grunt.loadNpmTasks('grunt-mocha-test');
+  grunt.loadNpmTasks('grunt-mocha-cov');
   grunt.loadNpmTasks("grunt-jsdoc-to-markdown");
 
   // Create a task that formats the generated documentation
@@ -49,7 +66,8 @@ module.exports = function(grunt) {
 
   // Register tasks
   grunt.registerTask('lint', ['jsonlint', 'jshint']);
-  grunt.registerTask('test', ['mochaTest']);
+  grunt.registerTask('test', ['mochacov:test' + (process.env.CI_BUILD_NUMBER ? '_coverage' : '')]);
+  grunt.registerTask('coverage', ['mochacov:coverage']);
   grunt.registerTask('docs', ['jsdoc2md', 'format_docs']);
   grunt.registerTask('default', ['lint', 'test', 'docs']);
 };
