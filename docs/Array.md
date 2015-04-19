@@ -9,7 +9,8 @@ The native Array object.
   * [.clear()](#Array#clear)
   * [.clone()](#Array#clone) ⇒ <code>[Array](#Array)</code>
   * [.compact()](#Array#compact) ⇒ <code>[Array](#Array)</code>
-  * [.diff(...*arrays)](#Array#diff) ⇒ <code>[Array](#Array)</code>
+  * [.diff()](#Array#diff)
+  * [.difference(...*arrays)](#Array#difference) ⇒ <code>[Array](#Array)</code>
   * [.each(callback(value,index,array))](#Array#each) ⇒ <code>[Array](#Array)</code>
   * [.equals(array)](#Array#equals) ⇒ <code>boolean</code>
   * [.get(index)](#Array#get) ⇒ <code>\*</code>
@@ -19,6 +20,7 @@ The native Array object.
   * [.remove(...*items)](#Array#remove) ⇒ <code>[Array](#Array)</code>
   * [.rnumsort()](#Array#rnumsort) ⇒ <code>[Array](#Array)</code>
   * [.union(...*arrays)](#Array#union) ⇒ <code>[Array](#Array)</code>
+  * [.uniq()](#Array#uniq)
   * [.unique([isSorted])](#Array#unique) ⇒ <code>[Array](#Array)</code>
   * [.without(...*items)](#Array#without) ⇒ <code>[Array](#Array)</code>
 
@@ -59,7 +61,12 @@ Returns a new array with all falsey values removed. Falsey valuesare `false`, `
 [0, 1, false, 2, '', 3].compact();// -> [1, 2, 3]
 ```
 <a name="Array#diff"></a>
-### array.diff(...*arrays) ⇒ <code>[Array](#Array)</code>
+### array.diff()
+Alias of [difference](#Array#difference).
+
+**See**: [difference](#Array#difference)  
+<a name="Array#difference"></a>
+### array.difference(...*arrays) ⇒ <code>[Array](#Array)</code>
 Returns a new array with all of the values of this array that are not inany of the input arrays (performs a set difference).
 
 
@@ -69,7 +76,7 @@ Returns a new array with all of the values of this array that are not inany of 
 
 **Example**  
 ```js
-[1, 2, 3, 4, 5].diff([5, 2, 10]);// -> [1, 3, 4]
+[1, 2, 3, 4, 5].difference([5, 2, 10]);// -> [1, 3, 4]
 ```
 <a name="Array#each"></a>
 ### array.each(callback(value,index,array)) ⇒ <code>[Array](#Array)</code>
@@ -191,6 +198,11 @@ Returns an array containing every distinct item that is in either this array or 
 ```js
 [1, 2, 3].union([2, 3, 4, 5]);// -> [1, 2, 3, 4, 5]
 ```
+<a name="Array#uniq"></a>
+### array.uniq()
+Alias of [unique](#Array#unique).
+
+**See**: [unique](#Array#unique)  
 <a name="Array#unique"></a>
 ### array.unique([isSorted]) ⇒ <code>[Array](#Array)</code>
 Returns a duplicate-free clone of the array.

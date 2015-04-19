@@ -42,6 +42,9 @@ module.exports = function(grunt) {
 
     jsdoc2md: {
       docs: {
+        options: {
+          'sort-by': 'name'
+        },
         src: 'pro-array.js',
         dest: 'docs/Array.md'
       }

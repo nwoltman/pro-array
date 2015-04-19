@@ -108,12 +108,12 @@ var properties = {
    * Returns a new array with all of the values of this array that are not in
    * any of the input arrays (performs a set difference).
    *
-   * @function Array#diff
+   * @function Array#difference
    * @param {...Array} *arrays - A variable number of arrays.
    * @returns {Array}
    *
    * @example
-   * [1, 2, 3, 4, 5].diff([5, 2, 10]);
+   * [1, 2, 3, 4, 5].difference([5, 2, 10]);
    * // -> [1, 3, 4]
    */
   difference: function() {
@@ -317,6 +317,23 @@ var properties = {
   },
 
   /**
+   * Sorts an array in place using a reverse numerical comparison algorithm
+   * (sorts numbers from highest to lowest) and returns the array.
+   *
+   * @function Array#rnumsort
+   * @returns {Array} The array.
+   *
+   * @example
+   * var files = [10, 0, 2, 1];
+   * files.rnumsort();
+   * console.log(files);
+   * // -> [3, 2, 1, 0]
+   */
+  rnumsort: function() {
+    return this.sort(numericalCompareReverse);
+  },
+
+  /**
    * Removes all occurrences of the passed in items from the array if they exist in the array.
    *
    * @function Array#remove
@@ -345,23 +362,6 @@ var properties = {
     }
 
     return this;
-  },
-
-  /**
-   * Sorts an array in place using a reverse numerical comparison algorithm
-   * (sorts numbers from highest to lowest) and returns the array.
-   *
-   * @function Array#rnumsort
-   * @returns {Array} The array.
-   *
-   * @example
-   * var files = [10, 0, 2, 1];
-   * files.rnumsort();
-   * console.log(files);
-   * // -> [3, 2, 1, 0]
-   */
-  rnumsort: function() {
-    return this.sort(numericalCompareReverse);
   },
 
   /**
@@ -473,7 +473,21 @@ for (var propName in properties) {
 }
 
 // Set aliases
+
+/**
+ * Alias of {@link Array#difference}.
+ *
+ * @function Array#diff
+ * @see {@link Array#difference}
+ */
 properties.diff = properties.difference;
+
+/**
+ * Alias of {@link Array#unique}.
+ *
+ * @function Array#uniq
+ * @see {@link Array#unique}
+ */
 properties.uniq = properties.unique;
 
 // Define the properties on Array.prototype

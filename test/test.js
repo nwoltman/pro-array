@@ -82,6 +82,13 @@ describe('Array', function() {
     });
   });
 
+  describe('#diff()', function() {
+    it('should be an alias of #difference()', function() {
+      var array = [];
+      array.diff.should.equal(array.difference);
+    });
+  });
+
   describe('#each()', function() {
     it('should iterate over an array, calling the callback with the correct arguments', function() {
       var array = [3, 4, 5];
@@ -297,7 +304,7 @@ describe('Array', function() {
     });
 
     it('should correctly unique an array with undefined as the last element when isSorted is true', function() {
-      should.deepEqual([1, 2, 2, 3, undefined].unique(true), [1, 2, 3]);
+      should.deepEqual([1, 2, 2, 3, undefined].unique(true), [1, 2, 3, undefined]);
     });
 
     // Not very useful, but satifies code coverage
@@ -306,6 +313,13 @@ describe('Array', function() {
       var result = array.unique(true);
       should.deepEqual(result, []);
       result.should.not.equal(array);
+    });
+  });
+
+  describe('#uniq()', function() {
+    it('should be an alias of #unique()', function() {
+      var array = [];
+      array.uniq.should.equal(array.unique);
     });
   });
 
