@@ -32,7 +32,8 @@ module.exports = function(grunt) {
       },
       test_coverage: {
         options: {
-          coveralls: true
+          coveralls: true,
+          reporter: 'spec'
         }
       },
       options: {
