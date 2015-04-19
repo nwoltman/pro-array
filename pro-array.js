@@ -417,7 +417,7 @@ var properties = {
     if (isSorted) {
       var lastIndex = this.length - 1;
       if (lastIndex === -1) {
-        return [];
+        return unique;
       }
       for (; i < lastIndex; i++) {
         if (this[i] !== this[i + 1]) {

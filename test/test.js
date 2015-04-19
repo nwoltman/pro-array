@@ -281,19 +281,31 @@ describe('Array', function() {
 
   describe('#unique()', function() {
     it('should return a clone when called with no parameters', function() {
-      should.deepEqual([1, 2, 3, 0].uniq(), [1, 2, 3, 0]);
+      should.deepEqual([1, 2, 3, 0].unique(), [1, 2, 3, 0]);
     });
 
     it('should return a unique set when called on an unsorted array with duplicates', function() {
-      should.deepEqual([4, 2, 3, 2, 1, 4].uniq(), [4, 2, 3, 1]);
+      should.deepEqual([4, 2, 3, 2, 1, 4].unique(), [4, 2, 3, 1]);
     });
 
     it('should return a unique set when called on a sorted array with duplicates', function() {
-      should.deepEqual([1, 2, 2, 3, 4, 4].uniq(), [1, 2, 3, 4]);
+      should.deepEqual([1, 2, 2, 3, 4, 4].unique(), [1, 2, 3, 4]);
     });
 
     it('should return a unique set when called on a sorted array with duplicates and isSorted is true', function() {
-      should.deepEqual([1, 2, 2, 3, 4, 4].uniq(true), [1, 2, 3, 4]);
+      should.deepEqual([1, 2, 2, 3, 4, 4].unique(true), [1, 2, 3, 4]);
+    });
+
+    it('should correctly unique an array with undefined as the last element when isSorted is true', function() {
+      should.deepEqual([1, 2, 2, 3, undefined].unique(true), [1, 2, 3]);
+    });
+
+    // Not very useful, but satifies code coverage
+    it('should return a new empty array when the original array is empty and isSorted is true', function() {
+      var array = [];
+      var result = array.unique(true);
+      should.deepEqual(result, []);
+      result.should.not.equal(array);
     });
   });
 
