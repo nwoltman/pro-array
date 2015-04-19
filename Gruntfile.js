@@ -59,10 +59,10 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks("grunt-jsdoc-to-markdown");
 
   // Create a task that formats the generated documentation
+  // This will be unnecessary when https://github.com/jsdoc2md/ddata/pull/1 gets merged
   grunt.registerTask('format_docs', function() {
     var fs = require('fs');
     var doc = fs.readFileSync('docs/Array.md', {encoding: 'utf8'});
-    doc = doc.replace(/\*{2}Kind\*{2}:.*\n/g, '');
     doc = doc.replace(/\s{4,}(?= [^|]+\|$)/gm, '');
     fs.writeFileSync('docs/Array.md', doc);
     grunt.log.ok('Formatted documentation.');
