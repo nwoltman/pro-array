@@ -90,6 +90,12 @@ describe('Array', function() {
   });
 
   describe('#each()', function() {
+    it('should return the array it was called on', function() {
+      var array = [];
+      array.each(function() {}).should.equal(array);
+      array.each(function() {}, true).should.equal(array);
+    });
+
     it('should iterate over an array, calling the callback with the correct arguments', function() {
       var array = [3, 4, 5];
       var seen = [];
@@ -114,10 +120,38 @@ describe('Array', function() {
       should.deepEqual(seen, [1, 2]);
     });
 
-    it('should call the callback in the context of the value', function() {
+    it('should invoke the callback in the context of the value', function() {
       [{}, []].each(function(v) {
         this.should.equal(v);
       });
+    });
+
+    it('should invoke the callback on deleted and elided indices by default', function() {
+      var array = new Array(3);
+      array[0] = 'a';
+      array[1] = 'b';
+      delete array[0];
+
+      var seen = [];
+      array.each(function(v) {
+        seen.push(v);
+      });
+
+      should.deepEqual(seen, [undefined, 'b', undefined]);
+    });
+
+    it('should not invoke the callback on deleted and elided indices when safeIteration is true', function() {
+      var array = new Array(3);
+      array[0] = 'a';
+      array[1] = 'b';
+      delete array[0];
+
+      var seen = [];
+      array.each(function(v, k, a) {
+        seen.push({key: k, value: v, array: a});
+      }, true);
+
+      should.deepEqual(seen, [{key: 1, value: 'b', array: array}]);
     });
   });
 

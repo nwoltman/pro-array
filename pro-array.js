@@ -143,11 +143,13 @@ var properties = {
    * 1. `this` always refers to the current item in the iteration (the `value` argument to the callback).
    * 2. Returning `false` in the callback will cancel the iteration (similar to a `break` statement).
    * 3. The array is returned to allow for function chaining.
-   * 4. The callback __is__ invoked for indexes that have been deleted or elided.
+   * 4. The callback __is__ invoked for indexes that have been deleted or elided unless `safeIteration` is `true`.
    *
    * @function Array#each
    * @param {function(*, number, Array)} callback(value,index,array) - A function to be executed on each
    *                                                                   item in the array.
+   * @param {boolean} [safeIteration=false] - When `true`, the callback will not be invoked
+   *     for indexes that have been deleted or elided.
    * @returns {Array} `this`
    *
    * @example
@@ -155,7 +157,7 @@ var properties = {
    * // -> 'a' 0 ['a', 'b', 'c']
    * // -> 'b' 1 ['a', 'b', 'c']
    * // -> 'c' 2 ['a', 'b', 'c']
-   * // -> ['a', 'b', 'c'] (return value)
+   * // -> ['a', 'b', 'c']
    *
    * ['a', 'b', 'c'].each(function(value, index) {
    *   console.log(value);
@@ -163,15 +165,25 @@ var properties = {
    * });
    * // -> 'a'
    * // -> 'b'
-   * // -> ['a', 'b', 'c'] (return value)
+   * // -> ['a', 'b', 'c']
    *
    * [[1, 2], [3, 4, 5]].each(Array.prototype.pop);
    * // -> [[1], [3, 4]]
+   *
+   * new Array(1).each(console.log.bind(console));
+   * // -> undefined 0 ['a', 'b', 'c']
+   * // -> [undefined]
+   *
+   * new Array(1).each(console.log.bind(console), true);
+   * // -> [undefined]
    */
-  each: function(callback) {
+  each: function(callback, safeIteration) {
     var i = 0;
 
-    while (i < this.length && callback.call(this[i], this[i], i++, this) !== false);
+    if (safeIteration)
+      while (i < this.length && (!(i in this) || callback.call(this[i], this[i], i, this) !== false)) i++;
+    else
+      while (i < this.length && callback.call(this[i], this[i], i++, this) !== false);
 
     return this;
   },
