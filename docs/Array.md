@@ -2,7 +2,7 @@
 ## Array
 The native Array object.
 
-**See**: [Array - JavaScript | MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)  
+**See**: [https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)  
 
 * [Array](#Array)
   * [.chunk([size])](#Array#chunk) ⇒ <code>[Array](#Array)</code>

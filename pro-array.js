@@ -25,7 +25,7 @@ function retval(v) {
 /**
  * @class Array
  * @classdesc The native Array object.
- * @see {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array|Array - JavaScript | MDN}
+ * @see {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array}
  */
 
 var properties = {
