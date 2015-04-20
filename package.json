@@ -1,7 +1,7 @@
 {
   "name": "pro-array",
   "version": "1.0.0",
-  "description": "Extends the native Array object with several helpful utility functions",
+  "description": "Extends the functionality of Arrays with several useful methods",
   "main": "pro-array.js",
   "scripts": {
     "test": "grunt"
