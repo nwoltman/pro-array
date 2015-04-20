@@ -43,7 +43,15 @@ module.exports = function(grunt) {
     jsdoc2md: {
       docs: {
         options: {
-          partial: ['jsdoc2md/partials/body.hbs', 'jsdoc2md/partials/examples.hbs'],
+          helper: ['jsdoc2md/helpers.js'],
+          partial: [
+            'jsdoc2md/partials/body.hbs',
+            'jsdoc2md/partials/examples.hbs',
+            'jsdoc2md/partials/link.hbs',
+            'jsdoc2md/partials/linked-type-list.hbs',
+            'jsdoc2md/partials/params-table.hbs',
+            'jsdoc2md/partials/param-table-name.hbs'
+          ],
           separators: true,
           'sort-by': ['name'],
           template: require('fs').readFileSync('jsdoc2md/README.hbs', {encoding: 'utf8'})
@@ -58,22 +66,12 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-jsonlint');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-mocha-cov');
-  grunt.loadNpmTasks("grunt-jsdoc-to-markdown");
-
-  // Create a task that formats the generated documentation
-  // This will be unnecessary when https://github.com/jsdoc2md/ddata/pull/1 gets merged
-  grunt.registerTask('format_docs', function() {
-    var fs = require('fs');
-    var doc = fs.readFileSync('README.md', {encoding: 'utf8'});
-    doc = doc.replace(/\s{4,}(?= [^|]+\|$)/gm, '');
-    fs.writeFileSync('README.md', doc);
-    grunt.log.ok('Formatted documentation.');
-  });
+  grunt.loadNpmTasks('grunt-jsdoc-to-markdown');
 
   // Register tasks
   grunt.registerTask('lint', ['jsonlint', 'jshint']);
   grunt.registerTask('test', ['mochacov:test'].concat(process.env.CI ? ['mochacov:test_coverage'] : []));
   grunt.registerTask('coverage', ['mochacov:coverage']);
-  grunt.registerTask('docs', ['jsdoc2md', 'format_docs']);
+  grunt.registerTask('docs', ['jsdoc2md']);
   grunt.registerTask('default', ['lint', 'test', 'docs']);
 };

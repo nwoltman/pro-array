@@ -118,9 +118,9 @@ Alias of [difference](#Array#difference).
 Returns a new array with all of the values of this array that are not inany of the input arrays (performs a set difference).
 
 
-| Param | Type | Description |
-| --- | --- | --- |
-| ...*arrays | <code>[Array](#Array)</code> | A variable number of arrays. |
+| Param | Type | Attributes | Description |
+| --- | --- | --- | --- |
+| *arrays | <code>...[Array](#Array)</code> | &lt;repeatable&gt; | A variable number of arrays. |
 
 
 **Example**
@@ -137,8 +137,8 @@ Invokes a callback function on each item in the array.A generic iterator metho
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| callback(value,index,array) | <code>function</code> |  | A function to be executed on each item in the array. |
-| [safeIteration] | <code>boolean</code> | <code>false</code> | When `true`, the callback will not be invoked for indexes that have been deleted or elided. |
+| callback(value,index,array) | <code>function</code> |  | A function to be executed on each                                                                  item in the array. |
+| [safeIteration] | <code>boolean</code> | <code>false</code> | When `true`, the callback will not be invoked    for indexes that have been deleted or elided. |
 
 **Returns**: <code>[Array](#Array)</code> - `this`  
 
@@ -194,9 +194,9 @@ var array = [1, 2, 3];array.get(0);// -> 1array.get(1);// -> 2array.get(
 Performs a set intersection on this array and the input array(s).
 
 
-| Param | Type | Description |
-| --- | --- | --- |
-| ...*arrays | <code>[Array](#Array)</code> | A variable number of arrays. |
+| Param | Type | Attributes | Description |
+| --- | --- | --- | --- |
+| *arrays | <code>...[Array](#Array)</code> | &lt;repeatable&gt; | A variable number of arrays. |
 
 **Returns**: <code>[Array](#Array)</code> - An array that is the intersection of this array and the input array(s).  
 
@@ -243,9 +243,9 @@ var files = [10, 0, 2, 1];files.numsort();console.log(files);// -> [0, 1, 2, 
 Removes all occurrences of the passed in items from the array if they exist in the array.
 
 
-| Param | Type | Description |
-| --- | --- | --- |
-| ...*items | <code>\*</code> | Items to remove from the array. |
+| Param | Type | Attributes | Description |
+| --- | --- | --- | --- |
+| *items | <code>...\*</code> | &lt;repeatable&gt; | Items to remove from the array. |
 
 **Returns**: <code>[Array](#Array)</code> - A reference to the array (so it's chainable).  
 
@@ -274,9 +274,9 @@ var files = [10, 0, 2, 1];files.rnumsort();console.log(files);// -> [3, 2, 1,
 Returns an array containing every distinct item that is in either this array or the input array(s).
 
 
-| Param | Type | Description |
-| --- | --- | --- |
-| ...*arrays | <code>[Array](#Array)</code> | A variable number of arrays. |
+| Param | Type | Attributes | Description |
+| --- | --- | --- | --- |
+| *arrays | <code>...[Array](#Array)</code> | &lt;repeatable&gt; | A variable number of arrays. |
 
 **Returns**: <code>[Array](#Array)</code> - An array that is the union of this array and the input array(s).  
 
@@ -302,7 +302,7 @@ Returns a duplicate-free clone of the array.
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| [isSorted] | <code>boolean</code> | <code>false</code> | If the input array's contents are sorted and this is set to `true`, a faster algorithm will be used to create the unique array. |
+| [isSorted] | <code>boolean</code> | <code>false</code> | If the input array's contents are sorted and this is set to `true`,    a faster algorithm will be used to create the unique array. |
 
 
 **Example**
@@ -317,9 +317,9 @@ Returns a duplicate-free clone of the array.
 Returns a copy of the current array without any elements from the input parameters.
 
 
-| Param | Type | Description |
-| --- | --- | --- |
-| ...*items | <code>\*</code> | Items to leave out of the returned array. |
+| Param | Type | Attributes | Description |
+| --- | --- | --- | --- |
+| *items | <code>...\*</code> | &lt;repeatable&gt; | Items to leave out of the returned array. |
 
 
 **Example**
