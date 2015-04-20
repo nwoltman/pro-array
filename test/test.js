@@ -183,7 +183,9 @@ describe('Array', function() {
     });
 
     it('should throw a TypeError when executed with undefined input', function() {
-      (function() { array.equals(); }).should.throw(TypeError);
+      (function() {
+        array.equals();
+      }).should.throw(TypeError);
     });
   });
 
