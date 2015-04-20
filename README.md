@@ -132,12 +132,12 @@ Returns a new array with all of the values of this array that are not inany of 
 
 <a name="Array#each"></a>
 ### array.each(callback(value,index,array), [safeIteration]) ⇒ <code>[Array](#Array)</code>
-Invokes a callback function on each item in the array.A generic iterator method similar to `Array#forEach()` but with the following differences:1. `this` always refers to the current item in the iteration (the `value` argument to the callback).2. Returning `false` in the callback will cancel the iteration (similar to a `break` statement).3. The array is returned to allow for function chaining.4. The callback __is__ invoked for indexes that have been deleted or elided unless `safeIteration` is `true`.
+Invokes a callback function on each element in the array.A generic iterator method similar to `Array#forEach()` but with the following differences:1. `this` always refers to the current element in the iteration (the `value` argument to the callback).2. Returning `false` in the callback will cancel the iteration (similar to a `break` statement).3. The array is returned to allow for function chaining.4. The callback __is__ invoked for indexes that have been deleted or elided unless `safeIteration` is `true`.
 
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| callback(value,index,array) | <code>function</code> |  | A function to be executed on each                                                                  item in the array. |
+| callback(value,index,array) | <code>function</code> |  | A function to be executed on each                                                                  element in the array. |
 | [safeIteration] | <code>boolean</code> | <code>false</code> | When `true`, the callback will not be invoked    for indexes that have been deleted or elided. |
 
 **Returns**: <code>[Array](#Array)</code> - `this`  
@@ -173,14 +173,14 @@ var array = [1, 2, 3];array.equals(array);// -> truearray.equals([1, 2, 3])
 
 <a name="Array#get"></a>
 ### array.get(index) ⇒ <code>\*</code>
-Retrieve an item in the array.
+Retrieve an element in the array.
 
 
 | Param | Type | Description |
 | --- | --- | --- |
-| index | <code>number</code> | A zero-based integer indicating which item to retrieve. |
+| index | <code>number</code> | A zero-based integer indicating which element to retrieve. |
 
-**Returns**: <code>\*</code> - The item at the specified index.  
+**Returns**: <code>\*</code> - The element at the specified index.  
 
 **Example**
 ```js
@@ -271,7 +271,7 @@ var files = [10, 0, 2, 1];files.rnumsort();console.log(files);// -> [3, 2, 1,
 
 <a name="Array#union"></a>
 ### array.union(...*arrays) ⇒ <code>[Array](#Array)</code>
-Returns an array containing every distinct item that is in either this array or the input array(s).
+Returns an array containing every distinct element that is in either this array or the input array(s).
 
 
 | Param | Type | Description |

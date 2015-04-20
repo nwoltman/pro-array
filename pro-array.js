@@ -136,18 +136,18 @@ var properties = {
   },
 
   /**
-   * Invokes a callback function on each item in the array.
+   * Invokes a callback function on each element in the array.
    *
    * A generic iterator method similar to `Array#forEach()` but with the following differences:
    *
-   * 1. `this` always refers to the current item in the iteration (the `value` argument to the callback).
+   * 1. `this` always refers to the current element in the iteration (the `value` argument to the callback).
    * 2. Returning `false` in the callback will cancel the iteration (similar to a `break` statement).
    * 3. The array is returned to allow for function chaining.
    * 4. The callback __is__ invoked for indexes that have been deleted or elided unless `safeIteration` is `true`.
    *
    * @function Array#each
    * @param {function(*, number, Array)} callback(value,index,array) - A function to be executed on each
-   *                                                                   item in the array.
+   *                                                                   element in the array.
    * @param {boolean} [safeIteration=false] - When `true`, the callback will not be invoked
    *     for indexes that have been deleted or elided.
    * @returns {Array} `this`
@@ -230,11 +230,11 @@ var properties = {
   },
 
   /**
-   * Retrieve an item in the array.
+   * Retrieve an element in the array.
    *
    * @function Array#get
-   * @param {number} index - A zero-based integer indicating which item to retrieve.
-   * @returns {*} The item at the specified index.
+   * @param {number} index - A zero-based integer indicating which element to retrieve.
+   * @returns {*} The element at the specified index.
    *
    * @example
    * var array = [1, 2, 3];
@@ -377,7 +377,7 @@ var properties = {
   },
 
   /**
-   * Returns an array containing every distinct item that is in either this array or the input array(s).
+   * Returns an array containing every distinct element that is in either this array or the input array(s).
    *
    * @function Array#union
    * @param {...Array} *arrays - A variable number of arrays.
