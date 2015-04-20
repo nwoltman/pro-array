@@ -1,11 +1,10 @@
 {{#if params}}
 
-{{tableHead params "name|Param" "type|Type" "variable,nullable|Attributes" "defaultvalue|Default" "description|Description" ~}}
+{{tableHead params "name|Param" "type|Type" "defaultvalue|Default" "description|Description" ~}}
 
 {{#tableRow params "name" "type" "defaultvalue" "description" ~}}
 | {{#if @col1}}{{>param-table-name}} | {{/if~}}
 {{#if @col2}}{{>linked-type-list types=type.names delimiter=" &#124; " variable=variable nullable=nullable }} | {{/if~}}
-{{tableAttributes variable nullable ~}}
 {{#if @col3}}{{>defaultvalue}} | {{/if~}}
 {{#if @col4}}{{{stripNewlines (inlineLinks description)}}} |{{/if}}
 {{/tableRow}}
