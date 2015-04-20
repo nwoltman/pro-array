@@ -90,6 +90,11 @@ Creates a shallow copy of the array.
 
 **Returns**: <code>[Array](#Array)</code> - A clone of the array.  
 
+**Example**
+```js
+var a = [1, 2, 3];var b = a.clone();console.log(b, b === a);// -> [1, 2, 3] false
+```
+
 -
 
 <a name="Array#compact"></a>
