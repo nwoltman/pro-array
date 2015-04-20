@@ -57,7 +57,8 @@ module.exports = function(grunt) {
             'jsdoc2md/partials/link.hbs',
             'jsdoc2md/partials/linked-type-list.hbs',
             'jsdoc2md/partials/params-table.hbs',
-            'jsdoc2md/partials/param-table-name.hbs'
+            'jsdoc2md/partials/param-table-name.hbs',
+            'jsdoc2md/partials/separator.hbs'
           ],
           separators: true,
           'sort-by': ['name'],
