@@ -175,17 +175,16 @@ describe('Array', function() {
     });
 
     it('should report that an array does not equal another array with the same values but out of order', function() {
-      array.equals([3, 2, 1]).should.not.be.true;
+      array.equals([3, 2, 1]).should.be.false;
     });
 
     it('should report that an array does not equal another that has a different length', function() {
-      array.equals([1, 2]).should.not.be.true;
+      array.equals([1, 2]).should.be.false;
     });
 
-    it('should throw a TypeError when executed with undefined input', function() {
-      (function() {
-        array.equals();
-      }).should.throw(TypeError);
+    it('should return false when the input is null or undefined', function() {
+      array.equals(null).should.be.false;
+      array.equals().should.be.false;
     });
   });
 

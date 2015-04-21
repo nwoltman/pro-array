@@ -178,10 +178,6 @@ Determines if the arrays are equal by doing a shallow comparison of their elemen
 | array | <code>[Array](#Array)</code> | An array to compare for equality. |
 
 **Returns**: <code>boolean</code> - `true` if the arrays are equal, `false` otherwise.  
-**Throws**:
-
-- <code>TypeError</code> Throws an error if the input value is `null` or `undefined`.
-
 
 **Example**
 ```js

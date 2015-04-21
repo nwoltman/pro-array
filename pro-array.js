@@ -208,7 +208,6 @@ var properties = {
    * @function Array#equals
    * @param {Array} array - An array to compare for equality.
    * @returns {boolean} `true` if the arrays are equal, `false` otherwise.
-   * @throws {TypeError} Throws an error if the input value is `null` or `undefined`.
    *
    * @example
    * var array = [1, 2, 3];
@@ -223,16 +222,16 @@ var properties = {
    * // -> false
    */
   equals: function(array) {
-    if (this === array) {
+    if (array === this) {
       return true;
     }
 
-    if (this.length !== array.length) {
+    if (!array || array.length !== this.length) {
       return false;
     }
 
     for (var i = 0; i < array.length; i++) {
-      if (this[i] !== array[i]) {
+      if (array[i] !== this[i]) {
         return false;
       }
     }
