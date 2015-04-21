@@ -50,7 +50,6 @@ module.exports = function(grunt) {
     jsdoc2md: {
       docs: {
         options: {
-          helper: ['jsdoc2md/helpers.js'],
           partial: [
             'jsdoc2md/partials/body.hbs',
             'jsdoc2md/partials/examples.hbs',

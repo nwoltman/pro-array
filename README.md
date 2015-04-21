@@ -142,8 +142,8 @@ Invokes a callback function on each element in the array.A generic iterator me
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| callback(value,index,array) | <code>function</code> |  | A function to be executed on each                                                                  element in the array. |
-| [safeIteration] | <code>boolean</code> | <code>false</code> | When `true`, the callback will not be invoked    for indexes that have been deleted or elided. |
+| callback(value,index,array) | <code>function</code> |  | A function to be executed on each                                                                   element in the array. |
+| [safeIteration] | <code>boolean</code> | <code>false</code> | When `true`, the callback will not be invoked     for indexes that have been deleted or elided. |
 
 **Returns**: <code>[Array](#Array)</code> - `this`  
 
@@ -307,7 +307,7 @@ Returns a duplicate-free clone of the array.
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| [isSorted] | <code>boolean</code> | <code>false</code> | If the input array's contents are sorted and this is set to `true`,    a faster algorithm will be used to create the unique array. |
+| [isSorted] | <code>boolean</code> | <code>false</code> | If the input array's contents are sorted and this is set to `true`,     a faster algorithm will be used to create the unique array. |
 
 
 **Example**
