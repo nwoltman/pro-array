@@ -2,6 +2,7 @@
 
 Extends the functionality of Arrays with several useful methods
 
+[![NPM Version](https://img.shields.io/npm/v/pro-array.svg)](https://www.npmjs.com/package/pro-array)
 [![Build Status](https://travis-ci.org/woollybogger/pro-array.svg?branch=master)](https://travis-ci.org/woollybogger/pro-array)
 [![Coverage Status](https://coveralls.io/repos/woollybogger/pro-array/badge.svg?branch=master)](https://coveralls.io/r/woollybogger/pro-array?branch=master)
 [![Dependency Status](https://david-dm.org/woollybogger/pro-array.svg)](https://david-dm.org/woollybogger/pro-array)
