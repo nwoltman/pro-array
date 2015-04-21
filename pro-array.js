@@ -142,9 +142,15 @@ var properties = {
   },
 
   /**
+   * @callback Array#each~eachCallback
+   * @param {*} value - The current element being processed.
+   * @param {number} index - The index of the current element being processed.
+   * @param {Array} array - The array {@link Array#each|`.each()`} was called on.
+   */
+  /**
    * Invokes a callback function on each element in the array.
    *
-   * A generic iterator method similar to `Array#forEach()` but with the following differences:
+   * A generic iterator method similar to [`.forEach()`](http://goo.gl/n6z5Jz) but with the following differences:
    *
    * 1. `this` always refers to the current element in the iteration (the `value` argument to the callback).
    * 2. Returning `false` in the callback will cancel the iteration (similar to a `break` statement).
@@ -152,10 +158,9 @@ var properties = {
    * 4. The callback __is__ invoked for indexes that have been deleted or elided unless `safeIteration` is `true`.
    *
    * @function Array#each
-   * @param {function(*, number, Array)} callback(value,index,array) - A function to be executed on each
-   *                                                                   element in the array.
+   * @param {Array#each~eachCallback} callback - A function to be executed on each element in the array.
    * @param {boolean} [safeIteration=false] - When `true`, the callback will not be invoked
-   *     for indexes that have been deleted or elided.
+   *     for indexes that have been deleted or elided (are undefined).
    * @returns {Array} `this`
    *
    * @example

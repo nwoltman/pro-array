@@ -39,7 +39,8 @@ The native Array object.
   * [.compact()](#Array#compact) ⇒ <code>[Array](#Array)</code>
   * [.diff()](#Array#diff)
   * [.difference(...*arrays)](#Array#difference) ⇒ <code>[Array](#Array)</code>
-  * [.each(callback(value,index,array), [safeIteration])](#Array#each) ⇒ <code>[Array](#Array)</code>
+  * [.each(callback, [safeIteration])](#Array#each) ⇒ <code>[Array](#Array)</code>
+    * [~eachCallback](#Array#each..eachCallback) : <code>function</code>
   * [.equals(array)](#Array#equals) ⇒ <code>boolean</code>
   * [.get(index)](#Array#get) ⇒ <code>\*</code>
   * [.intersect(...*arrays)](#Array#intersect) ⇒ <code>[Array](#Array)</code>
@@ -137,14 +138,14 @@ Returns a new array with all of the values of this array that are not inany of 
 ---
 
 <a name="Array#each"></a>
-### array.each(callback(value,index,array), [safeIteration]) ⇒ <code>[Array](#Array)</code>
-Invokes a callback function on each element in the array.A generic iterator method similar to `Array#forEach()` but with the following differences:1. `this` always refers to the current element in the iteration (the `value` argument to the callback).2. Returning `false` in the callback will cancel the iteration (similar to a `break` statement).3. The array is returned to allow for function chaining.4. The callback __is__ invoked for indexes that have been deleted or elided unless `safeIteration` is `true`.
+### array.each(callback, [safeIteration]) ⇒ <code>[Array](#Array)</code>
+Invokes a callback function on each element in the array.A generic iterator method similar to [`.forEach()`](http://goo.gl/n6z5Jz) but with the following differences:1. `this` always refers to the current element in the iteration (the `value` argument to the callback).2. Returning `false` in the callback will cancel the iteration (similar to a `break` statement).3. The array is returned to allow for function chaining.4. The callback __is__ invoked for indexes that have been deleted or elided unless `safeIteration` is `true`.
 
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| callback(value,index,array) | <code>function</code> |  | A function to be executed on each                                                                   element in the array. |
-| [safeIteration] | <code>boolean</code> | <code>false</code> | When `true`, the callback will not be invoked     for indexes that have been deleted or elided. |
+| callback | <code>[eachCallback](#Array#each..eachCallback)</code> |  | A function to be executed on each element in the array. |
+| [safeIteration] | <code>boolean</code> | <code>false</code> | When `true`, the callback will not be invoked     for indexes that have been deleted or elided (are undefined). |
 
 **Returns**: <code>[Array](#Array)</code> - `this`  
 
@@ -152,6 +153,18 @@ Invokes a callback function on each element in the array.A generic iterator me
 ```js
 ['a', 'b', 'c'].each(console.log.bind(console));// -> 'a' 0 ['a', 'b', 'c']// -> 'b' 1 ['a', 'b', 'c']// -> 'c' 2 ['a', 'b', 'c']// -> ['a', 'b', 'c']['a', 'b', 'c'].each(function(value, index) {  console.log(value);  if (index === 1) return false;});// -> 'a'// -> 'b'// -> ['a', 'b', 'c'][[1, 2], [3, 4, 5]].each(Array.prototype.pop);// -> [[1], [3, 4]]new Array(1).each(console.log.bind(console));// -> undefined 0 ['a', 'b', 'c']// -> [undefined]new Array(1).each(console.log.bind(console), true);// -> [undefined]
 ```
+
+---
+
+<a name="Array#each..eachCallback"></a>
+#### each~eachCallback : <code>function</code>
+
+| Param | Type | Description |
+| --- | --- | --- |
+| value | <code>\*</code> | The current element being processed. |
+| index | <code>number</code> | The index of the current element being processed. |
+| array | <code>[Array](#Array)</code> | The array [`.each()`](#Array#each) was called on. |
+
 
 ---
 
