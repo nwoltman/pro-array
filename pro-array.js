@@ -481,7 +481,7 @@ var properties = {
   }
 };
 
-// Format the properties to be used with Object.defineProperties
+// Format the properties to be defined with Object.defineProperties()
 for (var propName in properties) {
   properties[propName] = {
     value: properties[propName],

@@ -1,6 +1,6 @@
 # ProArray
 
-Extends the functionality of Arrays with several useful methods
+Extends the functionality of Arrays ([safely](#extending-array-prototype)) with several useful methods
 
 [![NPM Version](https://img.shields.io/npm/v/pro-array.svg)](https://www.npmjs.com/package/pro-array)
 [![Build Status](https://travis-ci.org/woollybogger/pro-array.svg?branch=master)](https://travis-ci.org/woollybogger/pro-array)
@@ -335,3 +335,10 @@ Returns a copy of the current array without any elements from the input paramete
 
 ---
 
+
+<br />
+
+<a name="extending-array-prototype"></a>
+# Extending `Array.prototype`
+
+ProArray uses [`Object.defineProperties()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperties) to safely extend the native Array prototype such that the added properties are not enumerable. This keeps native arrays clean and prevents [potential abnormalities](http://fireboltjs.com/prototype-extending/#enumerable_properties) when working with arrays.
