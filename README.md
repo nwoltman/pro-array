@@ -206,7 +206,7 @@ var array = [1, 2, 3];array.get(0);// -> 1array.get(1);// -> 2array.get(
 
 <a name="Array#intersect"></a>
 ### array.intersect(...*arrays) ⇒ <code>[Array](#Array)</code>
-Performs a set intersection on this array and the input array(s).
+Performs a [set intersection](http://en.wikipedia.org/wiki/Intersection_(set_theory))on this array and the input array(s).
 
 
 | Param | Type | Description |
@@ -293,7 +293,7 @@ Returns an array containing every distinct element that is in either this array 
 | --- | --- | --- |
 | *arrays | <code>...[Array](#Array)</code> | A variable number of arrays. |
 
-**Returns**: <code>[Array](#Array)</code> - An array that is the union of this array and the input array(s).  
+**Returns**: <code>[Array](#Array)</code> - An array that is the [union](http://en.wikipedia.org/wiki/Union_%28set_theory%29)    of this array and the input array(s).  
 
 **Example**
 ```js

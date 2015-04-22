@@ -273,7 +273,8 @@ var properties = {
   },
 
   /**
-   * Performs a set intersection on this array and the input array(s).
+   * Performs a [set intersection](http://en.wikipedia.org/wiki/Intersection_(set_theory))
+   * on this array and the input array(s).
    *
    * @function Array#intersect
    * @param {...Array} *arrays - A variable number of arrays.
@@ -395,7 +396,8 @@ var properties = {
    *
    * @function Array#union
    * @param {...Array} *arrays - A variable number of arrays.
-   * @returns {Array} An array that is the union of this array and the input array(s).
+   * @returns {Array} An array that is the [union](http://en.wikipedia.org/wiki/Union_%28set_theory%29)
+   *     of this array and the input array(s).
    *
    * @example
    * [1, 2, 3].union([2, 3, 4, 5]);
