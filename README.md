@@ -170,7 +170,7 @@ Invokes a callback function on each element in the array.A generic iterator me
 
 <a name="Array#equals"></a>
 ### array.equals(array) ⇒ <code>boolean</code>
-Determines if the arrays are equal by doing a shallow comparison of their elements using strict equality.__Note:__ The order of elements in the arrays DOES matter. The elements must be found in the same orderfor the arrays to be considered equal.
+Determines if the arrays are equal by doing a shallow comparison of their elements using strict equality.__Note:__ The order of elements in the arrays __does__ matter. The elements must be found in the same orderfor the arrays to be considered equal.
 
 
 | Param | Type | Description |
