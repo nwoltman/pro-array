@@ -361,7 +361,9 @@ var properties = {
   },
 
   /**
-   * Removes all occurrences of the passed in items from the array if they exist in the array.
+   * Removes all occurrences of the passed in items from the array and returns the array.
+   *
+   * __Note:__ Unlike {@link Array#without|`.without()`}, this method mutates the array.
    *
    * @function Array#remove
    * @param {...*} *items - Items to remove from the array.
@@ -380,12 +382,33 @@ var properties = {
    * // -> [4]
    */
   remove: function() {
-    for (var i = 0; i < arguments.length; i++) {
-      for (;;) {
-        var remIndex = this.indexOf(arguments[i]);
-        if (remIndex < 0) break;
-        this.splice(remIndex, 1);
+    var remStartIndex = 0;
+    var numToRemove = 0;
+
+    for (var i = 0; i < this.length; i++) {
+      var removeCurrentIndex = false;
+
+      for (var j = 0; j < arguments.length; j++) {
+        if (this[i] === arguments[j]) {
+          removeCurrentIndex = true;
+          break;
+        }
       }
+
+      if (removeCurrentIndex) {
+        if (!numToRemove) {
+          remStartIndex = i;
+        }
+        ++numToRemove;
+      } else if (numToRemove) {
+        this.splice(remStartIndex, numToRemove);
+        i -= numToRemove;
+        numToRemove = 0;
+      }
+    }
+
+    if (numToRemove) {
+      this.splice(remStartIndex, numToRemove);
     }
 
     return this;

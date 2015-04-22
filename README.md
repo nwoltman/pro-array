@@ -264,7 +264,7 @@ Alias of [remove](#Array#remove).
 
 <a name="Array#remove"></a>
 ### array.remove(...*items) ⇒ <code>[Array](#Array)</code>
-Removes all occurrences of the passed in items from the array if they exist in the array.
+Removes all occurrences of the passed in items from the array and returns the array.__Note:__ Unlike [`.without()`](#Array#without), this method mutates the array.
 
 
 | Param | Type | Description |
