@@ -316,6 +316,14 @@ describe('Array', function() {
   });
 
 
+  describe('#rem()', function() {
+    it('should be an alias of #remove()', function() {
+      var array = [];
+      array.rem.should.equal(array.remove);
+    });
+  });
+
+
   describe('#union()', function() {
     var array = [1, 2, 3];
 

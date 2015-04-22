@@ -513,6 +513,14 @@ for (var propName in properties) {
 properties.diff = properties.difference;
 
 /**
+ * Alias of {@link Array#remove}.
+ *
+ * @function Array#rem
+ * @see {@link Array#remove}
+ */
+properties.rem = properties.remove;
+
+/**
  * Alias of {@link Array#unique}.
  *
  * @function Array#uniq

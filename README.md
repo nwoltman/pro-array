@@ -1,6 +1,6 @@
 # ProArray
 
-Extends the functionality of Arrays ([safely](#extending-array-prototype)) with several useful methods
+Extends the functionality of Arrays ([safely](#extending-array-prototype)) with several useful methods of unparalleled performance
 
 [![NPM Version](https://img.shields.io/npm/v/pro-array.svg)](https://www.npmjs.com/package/pro-array)
 [![Build Status](https://travis-ci.org/woollybogger/pro-array.svg?branch=master)](https://travis-ci.org/woollybogger/pro-array)
@@ -46,6 +46,7 @@ The native Array object.
   * [.intersect(...*arrays)](#Array#intersect) ⇒ <code>[Array](#Array)</code>
   * [.natsort([caseInsensitive])](#Array#natsort) ⇒ <code>[Array](#Array)</code>
   * [.numsort()](#Array#numsort) ⇒ <code>[Array](#Array)</code>
+  * [.rem()](#Array#rem)
   * [.remove(...*items)](#Array#remove) ⇒ <code>[Array](#Array)</code>
   * [.rnumsort()](#Array#rnumsort) ⇒ <code>[Array](#Array)</code>
   * [.union(...*arrays)](#Array#union) ⇒ <code>[Array](#Array)</code>
@@ -253,6 +254,14 @@ var files = [10, 0, 2, 1];files.numsort();console.log(files);// -> [0, 1, 2, 
 
 ---
 
+<a name="Array#rem"></a>
+### array.rem()
+Alias of [remove](#Array#remove).
+
+**See**: [remove](#Array#remove)  
+
+---
+
 <a name="Array#remove"></a>
 ### array.remove(...*items) ⇒ <code>[Array](#Array)</code>
 Removes all occurrences of the passed in items from the array if they exist in the array.
@@ -351,3 +360,11 @@ Returns a copy of the current array without any elements from the input paramete
 # Extending `Array.prototype`
 
 ProArray uses [`Object.defineProperties()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperties) to safely extend the native Array prototype such that the added properties are not enumerable. This keeps native arrays clean and prevents [potential abnormalities](http://fireboltjs.com/prototype-extending/#enumerable_properties) when working with arrays.
+
+#### Worried about naming collisions?
+
+It is extremely unlikely that the name of any method that ProArray adds to the Array prototype will be used in a future ECMAScript standard, but if you're still worried and want to be extra safe, try using the alias methods:
+
++ [.diff()](#Array#diff) ⇒ [.difference()](#Array#difference)
++ [.rem()](#Array#rem) ⇒ [.remove()](#Array#remove)
++ [.uniq()](#Array#uniq) ⇒ [.unique()](#Array#unique)
