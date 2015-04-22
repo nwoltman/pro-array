@@ -18,10 +18,6 @@ function numericalCompareReverse(a, b) {
   return b - a;
 }
 
-function retval(v) {
-  return v;
-}
-
 /**
  * @class Array
  * @classdesc The native Array object.
@@ -107,7 +103,15 @@ var properties = {
    * // -> [1, 2, 3]
    */
   compact: function() {
-    return this.filter(retval);
+    var res = [];
+
+    for (var i = 0; i < this.length; i++) {
+      if (this[i]) {
+        res.push(this[i]);
+      }
+    }
+
+    return res;
   },
 
   /**
