@@ -359,11 +359,10 @@ describe('Array', function() {
     });
 
     // Not very useful, but satifies code coverage
-    it('should return a new empty array when the original array is empty and isSorted is true', function() {
+    it('should return a new empty array when the original array is empty', function() {
       var array = [];
-      var result = array.unique(true);
-      should.deepEqual(result, []);
-      result.should.not.equal(array);
+      array.unique().should.be.an.Array.and.be.empty.and.not.equal(array);
+      array.unique(true).should.be.an.Array.and.be.empty.and.not.equal(array);
     });
   });
 

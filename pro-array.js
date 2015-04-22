@@ -433,29 +433,31 @@ var properties = {
    * // -> [1, 2, 3, 4] (but faster than the previous example)
    */
   unique: function(isSorted) {
-    var unique = [];
-    var i = 0;
+    var res = [];
+    var len = this.length;
+
+    if (!len) {
+      return res;
+    }
+
+    res[0] = this[0];
+    var i = 1;
 
     if (isSorted) {
-      var lastIndex = this.length - 1;
-      if (lastIndex === -1) {
-        return unique;
-      }
-      for (; i < lastIndex; i++) {
-        if (this[i] !== this[i + 1]) {
-          unique.push(this[i]);
+      for (; i < len; i++) {
+        if (this[i] !== this[i - 1]) {
+          res.push(this[i]);
         }
       }
-      unique.push(this[lastIndex]);
     } else {
-      for (; i < this.length; i++) {
-        if (unique.indexOf(this[i]) < 0) {
-          unique.push(this[i]);
+      for (; i < len; i++) {
+        if (res.indexOf(this[i]) < 0) {
+          res.push(this[i]);
         }
       }
     }
 
-    return unique;
+    return res;
   },
 
   /**
