@@ -1,6 +1,6 @@
 # ProArray
 
-Extends the functionality of Arrays ([safely](#extending-array-prototype)) with several useful methods of unparalleled performance
+Extends the functionality of Arrays ([safely](#extending-array-prototype)) with useful methods of unparalleled performance
 
 [![NPM Version](https://img.shields.io/npm/v/pro-array.svg)](https://www.npmjs.com/package/pro-array)
 [![Build Status](https://travis-ci.org/woollybogger/pro-array.svg?branch=master)](https://travis-ci.org/woollybogger/pro-array)
