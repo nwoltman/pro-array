@@ -21,6 +21,28 @@ function numericalCompareReverse(a, b) {
   return b - a;
 }
 
+function xor(a, b) {
+  var result = [];
+  var item;
+  var i;
+
+  for (i = 0; i < a.length; i++) {
+    item = a[i];
+    if (b.indexOf(item) < 0 && result.indexOf(item) < 0) {
+      result.push(item);
+    }
+  }
+
+  for (i = 0; i < b.length; i++) {
+    item = b[i];
+    if (a.indexOf(item) < 0 && result.indexOf(item) < 0) {
+      result.push(item);
+    }
+  }
+
+  return result;
+}
+
 /**
  * @class Array
  * @classdesc The native Array object.
@@ -516,6 +538,40 @@ var properties = {
     }
 
     return array;
+  },
+
+  /**
+   * Finds the [symmetric difference](https://en.wikipedia.org/wiki/Symmetric_difference)
+   * of the array this is called on and the input array(s).
+   *
+   * @function Array#xor
+   * @param {...Array} *arrays - A variable number of arrays.
+   * @returns {Array} The new array of values.
+   *
+   * @example
+   * [1, 2].xor([4, 2]);
+   * // -> [1, 4]
+   *
+   * [1, 2, 5].xor([2, 3, 5], [3, 4, 5]);
+   * // -> [1, 4, 5]
+   *
+   * // Explanation:
+   * // [1, 2, 5] ⊕ [2, 3, 5] ⊕ [3, 4, 5] = [1, 4, 5]
+   */
+  xor: function() {
+    var numArgs = arguments.length;
+
+    if (numArgs === 0) {
+      return this.unique();
+    }
+
+    var result = xor(this, arguments[0]);
+
+    for (var i = 1; i < numArgs; i++) {
+      result = xor(result, arguments[i]);
+    }
+
+    return result;
   }
 };
 

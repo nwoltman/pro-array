@@ -325,12 +325,12 @@ describe('Array', function() {
 
 
   describe('#union()', function() {
-    var array = [1, 2, 3];
+    var array = [1, 2, 3, 2];
 
-    it('should return a clone when called with no parameters', function() {
+    it('should return a clone without duplicates when called with no parameters', function() {
       var union = array.union();
       union.should.not.equal(array);
-      should.deepEqual(union, array);
+      should.deepEqual(union, [1, 2, 3]);
     });
 
     it('should perform a set union when given one array as input', function() {
@@ -346,8 +346,11 @@ describe('Array', function() {
 
 
   describe('#unique()', function() {
-    it('should return a clone when called with no parameters', function() {
-      should.deepEqual([1, 2, 3, 0].unique(), [1, 2, 3, 0]);
+    it('should return a clone if the array is already unique', function() {
+      var array = [1, 2, 3, 0];
+      var actual = array.unique();
+      actual.should.not.equal(array);
+      should.deepEqual(actual, array);
     });
 
     it('should return a unique set when called on an unsorted array with duplicates', function() {
@@ -401,6 +404,27 @@ describe('Array', function() {
 
     it('should return a new array without all instances of multiple input values', function() {
       should.deepEqual(array.without(1, 4, 3), [2]);
+    });
+  });
+
+
+  describe('#xor()', function() {
+    it('should return a clone without duplicates when called with no parameters', function() {
+      var actual = [4, 2, 3, 2, 1, 4].xor();
+      should.deepEqual(actual, [4, 2, 3, 1]);
+    });
+
+    it('should return the symmetric difference of the given arrays', function() {
+      var actual = [1, 2, 5].xor([2, 3, 5], [3, 4, 5]);
+      should.deepEqual(actual, [1, 4, 5]);
+    });
+
+    it('should return an array of unique values', function() {
+      var actual = [1, 1, 2, 2, 5].xor([2, 2, 3, 5], [3, 4, 5, 5]);
+      should.deepEqual(actual, [1, 4, 5]);
+
+      actual = [4, 2, 3, 2, 1, 4].xor([2, 1]);
+      should.deepEqual(actual, [4, 3]);
     });
   });
 

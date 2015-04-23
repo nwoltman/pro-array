@@ -53,6 +53,7 @@ The native Array object.
   * [.uniq()](#Array#uniq)
   * [.unique([isSorted])](#Array#unique) ⇒ <code>[Array](#Array)</code>
   * [.without(...*items)](#Array#without) ⇒ <code>[Array](#Array)</code>
+  * [.xor(...*arrays)](#Array#xor) ⇒ <code>[Array](#Array)</code>
 
 
 ---
@@ -349,6 +350,24 @@ Returns a copy of the current array without any elements from the input paramete
 **Example**
 ```js
 [1, 2, 3, 4].without(2, 4);// -> [1, 3]
+```
+
+---
+
+<a name="Array#xor"></a>
+### array.xor(...*arrays) ⇒ <code>[Array](#Array)</code>
+Finds the [symmetric difference](https://en.wikipedia.org/wiki/Symmetric_difference)of the array this is called on and the input array(s).
+
+
+| Param | Type | Description |
+| --- | --- | --- |
+| *arrays | <code>...[Array](#Array)</code> | A variable number of arrays. |
+
+**Returns**: <code>[Array](#Array)</code> - The new array of values.  
+
+**Example**
+```js
+[1, 2].xor([4, 2]);// -> [1, 4][1, 2, 5].xor([2, 3, 5], [3, 4, 5]);// -> [1, 4, 5]// Explanation:// [1, 2, 5] ⊕ [2, 3, 5] ⊕ [3, 4, 5] = [1, 4, 5]
 ```
 
 ---
