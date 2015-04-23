@@ -313,25 +313,29 @@ var properties = {
    * // -> [1, 2]
    */
   intersect: function() {
-    var intersection = [];
+    var result = [];
+    var numArgs = arguments.length;
+
+    if (numArgs === 0) {
+      return result;
+    }
 
     next: for (var i = 0; i < this.length; i++) {
       var item = this[i];
 
       // The current item can only be added if it is not already in the intersection
-      if (intersection.indexOf(item) < 0) {
+      if (result.indexOf(item) < 0) {
         // If the item is not in every input array, continue to the next item
-        for (var j = 0; j < arguments.length; j++) {
+        for (var j = 0; j < numArgs; j++) {
           if (arguments[j].indexOf(item) < 0) {
             continue next;
           }
         }
-
-        intersection.push(item);
+        result.push(item);
       }
     }
 
-    return intersection;
+    return result;
   },
 
   /**

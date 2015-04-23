@@ -208,20 +208,20 @@ describe('Array', function() {
   describe('#intersect()', function() {
     var array = [1, 2, 3];
 
-    it('should return a clone when called with no parameters', function() {
-      var inter = array.intersect();
-      inter.should.not.equal(array);
-      should.deepEqual(inter, array);
+    it('should return an empty array when called with no parameters', function() {
+      array.intersect().should.be.an.empty.Array;
     });
 
-    it('should perform a set intersection when given one array as input', function() {
-      var inter = array.intersect([2, 3, 4]);
-      should.deepEqual(inter, [2, 3]);
+    it('should return the intersection when given one array as input', function() {
+      var actual = array.intersect([2, 3, 4]);
+      should.deepEqual(actual, [2, 3]);
     });
 
-    it('should perform a set intersection when given multiple arrays as input', function() {
-      var inter = array.intersect([107, 1, 50, 2], [2, 1]);
-      should.deepEqual(inter, [1, 2]);
+    it('should return the intersection when given multiple arrays as input', function() {
+      var actual = array.intersect([107, 1, 50, 2], [2, 1]);
+      should.deepEqual(actual, [1, 2]);
+
+      array.intersect(array, [], array).should.be.an.empty.Array;
     });
   });
 
