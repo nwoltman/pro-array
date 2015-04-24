@@ -68,6 +68,10 @@ Creates an array of elements split into groups the length of `size`. If the arra
 | [size] | <code>number</code> | <code>1</code> | The length of each chunk. |
 
 **Returns**: <code>[Array](#Array)</code> - An array containing the chunks.  
+**Throws**:
+
+- <code>RangeError</code> Throws when `size` is a negative number.
+
 
 **Example**
 ```js

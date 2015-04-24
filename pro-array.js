@@ -9,6 +9,17 @@
 
 require('natural-compare-lite');
 
+function chunkSlice(array, start, end) {
+  var length = Math.min(end, array.length) - start;
+  var result = new Array(length);
+
+  for (var i = 0; i < length; i++) {
+    result[i] = array[start + i];
+  }
+
+  return result;
+}
+
 function natcompCaseInsensitive(a, b) {
   return String.naturalCompare(a.toLowerCase(), b.toLowerCase());
 }
@@ -57,6 +68,7 @@ var properties = {
    * @function Array#chunk
    * @param {number} [size=1] - The length of each chunk.
    * @returns {Array} An array containing the chunks.
+   * @throws {RangeError} Throws when `size` is a negative number.
    *
    * @example
    * [1, 2, 3, 4].chunk(2);
@@ -72,7 +84,7 @@ var properties = {
     var res = new Array(numChunks);
 
     for (var i = 0, index = 0; i < numChunks; i++) {
-      res[i] = this.slice(index, index += size);
+      res[i] = chunkSlice(this, index, (index += size));
     }
 
     return res;
