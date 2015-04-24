@@ -7,6 +7,22 @@
 require('../pro-array');
 var should = require('should');
 
+should.Assertion.add('shallowEqual', function(expected) {
+  this.params = {operator: 'to be shallowly equal'};
+
+  this.obj.length.should.equal(expected.length);
+  for (var i = 0; i < expected.length; i++) {
+    should.strictEqual(this.obj[i], expected[i]);
+  }
+});
+
+should.Assertion.add('cloneOf', function(expected) {
+  this.params = {operator: 'to be a clone'};
+
+  this.obj.should.shallowEqual(expected).and.not.equal(expected);
+});
+
+
 describe('Array', function() {
 
   describe('.prototype', function() {
@@ -20,26 +36,22 @@ describe('Array', function() {
     var array = [0, 1, 2, 3, 4, 5];
 
     it('should return an array of chunks', function() {
-      var chunks = array.chunk(3);
-      should.deepEqual(chunks, [[0, 1, 2], [3, 4, 5]]);
+      array.chunk(3).should.eql([[0, 1, 2], [3, 4, 5]]);
     });
 
     it('should return the last chunk as remaining elements', function() {
-      var chunks = array.chunk(4);
-      should.deepEqual(chunks, [[0, 1, 2, 3], [4, 5]]);
+      array.chunk(4).should.eql([[0, 1, 2, 3], [4, 5]]);
     });
 
     it('should run with a default chunk size of 1', function() {
-      var chunks = array.chunk();
-      should.deepEqual(chunks, [[0], [1], [2], [3], [4], [5]]);
+      array.chunk().should.eql([[0], [1], [2], [3], [4], [5]]);
     });
   });
 
 
   describe('#clean()', function() {
-    var array = [1, 2, 3];
-
     it('should empty an array', function() {
+      var array = [1, 2, 3];
       array.clear();
       array.should.be.empty;
     });
@@ -47,43 +59,33 @@ describe('Array', function() {
 
 
   describe('#clone()', function() {
-    var array = [1, 99, '', {}, ['a', 'b'], false, /regex/];
-
     it('should make an exact copy of an array', function() {
-      var clone = array.clone();
-      clone.should.not.equal(array);
-      should.deepEqual(clone, array);
+      var array = [1, 99, '', {}, ['a', 'b'], false, /regex/];
+      array.clone().should.be.a.cloneOf(array);
     });
   });
 
 
   describe('#compact()', function() {
-    var array = ['a', '', 1, 2, 0, null, true, undefined, false, NaN, should];
-
     it('should return an array with falsey values filtered out', function() {
-      var compacted = array.compact();
-      should.deepEqual(compacted, ['a', 1, 2, true, should]);
+      var array = ['a', '', 1, 2, 0, null, true, undefined, false, NaN, should];
+      array.compact().should.shallowEqual(['a', 1, 2, true, should]);
     });
   });
 
 
   describe('#difference()', function() {
-    var array = [1, 2, 3, 4, 5, 2];
-
     it('should return a clone when called with no parameters', function() {
-      var diff = array.difference();
-      diff.should.not.equal(array);
-      should.deepEqual(diff, array);
+      var array = [1, 2, 3, 4, 5, 2];
+      array.difference().should.be.a.cloneOf(array);
     });
 
     it('should perform a set difference when given one array as input', function() {
-      var diff = array.difference([4, 5, 10]);
-      should.deepEqual(diff, [1, 2, 3, 2]);
+      [1, 2, 3, 4, 5, 2].difference([4, 5, 10]).should.eql([1, 2, 3, 2]);
     });
 
     it('should perform a set difference when given multiple arrays as input', function() {
-      var diff = array.difference([5, 2], [1, 4]);
-      should.deepEqual(diff, [3]);
+      [1, 2, 3, 4, 5, 2].difference([5, 2], [1, 4]).should.eql([3]);
     });
   });
 
@@ -109,7 +111,7 @@ describe('Array', function() {
       array.each(function(v, k, a) {
         seen.push({key: k, value: v, array: a});
       });
-      should.deepEqual(seen, [
+      seen.should.eql([
         {key: 0, value: 3, array: array},
         {key: 1, value: 4, array: array},
         {key: 2, value: 5, array: array}
@@ -124,7 +126,7 @@ describe('Array', function() {
           return false;
         }
       });
-      should.deepEqual(seen, [1, 2]);
+      seen.should.eql([1, 2]);
     });
 
     it('should invoke the callback in the context of the value', function() {
@@ -144,7 +146,7 @@ describe('Array', function() {
         seen.push(v);
       });
 
-      should.deepEqual(seen, [undefined, 'b', undefined]);
+      seen.should.eql([undefined, 'b', undefined]);
     });
 
     it('should not invoke the callback on deleted and elided indices when safeIteration is true', function() {
@@ -158,33 +160,32 @@ describe('Array', function() {
         seen.push({key: k, value: v, array: a});
       }, true);
 
-      should.deepEqual(seen, [{key: 1, value: 'b', array: array}]);
+      seen.should.eql([{key: 1, value: 'b', array: array}]);
     });
   });
 
 
   describe('#equals()', function() {
-    var array = [1, 2, 3];
-
     it('should report that an array equals itself', function() {
+      var array = [1, 2, 3];
       array.equals(array).should.be.true;
     });
 
     it('should report that an array equals another array with the same values', function() {
-      array.equals([1, 2, 3]).should.be.true;
+      [1, 2, 3].equals([1, 2, 3]).should.be.true;
     });
 
     it('should report that an array does not equal another array with the same values but out of order', function() {
-      array.equals([3, 2, 1]).should.be.false;
+      [1, 2, 3].equals([3, 2, 1]).should.be.false;
     });
 
     it('should report that an array does not equal another that has a different length', function() {
-      array.equals([1, 2]).should.be.false;
+      [1, 2, 3].equals([1, 2]).should.be.false;
     });
 
     it('should return false when the input is null or undefined', function() {
-      array.equals(null).should.be.false;
-      array.equals().should.be.false;
+      [].equals(null).should.be.false;
+      [].equals().should.be.false;
     });
   });
 
@@ -206,22 +207,17 @@ describe('Array', function() {
 
 
   describe('#intersect()', function() {
-    var array = [1, 2, 3];
-
     it('should return an empty array when called with no parameters', function() {
-      array.intersect().should.be.an.empty.Array;
+      [1, 2, 3].intersect().should.be.an.empty.Array;
     });
 
     it('should return the intersection when given one array as input', function() {
-      var actual = array.intersect([2, 3, 4]);
-      should.deepEqual(actual, [2, 3]);
+      [1, 2, 3].intersect([2, 3, 4]).should.eql([2, 3]);
     });
 
     it('should return the intersection when given multiple arrays as input', function() {
-      var actual = array.intersect([107, 1, 50, 2], [2, 1]);
-      should.deepEqual(actual, [1, 2]);
-
-      array.intersect(array, [], array).should.be.an.empty.Array;
+      [1, 2, 3].intersect([107, 1, 50, 2], [2, 1]).should.eql([1, 2]);
+      [1, 2, 3].intersect([1, 2, 3], [], [2, 3]).should.be.an.empty.Array;
     });
   });
 
@@ -240,7 +236,7 @@ describe('Array', function() {
     });
 
     it('should sort the array using natural string comparison', function() {
-      should.deepEqual(array, [
+      array.should.eql([
         'A3',
         'a',
         'a1',
@@ -250,8 +246,7 @@ describe('Array', function() {
     });
 
     it('should sort perform a case-insensitive sort when caseInsensitive is true', function() {
-      array.natsort(true);
-      should.deepEqual(array, [
+      array.natsort(true).should.equal(array).and.eql([
         'a',
         'a1',
         'a2',
@@ -270,7 +265,7 @@ describe('Array', function() {
     });
 
     it('should sort the array using numerical comparison', function() {
-      should.deepEqual(array, [0, 1, 2, 3, 10]);
+      array.should.eql([0, 1, 2, 3, 10]);
     });
   });
 
@@ -283,7 +278,7 @@ describe('Array', function() {
     });
 
     it('should sort the array using reverse numerical comparison', function() {
-      should.deepEqual(array, [10, 3, 2, 1, 0]);
+      array.should.eql([10, 3, 2, 1, 0]);
     });
   });
 
@@ -296,22 +291,19 @@ describe('Array', function() {
     });
 
     it('should remove the input value from the array', function() {
-      should.deepEqual(array, [1, 3, 3, 4, 3, 4]);
+      array.should.eql([1, 3, 3, 4, 3, 4]);
     });
 
     it('should remove all instances of the input value', function() {
-      array.remove(3);
-      should.deepEqual(array, [1, 4, 4]);
+      array.remove(3).should.eql([1, 4, 4]);
     });
 
     it('should remove nothing if the specified value is not in the array', function() {
-      array.remove(2);
-      should.deepEqual(array, [1, 4, 4]);
+      array.remove(2).should.eql([1, 4, 4]);
     });
 
     it('should remove all instances of multiple input values', function() {
-      array.remove(1, 4);
-      should.deepEqual(array, []);
+      array.remove(1, 4).should.eql([]);
     });
   });
 
@@ -325,22 +317,17 @@ describe('Array', function() {
 
 
   describe('#union()', function() {
-    var array = [1, 2, 3, 2];
-
     it('should return a clone without duplicates when called with no parameters', function() {
-      var union = array.union();
-      union.should.not.equal(array);
-      should.deepEqual(union, [1, 2, 3]);
+      var array = [1, 2, 3, 2];
+      array.union().should.eql([1, 2, 3]).not.equal(array);
     });
 
     it('should perform a set union when given one array as input', function() {
-      var union = array.union([2, 3, 4, 5]);
-      should.deepEqual(union, [1, 2, 3, 4, 5]);
+      [1, 2, 3, 2].union([2, 3, 4, 5]).should.eql([1, 2, 3, 4, 5]);
     });
 
     it('should perform a set union when given multiple arrays as input', function() {
-      var union = array.union([3, 4], [50, 9]);
-      should.deepEqual(union, [1, 2, 3, 4, 50, 9]);
+      [1, 2, 3].union([3, 4], [50, 9, 1]).should.eql([1, 2, 3, 4, 50, 9]);
     });
   });
 
@@ -348,32 +335,30 @@ describe('Array', function() {
   describe('#unique()', function() {
     it('should return a clone if the array is already unique', function() {
       var array = [1, 2, 3, 0];
-      var actual = array.unique();
-      actual.should.not.equal(array);
-      should.deepEqual(actual, array);
+      array.unique().should.be.a.cloneOf(array);
     });
 
     it('should return a unique set when called on an unsorted array with duplicates', function() {
-      should.deepEqual([4, 2, 3, 2, 1, 4].unique(), [4, 2, 3, 1]);
+      [4, 2, 3, 2, 1, 4].unique().should.eql([4, 2, 3, 1]);
     });
 
     it('should return a unique set when called on a sorted array with duplicates', function() {
-      should.deepEqual([1, 2, 2, 3, 4, 4].unique(), [1, 2, 3, 4]);
+      [1, 2, 2, 3, 4, 4].unique().should.eql([1, 2, 3, 4]);
     });
 
     it('should return a unique set when called on a sorted array with duplicates and isSorted is true', function() {
-      should.deepEqual([1, 2, 2, 3, 4, 4].unique(true), [1, 2, 3, 4]);
+      [1, 2, 2, 3, 4, 4].unique(true).should.eql([1, 2, 3, 4]);
     });
 
     it('should correctly unique an array with undefined as the last element when isSorted is true', function() {
-      should.deepEqual([1, 2, 2, 3, undefined].unique(true), [1, 2, 3, undefined]);
+      [1, 2, 2, 3, undefined].unique(true).should.eql([1, 2, 3, undefined]);
     });
 
     // Not very useful, but satifies code coverage
     it('should return a new empty array when the original array is empty', function() {
       var array = [];
-      array.unique().should.be.an.Array.and.be.empty.and.not.equal(array);
-      array.unique(true).should.be.an.Array.and.be.empty.and.not.equal(array);
+      array.unique().should.be.an.empty.Array.and.not.equal(array);
+      array.unique(true).should.be.an.empty.Array.and.not.equal(array);
     });
   });
 
@@ -387,44 +372,37 @@ describe('Array', function() {
 
 
   describe('#without()', function() {
-    var array = [1, 2, 3, 3, 4, 3];
-
     it('should return a clone when called with no parameters', function() {
-      var without = array.without();
-      should.deepEqual(without, array);
+      var array = [1, 2, 3, 3, 4, 3];
+      array.without().should.be.a.cloneOf(array);
     });
 
     it('should return a new array without a single specified item', function() {
-      should.deepEqual(array.without(2), [1, 3, 3, 4, 3]);
+      [1, 2, 3, 3, 4, 3].without(2).should.eql([1, 3, 3, 4, 3]);
     });
 
     it('should return a new array without all instances of the input value', function() {
-      should.deepEqual(array.without(3), [1, 2, 4]);
+      [1, 2, 3, 3, 4, 3].without(3).should.eql([1, 2, 4]);
     });
 
     it('should return a new array without all instances of multiple input values', function() {
-      should.deepEqual(array.without(1, 4, 3), [2]);
+      [1, 2, 3, 3, 4, 3].without(1, 4, 3).should.eql([2]);
     });
   });
 
 
   describe('#xor()', function() {
     it('should return a clone without duplicates when called with no parameters', function() {
-      var actual = [4, 2, 3, 2, 1, 4].xor();
-      should.deepEqual(actual, [4, 2, 3, 1]);
+      [4, 2, 3, 2, 1, 4].xor().should.eql([4, 2, 3, 1]);
     });
 
     it('should return the symmetric difference of the given arrays', function() {
-      var actual = [1, 2, 5].xor([2, 3, 5], [3, 4, 5]);
-      should.deepEqual(actual, [1, 4, 5]);
+      [1, 2, 5].xor([2, 3, 5], [3, 4, 5]).should.eql([1, 4, 5]);
     });
 
     it('should return an array of unique values', function() {
-      var actual = [1, 1, 2, 2, 5].xor([2, 2, 3, 5], [3, 4, 5, 5]);
-      should.deepEqual(actual, [1, 4, 5]);
-
-      actual = [4, 2, 3, 2, 1, 4].xor([2, 1]);
-      should.deepEqual(actual, [4, 3]);
+      [1, 1, 2, 2, 5].xor([2, 2, 3, 5], [3, 4, 5, 5]).should.eql([1, 4, 5]);
+      [4, 2, 3, 2, 1, 4].xor([2, 1]).should.eql([4, 3]);
     });
   });
 
