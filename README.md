@@ -109,7 +109,7 @@ var a = [1, 2, 3];var b = a.clone();console.log(b, b === a);// -> [1, 2, 3] f
 ### array.compact() ⇒ <code>[Array](#Array)</code>
 Returns a new array with all falsey values removed. Falsey valuesare `false`, `0`, `""`, `null`, `undefined`, and `NaN`.
 
-**Returns**: <code>[Array](#Array)</code> - A new array containing only the truthy values of the original array.  
+**Returns**: <code>[Array](#Array)</code> - The new array containing only the truthy values from the original array.  
 
 **Example**
 ```js
@@ -128,13 +128,14 @@ Alias of [difference](#Array#difference).
 
 <a name="Array#difference"></a>
 ### array.difference(...*arrays) ⇒ <code>[Array](#Array)</code>
-Returns a new array with all of the values of this array that are not inany of the input arrays (performs a set difference).
+Returns a new array with all of the values of the array that are not inany of the input arrays (performs a set difference).
 
 
 | Param | Type | Description |
 | --- | --- | --- |
 | *arrays | <code>...[Array](#Array)</code> | A variable number of arrays. |
 
+**Returns**: <code>[Array](#Array)</code> - The new array of filtered values.  
 
 **Example**
 ```js
@@ -153,7 +154,7 @@ Invokes a callback function on each element in the array.A generic iterator me
 | callback | <code>[eachCallback](#Array#each..eachCallback)</code> |  | A function to be executed on each element in the array. |
 | [safeIteration] | <code>boolean</code> | <code>false</code> | When `true`, the callback will not be invoked     for indexes that have been deleted or elided (are undefined). |
 
-**Returns**: <code>[Array](#Array)</code> - `this`  
+**Returns**: <code>[Array](#Array)</code> - The array this method was called on.  
 
 **Example**
 ```js
@@ -212,14 +213,14 @@ var array = [1, 2, 3];array.get(0);// -> 1array.get(1);// -> 2array.get(
 
 <a name="Array#intersect"></a>
 ### array.intersect(...*arrays) ⇒ <code>[Array](#Array)</code>
-Performs a [set intersection](http://en.wikipedia.org/wiki/Intersection_(set_theory))on this array and the input array(s).
+Returns an new array that is the [set intersection](http://en.wikipedia.org/wiki/Intersection_(set_theory))of the array and the input array(s).
 
 
 | Param | Type | Description |
 | --- | --- | --- |
 | *arrays | <code>...[Array](#Array)</code> | A variable number of arrays. |
 
-**Returns**: <code>[Array](#Array)</code> - An array that is the intersection of this array and the input array(s).  
+**Returns**: <code>[Array](#Array)</code> - The new array of unique values shared by all of the arrays.  
 
 **Example**
 ```js
@@ -237,7 +238,7 @@ Sorts an array in place using a natural string comparison algorithm and returns 
 | --- | --- | --- | --- |
 | [caseInsensitive] | <code>boolean</code> | <code>false</code> | Set this to `true` to ignore letter casing when sorting. |
 
-**Returns**: <code>[Array](#Array)</code> - The array.  
+**Returns**: <code>[Array](#Array)</code> - The array this method was called on.  
 
 **Example**
 ```js
@@ -250,7 +251,7 @@ var files = ['a.txt', 'a10.txt', 'a2.txt', 'a1.txt'];files.natsort();console.l
 ### array.numsort() ⇒ <code>[Array](#Array)</code>
 Sorts an array in place using a numerical comparison algorithm(sorts numbers from lowest to highest) and returns the array.
 
-**Returns**: <code>[Array](#Array)</code> - The array.  
+**Returns**: <code>[Array](#Array)</code> - The array this method was called on.  
 
 **Example**
 ```js
@@ -276,7 +277,7 @@ Removes all occurrences of the passed in items from the array and returns the ar
 | --- | --- | --- |
 | *items | <code>...\*</code> | Items to remove from the array. |
 
-**Returns**: <code>[Array](#Array)</code> - A reference to the array (so it's chainable).  
+**Returns**: <code>[Array](#Array)</code> - The array this method was called on.  
 
 **Example**
 ```js
@@ -289,7 +290,7 @@ var array = [1, 2, 3, 3, 4, 3, 5];array.remove(1);// -> [2, 3, 3, 4, 3, 5]a
 ### array.rnumsort() ⇒ <code>[Array](#Array)</code>
 Sorts an array in place using a reverse numerical comparison algorithm(sorts numbers from highest to lowest) and returns the array.
 
-**Returns**: <code>[Array](#Array)</code> - The array.  
+**Returns**: <code>[Array](#Array)</code> - The array this method was called on.  
 
 **Example**
 ```js
@@ -300,18 +301,18 @@ var files = [10, 0, 2, 1];files.rnumsort();console.log(files);// -> [3, 2, 1,
 
 <a name="Array#union"></a>
 ### array.union(...*arrays) ⇒ <code>[Array](#Array)</code>
-Returns an array containing every distinct element that is in either this array or the input array(s).
+Returns an array that is the [union](http://en.wikipedia.org/wiki/Union_%28set_theory%29)of the array and the input array(s).
 
 
 | Param | Type | Description |
 | --- | --- | --- |
 | *arrays | <code>...[Array](#Array)</code> | A variable number of arrays. |
 
-**Returns**: <code>[Array](#Array)</code> - An array that is the [union](http://en.wikipedia.org/wiki/Union_%28set_theory%29)    of this array and the input array(s).  
+**Returns**: <code>[Array](#Array)</code> - The new array containing every distinct element found in the arrays.  
 
 **Example**
 ```js
-[1, 2, 3].union([2, 3, 4, 5]);// -> [1, 2, 3, 4, 5]
+[1, 2, 3].union([2, 3, 4, 5]);// -> [1, 2, 3, 4, 5][1, 2].union([4, 2], [2, 1]);// -> [1, 2, 4]
 ```
 
 ---
@@ -331,8 +332,9 @@ Returns a duplicate-free clone of the array.
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| [isSorted] | <code>boolean</code> | <code>false</code> | If the input array's contents are sorted and this is set to `true`,     a faster algorithm will be used to create the unique array. |
+| [isSorted] | <code>boolean</code> | <code>false</code> | If the array's contents are sorted and this is set to `true`,     a faster algorithm will be used to create the unique array. |
 
+**Returns**: <code>[Array](#Array)</code> - The new, duplicate-free array.  
 
 **Example**
 ```js
@@ -343,24 +345,25 @@ Returns a duplicate-free clone of the array.
 
 <a name="Array#without"></a>
 ### array.without(...*items) ⇒ <code>[Array](#Array)</code>
-Returns a copy of the current array without any elements from the input parameters.
+Returns a copy of the array without any elements from the input parameters.
 
 
 | Param | Type | Description |
 | --- | --- | --- |
 | *items | <code>...\*</code> | Items to leave out of the returned array. |
 
+**Returns**: <code>[Array](#Array)</code> - The new array of filtered values.  
 
 **Example**
 ```js
-[1, 2, 3, 4].without(2, 4);// -> [1, 3]
+[1, 2, 3, 4].without(2, 4);// -> [1, 3][1, 1].without(1);// -> []
 ```
 
 ---
 
 <a name="Array#xor"></a>
 ### array.xor(...*arrays) ⇒ <code>[Array](#Array)</code>
-Finds the [symmetric difference](https://en.wikipedia.org/wiki/Symmetric_difference)of the array this is called on and the input array(s).
+Finds the [symmetric difference](https://en.wikipedia.org/wiki/Symmetric_difference)of the array and the input array(s).
 
 
 | Param | Type | Description |

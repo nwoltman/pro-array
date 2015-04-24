@@ -133,7 +133,7 @@ var properties = {
    * are `false`, `0`, `""`, `null`, `undefined`, and `NaN`.
    *
    * @function Array#compact
-   * @returns {Array} A new array containing only the truthy values of the original array.
+   * @returns {Array} The new array containing only the truthy values from the original array.
    *
    * @example
    * [0, 1, false, 2, '', 3].compact();
@@ -152,12 +152,12 @@ var properties = {
   },
 
   /**
-   * Returns a new array with all of the values of this array that are not in
+   * Returns a new array with all of the values of the array that are not in
    * any of the input arrays (performs a set difference).
    *
    * @function Array#difference
    * @param {...Array} *arrays - A variable number of arrays.
-   * @returns {Array}
+   * @returns {Array} The new array of filtered values.
    *
    * @example
    * [1, 2, 3, 4, 5].difference([5, 2, 10]);
@@ -202,7 +202,7 @@ var properties = {
    * @param {Array#each~eachCallback} callback - A function to be executed on each element in the array.
    * @param {boolean} [safeIteration=false] - When `true`, the callback will not be invoked
    *     for indexes that have been deleted or elided (are undefined).
-   * @returns {Array} `this`
+   * @returns {Array} The array this method was called on.
    *
    * @example
    * ['a', 'b', 'c'].each(console.log.bind(console));
@@ -310,12 +310,12 @@ var properties = {
   },
 
   /**
-   * Performs a [set intersection](http://en.wikipedia.org/wiki/Intersection_(set_theory))
-   * on this array and the input array(s).
+   * Returns an new array that is the [set intersection](http://en.wikipedia.org/wiki/Intersection_(set_theory))
+   * of the array and the input array(s).
    *
    * @function Array#intersect
    * @param {...Array} *arrays - A variable number of arrays.
-   * @returns {Array} An array that is the intersection of this array and the input array(s).
+   * @returns {Array} The new array of unique values shared by all of the arrays.
    *
    * @example
    * [1, 2, 3].intersect([2, 3, 4]);
@@ -355,7 +355,7 @@ var properties = {
    *
    * @function Array#natsort
    * @param {boolean} [caseInsensitive=false] - Set this to `true` to ignore letter casing when sorting.
-   * @returns {Array} The array.
+   * @returns {Array} The array this method was called on.
    *
    * @example
    * var files = ['a.txt', 'a10.txt', 'a2.txt', 'a1.txt'];
@@ -372,7 +372,7 @@ var properties = {
    * (sorts numbers from lowest to highest) and returns the array.
    *
    * @function Array#numsort
-   * @returns {Array} The array.
+   * @returns {Array} The array this method was called on.
    *
    * @example
    * var files = [10, 0, 2, 1];
@@ -389,7 +389,7 @@ var properties = {
    * (sorts numbers from highest to lowest) and returns the array.
    *
    * @function Array#rnumsort
-   * @returns {Array} The array.
+   * @returns {Array} The array this method was called on.
    *
    * @example
    * var files = [10, 0, 2, 1];
@@ -408,7 +408,7 @@ var properties = {
    *
    * @function Array#remove
    * @param {...*} *items - Items to remove from the array.
-   * @returns {Array} A reference to the array (so it's chainable).
+   * @returns {Array} The array this method was called on.
    *
    * @example
    * var array = [1, 2, 3, 3, 4, 3, 5];
@@ -456,16 +456,19 @@ var properties = {
   },
 
   /**
-   * Returns an array containing every distinct element that is in either this array or the input array(s).
+   * Returns an array that is the [union](http://en.wikipedia.org/wiki/Union_%28set_theory%29)
+   * of the array and the input array(s).
    *
    * @function Array#union
    * @param {...Array} *arrays - A variable number of arrays.
-   * @returns {Array} An array that is the [union](http://en.wikipedia.org/wiki/Union_%28set_theory%29)
-   *     of this array and the input array(s).
+   * @returns {Array} The new array containing every distinct element found in the arrays.
    *
    * @example
    * [1, 2, 3].union([2, 3, 4, 5]);
    * // -> [1, 2, 3, 4, 5]
+   *
+   * [1, 2].union([4, 2], [2, 1]);
+   * // -> [1, 2, 4]
    */
   union: function() {
     var union = this.unique();
@@ -486,9 +489,9 @@ var properties = {
    * Returns a duplicate-free clone of the array.
    *
    * @function Array#unique
-   * @param {boolean} [isSorted=false] - If the input array's contents are sorted and this is set to `true`,
+   * @param {boolean} [isSorted=false] - If the array's contents are sorted and this is set to `true`,
    *     a faster algorithm will be used to create the unique array.
-   * @returns {Array}
+   * @returns {Array} The new, duplicate-free array.
    *
    * @example
    * // Unsorted
@@ -531,15 +534,18 @@ var properties = {
   },
 
   /**
-   * Returns a copy of the current array without any elements from the input parameters.
+   * Returns a copy of the array without any elements from the input parameters.
    *
    * @function Array#without
    * @param {...*} *items - Items to leave out of the returned array.
-   * @returns {Array}
+   * @returns {Array} The new array of filtered values.
    *
    * @example
    * [1, 2, 3, 4].without(2, 4);
    * // -> [1, 3]
+   *
+   * [1, 1].without(1);
+   * // -> []
    */
   without: function() {
     var array = [];
@@ -558,7 +564,7 @@ var properties = {
 
   /**
    * Finds the [symmetric difference](https://en.wikipedia.org/wiki/Symmetric_difference)
-   * of the array this is called on and the input array(s).
+   * of the array and the input array(s).
    *
    * @function Array#xor
    * @param {...Array} *arrays - A variable number of arrays.
