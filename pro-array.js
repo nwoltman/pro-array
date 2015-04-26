@@ -20,7 +20,7 @@ function chunkSlice(array, start, end) {
   return result;
 }
 
-function natcompCaseInsensitive(a, b) {
+function naturalCompareCaseInsensitive(a, b) {
   return String.naturalCompare(a.toLowerCase(), b.toLowerCase());
 }
 
@@ -81,13 +81,13 @@ var properties = {
     size = size || 1;
 
     var numChunks = Math.ceil(this.length / size);
-    var res = new Array(numChunks);
+    var result = new Array(numChunks);
 
     for (var i = 0, index = 0; i < numChunks; i++) {
-      res[i] = chunkSlice(this, index, (index += size));
+      result[i] = chunkSlice(this, index, (index += size));
     }
 
-    return res;
+    return result;
   },
 
   /**
@@ -118,14 +118,14 @@ var properties = {
    * // -> [1, 2, 3] false
    */
   clone: function() {
-    var len = this.length;
-    var array = new Array(len);
+    var length = this.length;
+    var result = new Array(length);
 
-    for (var i = 0; i < len; i++) {
-      array[i] = this[i];
+    for (var i = 0; i < length; i++) {
+      result[i] = this[i];
     }
 
-    return array;
+    return result;
   },
 
   /**
@@ -140,15 +140,15 @@ var properties = {
    * // -> [1, 2, 3]
    */
   compact: function() {
-    var res = [];
+    var result = [];
 
     for (var i = 0; i < this.length; i++) {
       if (this[i]) {
-        res.push(this[i]);
+        result.push(this[i]);
       }
     }
 
-    return res;
+    return result;
   },
 
   /**
@@ -164,7 +164,7 @@ var properties = {
    * // -> [1, 3, 4]
    */
   difference: function() {
-    var difference = [];
+    var result = [];
 
     next: for (var i = 0; i < this.length; i++) {
       var item = this[i];
@@ -175,11 +175,11 @@ var properties = {
         }
       }
 
-      // The item was not part of any of the input arrays so it can be added to the difference array
-      difference.push(item);
+      // The item was not part of any of the input arrays so it can be added to the result
+      result.push(item);
     }
 
-    return difference;
+    return result;
   },
 
   /**
@@ -233,7 +233,7 @@ var properties = {
     var i = 0;
 
     if (safeIteration)
-      while (i < this.length && (!(i in this) || callback.call(this[i], this[i], i, this) !== false)) i++;
+      while (i < this.length && (!(i in this) || callback.call(this[i], this[i], i, this) !== false)) ++i;
     else
       while (i < this.length && callback.call(this[i], this[i], i++, this) !== false);
 
@@ -328,16 +328,14 @@ var properties = {
     var result = [];
     var numArgs = arguments.length;
 
-    if (numArgs === 0) {
+    if (!numArgs) {
       return result;
     }
 
     next: for (var i = 0; i < this.length; i++) {
       var item = this[i];
 
-      // The current item can only be added if it is not already in the intersection
       if (result.indexOf(item) < 0) {
-        // If the item is not in every input array, continue to the next item
         for (var j = 0; j < numArgs; j++) {
           if (arguments[j].indexOf(item) < 0) {
             continue next;
@@ -364,7 +362,7 @@ var properties = {
    * // -> ['a.txt', 'a1.txt', 'a2.txt', 'a10.txt']
    */
   natsort: function(caseInsensitive) {
-    return this.sort(caseInsensitive ? natcompCaseInsensitive : String.naturalCompare);
+    return this.sort(caseInsensitive ? naturalCompareCaseInsensitive : String.naturalCompare);
   },
 
   /**
@@ -471,18 +469,18 @@ var properties = {
    * // -> [1, 2, 4]
    */
   union: function() {
-    var union = this.unique();
+    var result = this.unique();
 
     for (var i = 0; i < arguments.length; i++) {
       var array = arguments[i];
       for (var j = 0; j < array.length; j++) {
-        if (union.indexOf(array[j]) < 0) {
-          union.push(array[j]);
+        if (result.indexOf(array[j]) < 0) {
+          result.push(array[j]);
         }
       }
     }
 
-    return union;
+    return result;
   },
 
   /**
@@ -506,31 +504,31 @@ var properties = {
    * // -> [1, 2, 3, 4] (but faster than the previous example)
    */
   unique: function(isSorted) {
-    var res = [];
-    var len = this.length;
+    var result = [];
+    var length = this.length;
 
-    if (!len) {
-      return res;
+    if (!length) {
+      return result;
     }
 
-    res[0] = this[0];
+    result[0] = this[0];
     var i = 1;
 
     if (isSorted) {
-      for (; i < len; i++) {
+      for (; i < length; i++) {
         if (this[i] !== this[i - 1]) {
-          res.push(this[i]);
+          result.push(this[i]);
         }
       }
     } else {
-      for (; i < len; i++) {
-        if (res.indexOf(this[i]) < 0) {
-          res.push(this[i]);
+      for (; i < length; i++) {
+        if (result.indexOf(this[i]) < 0) {
+          result.push(this[i]);
         }
       }
     }
 
-    return res;
+    return result;
   },
 
   /**
@@ -548,18 +546,18 @@ var properties = {
    * // -> []
    */
   without: function() {
-    var array = [];
+    var result = [];
 
     next: for (var i = 0; i < this.length; i++) {
       for (var j = 0; j < arguments.length; j++) {
-        if (arguments[j] === this[i]) {
+        if (this[i] === arguments[j]) {
           continue next;
         }
       }
-      array.push(this[i]);
+      result.push(this[i]);
     }
 
-    return array;
+    return result;
   },
 
   /**
@@ -583,7 +581,7 @@ var properties = {
   xor: function() {
     var numArgs = arguments.length;
 
-    if (numArgs === 0) {
+    if (!numArgs) {
       return this.unique();
     }
 
