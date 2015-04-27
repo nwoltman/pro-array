@@ -389,8 +389,4 @@ ProArray uses [`Object.defineProperties()`](https://developer.mozilla.org/en-US/
 
 #### Worried about naming collisions?
 
-It is extremely unlikely that the name of any method that ProArray adds to the Array prototype will be used in a future ECMAScript standard, but if you're still worried and want to be extra safe, try using the alias methods:
-
-+ [.diff()](#Array#diff) ⇒ [.difference()](#Array#difference)
-+ [.rem()](#Array#rem) ⇒ [.remove()](#Array#remove)
-+ [.uniq()](#Array#uniq) ⇒ [.unique()](#Array#unique)
+It is extremely unlikely that the name of any method that ProArray adds to the Array prototype will be used in a future ECMAScript standard, but if you're still worried and want to be extra safe, try using the alias methods (like [.rem()](#Array#rem) and [.uniq()](#Array#uniq)).
