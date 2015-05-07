@@ -32,7 +32,7 @@ function numericalCompareReverse(a, b) {
   return b - a;
 }
 
-function xor(a, b) {
+function xorBase(a, b) {
   var result = [];
   var item;
   var i;
@@ -585,10 +585,10 @@ var properties = {
       return this.unique();
     }
 
-    var result = xor(this, arguments[0]);
+    var result = xorBase(this, arguments[0]);
 
     for (var i = 1; i < numArgs; i++) {
-      result = xor(result, arguments[i]);
+      result = xorBase(result, arguments[i]);
     }
 
     return result;
