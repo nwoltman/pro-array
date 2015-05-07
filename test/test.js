@@ -41,6 +41,7 @@ describe('Array', function() {
 
     it('should return the last chunk as remaining elements', function() {
       array.chunk(4).should.eql([[0, 1, 2, 3], [4, 5]]);
+      array.chunk(5).should.eql([[0, 1, 2, 3, 4], [5]]);
     });
 
     it('should run with a default chunk size of 1', function() {
