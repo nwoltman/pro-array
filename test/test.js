@@ -49,11 +49,16 @@ describe('Array', function() {
   });
 
 
-  describe('#clean()', function() {
+  describe('#clear()', function() {
     it('should empty an array', function() {
       var array = [1, 2, 3];
       array.clear();
       array.should.be.empty;
+    });
+
+    it('should return the array', function() {
+      var array = [1, 2, 3];
+      array.clear().should.equal(array);
     });
   });
 

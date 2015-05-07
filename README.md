@@ -34,7 +34,7 @@ The native Array object.
 
 * [Array](#Array)
   * [.chunk([size])](#Array#chunk) ⇒ <code>[Array](#Array)</code>
-  * [.clear()](#Array#clear)
+  * [.clear()](#Array#clear) ⇒ <code>[Array](#Array)</code>
   * [.clone()](#Array#clone) ⇒ <code>[Array](#Array)</code>
   * [.compact()](#Array#compact) ⇒ <code>[Array](#Array)</code>
   * [.diff()](#Array#diff)
@@ -81,9 +81,10 @@ Creates an array of elements split into groups the length of `size`. If the arra
 ---
 
 <a name="Array#clear"></a>
-### array.clear()
+### array.clear() ⇒ <code>[Array](#Array)</code>
 Removes all elements from the array.
 
+**Returns**: <code>[Array](#Array)</code> - The array this method was called on.  
 
 **Example**
 ```js

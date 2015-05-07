@@ -94,6 +94,7 @@ var properties = {
    * Removes all elements from the array.
    *
    * @function Array#clear
+   * @returns {Array} The array this method was called on.
    *
    * @example
    * var array = [1, 2, 3];
@@ -103,6 +104,7 @@ var properties = {
    */
   clear: function() {
     this.length = 0;
+    return this;
   },
 
   /**
