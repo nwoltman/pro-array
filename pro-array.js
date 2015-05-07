@@ -619,10 +619,10 @@ properties.diff = properties.difference;
 /**
  * Alias of {@link Array#remove}.
  *
- * @function Array#rem
+ * @function Array#pull
  * @see {@link Array#remove}
  */
-properties.rem = properties.remove;
+properties.pull = properties.remove;
 
 /**
  * Alias of {@link Array#unique}.

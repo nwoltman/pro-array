@@ -314,10 +314,10 @@ describe('Array', function() {
   });
 
 
-  describe('#rem()', function() {
+  describe('#pull()', function() {
     it('should be an alias of #remove()', function() {
       var array = [];
-      array.rem.should.equal(array.remove);
+      array.pull.should.equal(array.remove);
     });
   });
 

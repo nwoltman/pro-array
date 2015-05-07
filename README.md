@@ -46,7 +46,7 @@ The native Array object.
   * [.intersect(...*arrays)](#Array#intersect) ⇒ <code>[Array](#Array)</code>
   * [.natsort([caseInsensitive])](#Array#natsort) ⇒ <code>[Array](#Array)</code>
   * [.numsort()](#Array#numsort) ⇒ <code>[Array](#Array)</code>
-  * [.rem()](#Array#rem)
+  * [.pull()](#Array#pull)
   * [.remove(...*items)](#Array#remove) ⇒ <code>[Array](#Array)</code>
   * [.rnumsort()](#Array#rnumsort) ⇒ <code>[Array](#Array)</code>
   * [.union(...*arrays)](#Array#union) ⇒ <code>[Array](#Array)</code>
@@ -60,7 +60,8 @@ The native Array object.
 
 <a name="Array#chunk"></a>
 ### array.chunk([size]) ⇒ <code>[Array](#Array)</code>
-Creates an array of elements split into groups the length of `size`. If the arraycan't be split evenly, the final chunk will be the remaining elements.
+Creates an array of elements split into groups the length of `size`. If the array
+can't be split evenly, the final chunk will be the remaining elements.
 
 
 | Param | Type | Default | Description |
@@ -75,7 +76,11 @@ Creates an array of elements split into groups the length of `size`. If the arra
 
 **Example**
 ```js
-[1, 2, 3, 4].chunk(2);// -> [[1, 2], [3, 4]][1, 2, 3, 4].chunk(3);// -> [[1, 2, 3], [4]]
+[1, 2, 3, 4].chunk(2);
+// -> [[1, 2], [3, 4]]
+
+[1, 2, 3, 4].chunk(3);
+// -> [[1, 2, 3], [4]]
 ```
 
 ---
@@ -88,7 +93,10 @@ Removes all elements from the array.
 
 **Example**
 ```js
-var array = [1, 2, 3];array.clear();console.log(array);// -> []
+var array = [1, 2, 3];
+array.clear();
+console.log(array);
+// -> []
 ```
 
 ---
@@ -101,20 +109,25 @@ Creates a shallow copy of the array.
 
 **Example**
 ```js
-var a = [1, 2, 3];var b = a.clone();console.log(b, b === a);// -> [1, 2, 3] false
+var a = [1, 2, 3];
+var b = a.clone();
+console.log(b, b === a);
+// -> [1, 2, 3] false
 ```
 
 ---
 
 <a name="Array#compact"></a>
 ### array.compact() ⇒ <code>[Array](#Array)</code>
-Returns a new array with all falsey values removed. Falsey valuesare `false`, `0`, `""`, `null`, `undefined`, and `NaN`.
+Returns a new array with all falsey values removed. Falsey values
+are `false`, `0`, `""`, `null`, `undefined`, and `NaN`.
 
 **Returns**: <code>[Array](#Array)</code> - The new array containing only the truthy values from the original array.  
 
 **Example**
 ```js
-[0, 1, false, 2, '', 3].compact();// -> [1, 2, 3]
+[0, 1, false, 2, '', 3].compact();
+// -> [1, 2, 3]
 ```
 
 ---
@@ -129,7 +142,8 @@ Alias of [difference](#Array#difference).
 
 <a name="Array#difference"></a>
 ### array.difference(...*arrays) ⇒ <code>[Array](#Array)</code>
-Returns a new array with all of the values of the array that are not inany of the input arrays (performs a set difference).
+Returns a new array with all of the values of the array that are not in
+any of the input arrays (performs a set difference).
 
 
 | Param | Type | Description |
@@ -140,14 +154,22 @@ Returns a new array with all of the values of the array that are not inany of t
 
 **Example**
 ```js
-[1, 2, 3, 4, 5].difference([5, 2, 10]);// -> [1, 3, 4]
+[1, 2, 3, 4, 5].difference([5, 2, 10]);
+// -> [1, 3, 4]
 ```
 
 ---
 
 <a name="Array#each"></a>
 ### array.each(callback, [safeIteration]) ⇒ <code>[Array](#Array)</code>
-Invokes a callback function on each element in the array.A generic iterator method similar to [`.forEach()`](http://goo.gl/n6z5Jz) but with the following differences:1. `this` always refers to the current element in the iteration (the `value` argument to the callback).2. Returning `false` in the callback will cancel the iteration (similar to a `break` statement).3. The array is returned to allow for function chaining.4. The callback __is__ invoked for indexes that have been deleted or elided unless `safeIteration` is `true`.
+Invokes a callback function on each element in the array.
+
+A generic iterator method similar to [`.forEach()`](http://goo.gl/n6z5Jz) but with the following differences:
+
+1. `this` always refers to the current element in the iteration (the `value` argument to the callback).
+2. Returning `false` in the callback will cancel the iteration (similar to a `break` statement).
+3. The array is returned to allow for function chaining.
+4. The callback __is__ invoked for indexes that have been deleted or elided unless `safeIteration` is `true`.
 
 
 | Param | Type | Default | Description |
@@ -159,7 +181,29 @@ Invokes a callback function on each element in the array.A generic iterator me
 
 **Example**
 ```js
-['a', 'b', 'c'].each(console.log.bind(console));// -> 'a' 0 ['a', 'b', 'c']// -> 'b' 1 ['a', 'b', 'c']// -> 'c' 2 ['a', 'b', 'c']// -> ['a', 'b', 'c']['a', 'b', 'c'].each(function(value, index) {  console.log(value);  if (index === 1) return false;});// -> 'a'// -> 'b'// -> ['a', 'b', 'c'][[1, 2], [3, 4, 5]].each(Array.prototype.pop);// -> [[1], [3, 4]]new Array(1).each(console.log.bind(console));// -> undefined 0 ['a', 'b', 'c']// -> [undefined]new Array(1).each(console.log.bind(console), true);// -> [undefined]
+['a', 'b', 'c'].each(console.log.bind(console));
+// -> 'a' 0 ['a', 'b', 'c']
+// -> 'b' 1 ['a', 'b', 'c']
+// -> 'c' 2 ['a', 'b', 'c']
+// -> ['a', 'b', 'c']
+
+['a', 'b', 'c'].each(function(value, index) {
+  console.log(value);
+  if (index === 1) return false;
+});
+// -> 'a'
+// -> 'b'
+// -> ['a', 'b', 'c']
+
+[[1, 2], [3, 4, 5]].each(Array.prototype.pop);
+// -> [[1], [3, 4]]
+
+new Array(1).each(console.log.bind(console));
+// -> undefined 0 ['a', 'b', 'c']
+// -> [undefined]
+
+new Array(1).each(console.log.bind(console), true);
+// -> [undefined]
 ```
 
 ---
@@ -178,7 +222,10 @@ Invokes a callback function on each element in the array.A generic iterator me
 
 <a name="Array#equals"></a>
 ### array.equals(array) ⇒ <code>boolean</code>
-Determines if the arrays are equal by doing a shallow comparison of their elements using strict equality.__Note:__ The order of elements in the arrays __does__ matter. The elements must be found in the same orderfor the arrays to be considered equal.
+Determines if the arrays are equal by doing a shallow comparison of their elements using strict equality.
+
+__Note:__ The order of elements in the arrays __does__ matter. The elements must be found in the same order
+for the arrays to be considered equal.
 
 
 | Param | Type | Description |
@@ -189,7 +236,16 @@ Determines if the arrays are equal by doing a shallow comparison of their elemen
 
 **Example**
 ```js
-var array = [1, 2, 3];array.equals(array);// -> truearray.equals([1, 2, 3]);// -> truearray.equals([3, 2, 1]);// -> false
+var array = [1, 2, 3];
+
+array.equals(array);
+// -> true
+
+array.equals([1, 2, 3]);
+// -> true
+
+array.equals([3, 2, 1]);
+// -> false
 ```
 
 ---
@@ -207,14 +263,30 @@ Retrieve an element in the array.
 
 **Example**
 ```js
-var array = [1, 2, 3];array.get(0);// -> 1array.get(1);// -> 2array.get(-1);// -> 3array.get(-2);// -> 2array.get(5);// -> undefined
+var array = [1, 2, 3];
+
+array.get(0);
+// -> 1
+
+array.get(1);
+// -> 2
+
+array.get(-1);
+// -> 3
+
+array.get(-2);
+// -> 2
+
+array.get(5);
+// -> undefined
 ```
 
 ---
 
 <a name="Array#intersect"></a>
 ### array.intersect(...*arrays) ⇒ <code>[Array](#Array)</code>
-Returns an new array that is the [set intersection](http://en.wikipedia.org/wiki/Intersection_(set_theory))of the array and the input array(s).
+Returns an new array that is the [set intersection](http://en.wikipedia.org/wiki/Intersection_(set_theory))
+of the array and the input array(s).
 
 
 | Param | Type | Description |
@@ -225,7 +297,11 @@ Returns an new array that is the [set intersection](http://en.wikipedia.org/wiki
 
 **Example**
 ```js
-[1, 2, 3].intersect([2, 3, 4]);// -> [2, 3][1, 2, 3].intersect([101, 2, 50, 1], [2, 1]);// -> [1, 2]
+[1, 2, 3].intersect([2, 3, 4]);
+// -> [2, 3]
+
+[1, 2, 3].intersect([101, 2, 50, 1], [2, 1]);
+// -> [1, 2]
 ```
 
 ---
@@ -243,26 +319,33 @@ Sorts an array in place using a natural string comparison algorithm and returns 
 
 **Example**
 ```js
-var files = ['a.txt', 'a10.txt', 'a2.txt', 'a1.txt'];files.natsort();console.log(files);// -> ['a.txt', 'a1.txt', 'a2.txt', 'a10.txt']
+var files = ['a.txt', 'a10.txt', 'a2.txt', 'a1.txt'];
+files.natsort();
+console.log(files);
+// -> ['a.txt', 'a1.txt', 'a2.txt', 'a10.txt']
 ```
 
 ---
 
 <a name="Array#numsort"></a>
 ### array.numsort() ⇒ <code>[Array](#Array)</code>
-Sorts an array in place using a numerical comparison algorithm(sorts numbers from lowest to highest) and returns the array.
+Sorts an array in place using a numerical comparison algorithm
+(sorts numbers from lowest to highest) and returns the array.
 
 **Returns**: <code>[Array](#Array)</code> - The array this method was called on.  
 
 **Example**
 ```js
-var files = [10, 0, 2, 1];files.numsort();console.log(files);// -> [0, 1, 2, 3]
+var files = [10, 0, 2, 1];
+files.numsort();
+console.log(files);
+// -> [0, 1, 2, 3]
 ```
 
 ---
 
-<a name="Array#rem"></a>
-### array.rem()
+<a name="Array#pull"></a>
+### array.pull()
 Alias of [remove](#Array#remove).
 
 **See**: [remove](#Array#remove)  
@@ -271,7 +354,9 @@ Alias of [remove](#Array#remove).
 
 <a name="Array#remove"></a>
 ### array.remove(...*items) ⇒ <code>[Array](#Array)</code>
-Removes all occurrences of the passed in items from the array and returns the array.__Note:__ Unlike [`.without()`](#Array#without), this method mutates the array.
+Removes all occurrences of the passed in items from the array and returns the array.
+
+__Note:__ Unlike [`.without()`](#Array#without), this method mutates the array.
 
 
 | Param | Type | Description |
@@ -282,27 +367,41 @@ Removes all occurrences of the passed in items from the array and returns the ar
 
 **Example**
 ```js
-var array = [1, 2, 3, 3, 4, 3, 5];array.remove(1);// -> [2, 3, 3, 4, 3, 5]array.remove(3);// -> [2, 4, 5]array.remove(2, 5);// -> [4]
+var array = [1, 2, 3, 3, 4, 3, 5];
+
+array.remove(1);
+// -> [2, 3, 3, 4, 3, 5]
+
+array.remove(3);
+// -> [2, 4, 5]
+
+array.remove(2, 5);
+// -> [4]
 ```
 
 ---
 
 <a name="Array#rnumsort"></a>
 ### array.rnumsort() ⇒ <code>[Array](#Array)</code>
-Sorts an array in place using a reverse numerical comparison algorithm(sorts numbers from highest to lowest) and returns the array.
+Sorts an array in place using a reverse numerical comparison algorithm
+(sorts numbers from highest to lowest) and returns the array.
 
 **Returns**: <code>[Array](#Array)</code> - The array this method was called on.  
 
 **Example**
 ```js
-var files = [10, 0, 2, 1];files.rnumsort();console.log(files);// -> [3, 2, 1, 0]
+var files = [10, 0, 2, 1];
+files.rnumsort();
+console.log(files);
+// -> [3, 2, 1, 0]
 ```
 
 ---
 
 <a name="Array#union"></a>
 ### array.union(...*arrays) ⇒ <code>[Array](#Array)</code>
-Returns an array that is the [union](http://en.wikipedia.org/wiki/Union_%28set_theory%29)of the array and the input array(s).
+Returns an array that is the [union](http://en.wikipedia.org/wiki/Union_%28set_theory%29)
+of the array and the input array(s).
 
 
 | Param | Type | Description |
@@ -313,7 +412,11 @@ Returns an array that is the [union](http://en.wikipedia.org/wiki/Union_%28set_t
 
 **Example**
 ```js
-[1, 2, 3].union([2, 3, 4, 5]);// -> [1, 2, 3, 4, 5][1, 2].union([4, 2], [2, 1]);// -> [1, 2, 4]
+[1, 2, 3].union([2, 3, 4, 5]);
+// -> [1, 2, 3, 4, 5]
+
+[1, 2].union([4, 2], [2, 1]);
+// -> [1, 2, 4]
 ```
 
 ---
@@ -339,7 +442,16 @@ Returns a duplicate-free clone of the array.
 
 **Example**
 ```js
-// Unsorted[4, 2, 3, 2, 1, 4].unique();// -> [4, 2, 3, 1]// Sorted[1, 2, 2, 3, 4, 4].unique();// -> [1, 2, 3, 4][1, 2, 2, 3, 4, 4].unique(true);// -> [1, 2, 3, 4] (but faster than the previous example)
+// Unsorted
+[4, 2, 3, 2, 1, 4].unique();
+// -> [4, 2, 3, 1]
+
+// Sorted
+[1, 2, 2, 3, 4, 4].unique();
+// -> [1, 2, 3, 4]
+
+[1, 2, 2, 3, 4, 4].unique(true);
+// -> [1, 2, 3, 4] (but faster than the previous example)
 ```
 
 ---
@@ -357,14 +469,19 @@ Returns a copy of the array without any elements from the input parameters.
 
 **Example**
 ```js
-[1, 2, 3, 4].without(2, 4);// -> [1, 3][1, 1].without(1);// -> []
+[1, 2, 3, 4].without(2, 4);
+// -> [1, 3]
+
+[1, 1].without(1);
+// -> []
 ```
 
 ---
 
 <a name="Array#xor"></a>
 ### array.xor(...*arrays) ⇒ <code>[Array](#Array)</code>
-Finds the [symmetric difference](https://en.wikipedia.org/wiki/Symmetric_difference)of the array and the input array(s).
+Finds the [symmetric difference](https://en.wikipedia.org/wiki/Symmetric_difference)
+of the array and the input array(s).
 
 
 | Param | Type | Description |
@@ -375,7 +492,14 @@ Finds the [symmetric difference](https://en.wikipedia.org/wiki/Symmetric_differe
 
 **Example**
 ```js
-[1, 2].xor([4, 2]);// -> [1, 4][1, 2, 5].xor([2, 3, 5], [3, 4, 5]);// -> [1, 4, 5]// Explanation:// [1, 2, 5] ⊕ [2, 3, 5] ⊕ [3, 4, 5] = [1, 4, 5]
+[1, 2].xor([4, 2]);
+// -> [1, 4]
+
+[1, 2, 5].xor([2, 3, 5], [3, 4, 5]);
+// -> [1, 4, 5]
+
+// Explanation:
+// [1, 2, 5] ⊕ [2, 3, 5] ⊕ [3, 4, 5] = [1, 4, 5]
 ```
 
 ---
@@ -390,4 +514,4 @@ ProArray uses [`Object.defineProperties()`](https://developer.mozilla.org/en-US/
 
 #### Worried about naming collisions?
 
-It is extremely unlikely that the name of any method that ProArray adds to the Array prototype will be used in a future ECMAScript standard, but if you're still worried and want to be extra safe, try using the alias methods (like [.rem()](#Array#rem) and [.uniq()](#Array#uniq)).
+It is extremely unlikely that the name of any method that ProArray adds to the Array prototype will be used in a future ECMAScript standard, but if you're still worried and want to be extra safe, try using the alias methods (like [.pull()](#Array#pull) and [.uniq()](#Array#uniq)).
