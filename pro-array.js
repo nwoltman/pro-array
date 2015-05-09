@@ -1,6 +1,6 @@
 /**
  * ProArray
- * @version 1.0.4
+ * @version 1.1.0
  * @copyright 2015 Nathan Woltman
  * @license MIT https://github.com/woollybogger/pro-array/blob/master/LICENSE.txt
  */
