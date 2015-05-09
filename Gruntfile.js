@@ -29,7 +29,6 @@ module.exports = function(grunt) {
     mochacov: {
       test: {
         options: {
-          colors: true,
           reporter: 'spec'
         }
       },
@@ -83,8 +82,15 @@ module.exports = function(grunt) {
   grunt.registerTask('lint', ['jsonlint', 'jshint', 'jscs']);
   grunt.registerTask('test', ['mochacov:test'].concat(process.env.CI ? ['mochacov:testAndCoverage'] : []));
   grunt.registerTask('coverage', ['mochacov:coverage']);
-  grunt.registerTask('docs', ['jsdoc2md']);
+  grunt.registerTask('docs', ['jsdoc2md', 'fixdocs']);
   grunt.registerTask('default', ['lint', 'test', 'docs']);
+
+  grunt.registerTask('fixdocs', 'Standardizes the newlines in the produced documentation', function() {
+    var fs = require('fs');
+    var docs = fs.readFileSync('README.md', {encoding: 'utf8'}).replace(/\r\n|\r|\n/g, require('os').EOL);
+    fs.writeFileSync('README.md', docs);
+    grunt.log.ok('Fixed docs');
+  });
 
   grunt.registerTask('changelog', 'Add the changes since the last release to the changelog', function() {
     var done = this.async();
