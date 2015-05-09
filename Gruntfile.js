@@ -29,6 +29,7 @@ module.exports = function(grunt) {
     mochacov: {
       test: {
         options: {
+          colors: true,
           reporter: 'spec'
         }
       },

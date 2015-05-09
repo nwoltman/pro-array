@@ -310,6 +310,18 @@ of the array and the input array(s).
 ### array.natsort([caseInsensitive]) ⇒ <code>[Array](#Array)</code>
 Sorts an array in place using a natural string comparison algorithm and returns the array.
 
+You can achieve a desired character ordering by configuring a custom alphabet like so:
+
+```js
+// Estonian alphabet
+String.alphabet = 'ABDEFGHIJKLMNOPRSŠZŽTUVÕÄÖÜXYabdefghijklmnoprsšzžtuvõäöüxy';
+['t', 'z', 'x', 'õ'].sort(String.naturalCompare);
+// -> ['z', 't', 'õ', 'x']
+```
+
+For more ways to perform a natural ordering sort, see the
+[string-natural-compare documentation](https://github.com/woollybogger/string-natural-compare).
+
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |

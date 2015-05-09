@@ -7,7 +7,7 @@
 
 'use strict';
 
-require('natural-compare-lite');
+require('string-natural-compare');
 
 function chunkSlice(array, start, end) {
   var length = Math.min(end, array.length) - start;
@@ -18,10 +18,6 @@ function chunkSlice(array, start, end) {
   }
 
   return result;
-}
-
-function naturalCompareCaseInsensitive(a, b) {
-  return String.naturalCompare(a.toLowerCase(), b.toLowerCase());
 }
 
 function numericalCompare(a, b) {
@@ -353,6 +349,18 @@ var properties = {
   /**
    * Sorts an array in place using a natural string comparison algorithm and returns the array.
    *
+   * You can achieve a desired character ordering by configuring a custom alphabet like so:
+   *
+   * ```js
+   * // Estonian alphabet
+   * String.alphabet = 'ABDEFGHIJKLMNOPRSŠZŽTUVÕÄÖÜXYabdefghijklmnoprsšzžtuvõäöüxy';
+   * ['t', 'z', 'x', 'õ'].sort(String.naturalCompare);
+   * // -> ['z', 't', 'õ', 'x']
+   * ```
+   *
+   * For more ways to perform a natural ordering sort, see the
+   * [string-natural-compare documentation](https://github.com/woollybogger/string-natural-compare).
+   *
    * @function Array#natsort
    * @param {boolean} [caseInsensitive=false] - Set this to `true` to ignore letter casing when sorting.
    * @returns {Array} The array this method was called on.
@@ -364,7 +372,7 @@ var properties = {
    * // -> ['a.txt', 'a1.txt', 'a2.txt', 'a10.txt']
    */
   natsort: function(caseInsensitive) {
-    return this.sort(caseInsensitive ? naturalCompareCaseInsensitive : String.naturalCompare);
+    return this.sort(caseInsensitive ? String.naturalCaseCompare : String.naturalCompare);
   },
 
   /**
