@@ -33,6 +33,7 @@ The native Array object.
 **See**: [MDN JavaScript Array Reference](http://goo.gl/Ijd3ks)  
 
 * [Array](#Array)
+  * [.bsearch(value, [compareFunction])](#Array#bsearch) ⇒ <code>number</code>
   * [.chunk([size])](#Array#chunk) ⇒ <code>[Array](#Array)</code>
   * [.clear()](#Array#clear) ⇒ <code>[Array](#Array)</code>
   * [.clone()](#Array#clone) ⇒ <code>[Array](#Array)</code>
@@ -55,6 +56,47 @@ The native Array object.
   * [.without(...*items)](#Array#without) ⇒ <code>[Array](#Array)</code>
   * [.xor(...*arrays)](#Array#xor) ⇒ <code>[Array](#Array)</code>
 
+
+---
+
+<a name="Array#bsearch"></a>
+### array.bsearch(value, [compareFunction]) ⇒ <code>number</code>
+Finds the index of a value in a sorted array using a binary search algorithm.
+
+If no `compareFunction` is supplied, the `>` and `<` relational operators are used to compare values,
+which provides optimal performance for arrays of numbers and simple strings.
+
+
+| Param | Type | Description |
+| --- | --- | --- |
+| value | <code>\*</code> | The value to search for. |
+| [compareFunction] | <code>function</code> | The same type of comparing function you would pass to     [`.sort()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort). |
+
+**Returns**: <code>number</code> - The index of the value if it is in the array, or `-1` if it cannot be found.
+    If the search value can be found at multiple indexes in the array, it is unknown which of
+    those indexes will be returned.  
+
+**Example**
+```js
+['a', 'b', 'c', 'd'].bsearch('c');
+// -> 2
+
+[1, 1, 2, 2].bsearch(2);
+// -> 2 or 3
+
+[1, 2, 3, 4].bsearch(10);
+// -> -1
+
+[1, 2, 3, 4].bsearch(1, function(a, b) {
+  return a - b;
+});
+// -> 0
+
+['img1', 'img2', 'img10', 'img13'].bsearch('img2', String.naturalCompare);
+// -> 1
+// `String.naturalCompare` is provided by the string-natural-compare npm module:
+// https://www.npmjs.com/package/string-natural-compare
+```
 
 ---
 

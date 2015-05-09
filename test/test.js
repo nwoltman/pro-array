@@ -5,6 +5,7 @@
 /* global it: true */
 
 require('../pro-array');
+require('string-natural-compare');
 var should = require('should');
 
 should.Assertion.add('shallowEqual', function(expected) {
@@ -28,6 +29,61 @@ describe('Array', function() {
   describe('.prototype', function() {
     it('should not have enumerable properties', function() {
       Array.prototype.should.be.empty;
+    });
+  });
+
+
+  describe('#bsearch()', function() {
+    it('should return the index of the specified value', function() {
+      var array = [4, 5, 6];
+      array.bsearch(4).should.equal(0);
+      array.bsearch(5).should.equal(1);
+      array.bsearch(6).should.equal(2);
+
+      array = [2, 4, 5, 9];
+      array.bsearch(2).should.equal(0);
+      array.bsearch(4).should.equal(1);
+      array.bsearch(5).should.equal(2);
+      array.bsearch(9).should.equal(3);
+    });
+
+    it('should return one of the indexes of the specified value if there are duplicates', function() {
+      var array = [1, 1, 2, 2, 3, 3, 3];
+      array.bsearch(1).should.match(function(value) {
+        return value === 0 || value === 1;
+      });
+      array.bsearch(2).should.match(function(value) {
+        return value === 2 || value === 3;
+      });
+      array.bsearch(3).should.match(function(value) {
+        return value === 4 || value === 5 || value === 6;
+      });
+    });
+
+    it('should return -1 if the value cannot be found', function() {
+      [].bsearch(0).should.equal(-1);
+      [1, 2, 3, 11, 20].bsearch(10).should.equal(-1);
+    });
+
+    it('should accept a compareFunction', function() {
+      function numericalCompare(a, b) {
+        return a - b;
+      }
+      function numericalCompareReverse(a, b) {
+        return b - a;
+      }
+
+      var array = [4, 5, 6];
+      array.bsearch(4, numericalCompare).should.equal(0);
+      array.bsearch(5, numericalCompare).should.equal(1);
+      array.bsearch(6, numericalCompare).should.equal(2);
+
+      array = [6, 5, 4];
+      array.bsearch(6, numericalCompareReverse).should.equal(0);
+      array.bsearch(5, numericalCompareReverse).should.equal(1);
+      array.bsearch(4, numericalCompareReverse).should.equal(2);
+
+      ['img1', 'img2', 'img10', 'img13'].bsearch('img2', String.naturalCompare).should.equal(1);
     });
   });
 
