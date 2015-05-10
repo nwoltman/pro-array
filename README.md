@@ -360,7 +360,7 @@ You can achieve a desired character ordering by configuring a custom alphabet li
 ```js
 // Estonian alphabet
 String.alphabet = 'ABDEFGHIJKLMNOPRSŠZŽTUVÕÄÖÜXYabdefghijklmnoprsšzžtuvõäöüxy';
-['t', 'z', 'x', 'õ'].sort(String.naturalCompare);
+['t', 'z', 'x', 'õ'].natsort();
 // -> ['z', 't', 'õ', 'x']
 ```
 
@@ -393,9 +393,9 @@ Sorts an array in place using a numerical comparison algorithm
 
 **Example**
 ```js
-var files = [10, 0, 2, 1];
-files.numsort();
-console.log(files);
+var a = [10, 0, 2, 1];
+a.numsort();
+console.log(a);
 // -> [0, 1, 2, 3]
 ```
 
@@ -447,9 +447,9 @@ Sorts an array in place using a reverse numerical comparison algorithm
 
 **Example**
 ```js
-var files = [10, 0, 2, 1];
-files.rnumsort();
-console.log(files);
+var a = [10, 0, 2, 1];
+a.rnumsort();
+console.log(a);
 // -> [3, 2, 1, 0]
 ```
 
@@ -554,7 +554,6 @@ of the array and the input array(s).
 
 [1, 2, 5].xor([2, 3, 5], [3, 4, 5]);
 // -> [1, 4, 5]
-
 // Explanation:
 // [1, 2, 5] ⊕ [2, 3, 5] ⊕ [3, 4, 5] = [1, 4, 5]
 ```
