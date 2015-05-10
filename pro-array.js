@@ -81,8 +81,11 @@ var properties = {
    * [1, 2, 3, 4].bsearch(10);
    * // -> -1
    *
-   * [1, 2, 3, 4].bsearch(1, function(a, b) {
-   *   return a - b;
+   * // Search an array of people sorted by age
+   * var finn = {name: 'Finn', age: 12};
+   * var jake = {name: 'Jake', age: 28};
+   * [finn, jake].bsearch(finn, function(a, b) {
+   *   return a.age - b.age;
    * });
    * // -> 0
    *
