@@ -293,7 +293,7 @@ var properties = {
    * // -> [[1], [3, 4]]
    *
    * new Array(1).each(console.log.bind(console));
-   * // -> undefined 0 ['a', 'b', 'c']
+   * // -> undefined 0 [undefined]
    * // -> [undefined]
    *
    * new Array(1).each(console.log.bind(console), true);
