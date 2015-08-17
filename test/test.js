@@ -28,7 +28,7 @@ describe('Array', function() {
 
   describe('.prototype', function() {
     it('should not have enumerable properties', function() {
-      Array.prototype.should.be.empty;
+      Array.prototype.should.be.empty();
     });
   });
 
@@ -110,7 +110,7 @@ describe('Array', function() {
     it('should empty an array', function() {
       var array = [1, 2, 3];
       array.clear();
-      array.should.be.empty;
+      array.should.be.empty();
     });
 
     it('should return the array', function() {
@@ -230,24 +230,24 @@ describe('Array', function() {
   describe('#equals()', function() {
     it('should report that an array equals itself', function() {
       var array = [1, 2, 3];
-      array.equals(array).should.be.true;
+      array.equals(array).should.be.true();
     });
 
     it('should report that an array equals another array with the same values', function() {
-      [1, 2, 3].equals([1, 2, 3]).should.be.true;
+      [1, 2, 3].equals([1, 2, 3]).should.be.true();
     });
 
     it('should report that an array does not equal another array with the same values but out of order', function() {
-      [1, 2, 3].equals([3, 2, 1]).should.be.false;
+      [1, 2, 3].equals([3, 2, 1]).should.be.false();
     });
 
     it('should report that an array does not equal another that has a different length', function() {
-      [1, 2, 3].equals([1, 2]).should.be.false;
+      [1, 2, 3].equals([1, 2]).should.be.false();
     });
 
     it('should return false when the input is null or undefined', function() {
-      [].equals(null).should.be.false;
-      [].equals().should.be.false;
+      [].equals(null).should.be.false();
+      [].equals().should.be.false();
     });
   });
 
@@ -270,7 +270,7 @@ describe('Array', function() {
 
   describe('#intersect()', function() {
     it('should return an empty array when called with no parameters', function() {
-      [1, 2, 3].intersect().should.be.an.empty.Array;
+      [1, 2, 3].intersect().should.be.an.empty().Array();
     });
 
     it('should return the intersection when given one array as input', function() {
@@ -279,7 +279,7 @@ describe('Array', function() {
 
     it('should return the intersection when given multiple arrays as input', function() {
       [1, 2, 3].intersect([107, 1, 50, 2], [2, 1]).should.eql([1, 2]);
-      [1, 2, 3].intersect([1, 2, 3], [], [2, 3]).should.be.an.empty.Array;
+      [1, 2, 3].intersect([1, 2, 3], [], [2, 3]).should.be.an.empty().Array();
     });
   });
 
@@ -419,8 +419,8 @@ describe('Array', function() {
     // Not very useful, but satifies code coverage
     it('should return a new empty array when the original array is empty', function() {
       var array = [];
-      array.unique().should.be.an.empty.Array.and.not.equal(array);
-      array.unique(true).should.be.an.empty.Array.and.not.equal(array);
+      array.unique().should.be.an.empty().Array().and.not.equal(array);
+      array.unique(true).should.be.an.empty().Array().and.not.equal(array);
     });
   });
 
