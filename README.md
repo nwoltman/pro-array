@@ -33,33 +33,33 @@ The native Array object.
 **See**: [MDN JavaScript Array Reference](http://goo.gl/Ijd3ks)  
 
 * [Array](#Array)
-  * [.bsearch(value, [compareFunction])](#Array#bsearch) ⇒ <code>number</code>
-  * [.chunk([size])](#Array#chunk) ⇒ <code>[Array](#Array)</code>
-  * [.clear()](#Array#clear) ⇒ <code>[Array](#Array)</code>
-  * [.clone()](#Array#clone) ⇒ <code>[Array](#Array)</code>
-  * [.compact()](#Array#compact) ⇒ <code>[Array](#Array)</code>
-  * [.diff()](#Array#diff)
-  * [.difference(...*arrays)](#Array#difference) ⇒ <code>[Array](#Array)</code>
-  * [.each(callback, [safeIteration])](#Array#each) ⇒ <code>[Array](#Array)</code>
-    * [~eachCallback](#Array#each..eachCallback) : <code>function</code>
-  * [.equals(array)](#Array#equals) ⇒ <code>boolean</code>
-  * [.get(index)](#Array#get) ⇒ <code>\*</code>
-  * [.intersect(...*arrays)](#Array#intersect) ⇒ <code>[Array](#Array)</code>
-  * [.natsort([caseInsensitive])](#Array#natsort) ⇒ <code>[Array](#Array)</code>
-  * [.numsort()](#Array#numsort) ⇒ <code>[Array](#Array)</code>
-  * [.pull()](#Array#pull)
-  * [.remove(...*items)](#Array#remove) ⇒ <code>[Array](#Array)</code>
-  * [.rnumsort()](#Array#rnumsort) ⇒ <code>[Array](#Array)</code>
-  * [.union(...*arrays)](#Array#union) ⇒ <code>[Array](#Array)</code>
-  * [.uniq()](#Array#uniq)
-  * [.unique([isSorted])](#Array#unique) ⇒ <code>[Array](#Array)</code>
-  * [.without(...*items)](#Array#without) ⇒ <code>[Array](#Array)</code>
-  * [.xor(...*arrays)](#Array#xor) ⇒ <code>[Array](#Array)</code>
+  * [.bsearch(value, [compareFunction])](#Array+bsearch) ⇒ <code>number</code>
+  * [.chunk([size])](#Array+chunk) ⇒ <code>[Array](#Array)</code>
+  * [.clear()](#Array+clear) ⇒ <code>[Array](#Array)</code>
+  * [.clone()](#Array+clone) ⇒ <code>[Array](#Array)</code>
+  * [.compact()](#Array+compact) ⇒ <code>[Array](#Array)</code>
+  * [.diff()](#Array+diff)
+  * [.difference(...*arrays)](#Array+difference) ⇒ <code>[Array](#Array)</code>
+  * [.each(callback, [safeIteration])](#Array+each) ⇒ <code>[Array](#Array)</code>
+    * [~eachCallback](#Array+each..eachCallback) : <code>function</code>
+  * [.equals(array)](#Array+equals) ⇒ <code>boolean</code>
+  * [.get(index)](#Array+get) ⇒ <code>\*</code>
+  * [.intersect(...*arrays)](#Array+intersect) ⇒ <code>[Array](#Array)</code>
+  * [.natsort([caseInsensitive])](#Array+natsort) ⇒ <code>[Array](#Array)</code>
+  * [.numsort()](#Array+numsort) ⇒ <code>[Array](#Array)</code>
+  * [.pull()](#Array+pull)
+  * [.remove(...*items)](#Array+remove) ⇒ <code>[Array](#Array)</code>
+  * [.rnumsort()](#Array+rnumsort) ⇒ <code>[Array](#Array)</code>
+  * [.union(...*arrays)](#Array+union) ⇒ <code>[Array](#Array)</code>
+  * [.uniq()](#Array+uniq)
+  * [.unique([isSorted])](#Array+unique) ⇒ <code>[Array](#Array)</code>
+  * [.without(...*items)](#Array+without) ⇒ <code>[Array](#Array)</code>
+  * [.xor(...*arrays)](#Array+xor) ⇒ <code>[Array](#Array)</code>
 
 
 ---
 
-<a name="Array#bsearch"></a>
+<a name="Array+bsearch"></a>
 ### array.bsearch(value, [compareFunction]) ⇒ <code>number</code>
 Finds the index of a value in a sorted array using a binary search algorithm.
 
@@ -103,7 +103,7 @@ var jake = {name: 'Jake', age: 28};
 
 ---
 
-<a name="Array#chunk"></a>
+<a name="Array+chunk"></a>
 ### array.chunk([size]) ⇒ <code>[Array](#Array)</code>
 Creates an array of elements split into groups the length of `size`. If the array
 can't be split evenly, the final chunk will be the remaining elements.
@@ -130,7 +130,7 @@ can't be split evenly, the final chunk will be the remaining elements.
 
 ---
 
-<a name="Array#clear"></a>
+<a name="Array+clear"></a>
 ### array.clear() ⇒ <code>[Array](#Array)</code>
 Removes all elements from the array.
 
@@ -146,7 +146,7 @@ console.log(array);
 
 ---
 
-<a name="Array#clone"></a>
+<a name="Array+clone"></a>
 ### array.clone() ⇒ <code>[Array](#Array)</code>
 Creates a shallow copy of the array.
 
@@ -162,7 +162,7 @@ console.log(b, b === a);
 
 ---
 
-<a name="Array#compact"></a>
+<a name="Array+compact"></a>
 ### array.compact() ⇒ <code>[Array](#Array)</code>
 Returns a new array with all falsey values removed. Falsey values
 are `false`, `0`, `""`, `null`, `undefined`, and `NaN`.
@@ -177,15 +177,15 @@ are `false`, `0`, `""`, `null`, `undefined`, and `NaN`.
 
 ---
 
-<a name="Array#diff"></a>
+<a name="Array+diff"></a>
 ### array.diff()
-Alias of [difference](#Array#difference).
+Alias of [difference](#Array+difference).
 
-**See**: [difference](#Array#difference)  
+**See**: [difference](#Array+difference)  
 
 ---
 
-<a name="Array#difference"></a>
+<a name="Array+difference"></a>
 ### array.difference(...*arrays) ⇒ <code>[Array](#Array)</code>
 Returns a new array with all of the values of the array that are not in
 any of the input arrays (performs a set difference).
@@ -205,7 +205,7 @@ any of the input arrays (performs a set difference).
 
 ---
 
-<a name="Array#each"></a>
+<a name="Array+each"></a>
 ### array.each(callback, [safeIteration]) ⇒ <code>[Array](#Array)</code>
 Invokes a callback function on each element in the array.
 
@@ -219,7 +219,7 @@ A generic iterator method similar to [`.forEach()`](http://goo.gl/n6z5Jz) but wi
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| callback | <code>[eachCallback](#Array#each..eachCallback)</code> |  | A function to be executed on each element in the array. |
+| callback | <code>[eachCallback](#Array+each..eachCallback)</code> |  | A function to be executed on each element in the array. |
 | [safeIteration] | <code>boolean</code> | <code>false</code> | When `true`, the callback will not be invoked     for indexes that have been deleted or elided (are undefined). |
 
 **Returns**: <code>[Array](#Array)</code> - The array this method was called on.  
@@ -244,7 +244,7 @@ A generic iterator method similar to [`.forEach()`](http://goo.gl/n6z5Jz) but wi
 // -> [[1], [3, 4]]
 
 new Array(1).each(console.log.bind(console));
-// -> undefined 0 ['a', 'b', 'c']
+// -> undefined 0 [undefined]
 // -> [undefined]
 
 new Array(1).each(console.log.bind(console), true);
@@ -253,19 +253,19 @@ new Array(1).each(console.log.bind(console), true);
 
 ---
 
-<a name="Array#each..eachCallback"></a>
+<a name="Array+each..eachCallback"></a>
 #### each~eachCallback : <code>function</code>
 
 | Param | Type | Description |
 | --- | --- | --- |
 | value | <code>\*</code> | The current element being processed. |
 | index | <code>number</code> | The index of the current element being processed. |
-| array | <code>[Array](#Array)</code> | The array [`.each()`](#Array#each) was called on. |
+| array | <code>[Array](#Array)</code> | The array [`.each()`](#Array+each) was called on. |
 
 
 ---
 
-<a name="Array#equals"></a>
+<a name="Array+equals"></a>
 ### array.equals(array) ⇒ <code>boolean</code>
 Determines if the arrays are equal by doing a shallow comparison of their elements using strict equality.
 
@@ -295,7 +295,7 @@ array.equals([3, 2, 1]);
 
 ---
 
-<a name="Array#get"></a>
+<a name="Array+get"></a>
 ### array.get(index) ⇒ <code>\*</code>
 Retrieve an element in the array.
 
@@ -328,7 +328,7 @@ array.get(5);
 
 ---
 
-<a name="Array#intersect"></a>
+<a name="Array+intersect"></a>
 ### array.intersect(...*arrays) ⇒ <code>[Array](#Array)</code>
 Returns an new array that is the [set intersection](http://en.wikipedia.org/wiki/Intersection_(set_theory))
 of the array and the input array(s).
@@ -351,7 +351,7 @@ of the array and the input array(s).
 
 ---
 
-<a name="Array#natsort"></a>
+<a name="Array+natsort"></a>
 ### array.natsort([caseInsensitive]) ⇒ <code>[Array](#Array)</code>
 Sorts an array in place using a natural string comparison algorithm and returns the array.
 
@@ -384,7 +384,7 @@ console.log(files);
 
 ---
 
-<a name="Array#numsort"></a>
+<a name="Array+numsort"></a>
 ### array.numsort() ⇒ <code>[Array](#Array)</code>
 Sorts an array in place using a numerical comparison algorithm
 (sorts numbers from lowest to highest) and returns the array.
@@ -401,19 +401,19 @@ console.log(a);
 
 ---
 
-<a name="Array#pull"></a>
+<a name="Array+pull"></a>
 ### array.pull()
-Alias of [remove](#Array#remove).
+Alias of [remove](#Array+remove).
 
-**See**: [remove](#Array#remove)  
+**See**: [remove](#Array+remove)  
 
 ---
 
-<a name="Array#remove"></a>
+<a name="Array+remove"></a>
 ### array.remove(...*items) ⇒ <code>[Array](#Array)</code>
 Removes all occurrences of the passed in items from the array and returns the array.
 
-__Note:__ Unlike [`.without()`](#Array#without), this method mutates the array.
+__Note:__ Unlike [`.without()`](#Array+without), this method mutates the array.
 
 
 | Param | Type | Description |
@@ -438,7 +438,7 @@ array.remove(2, 5);
 
 ---
 
-<a name="Array#rnumsort"></a>
+<a name="Array+rnumsort"></a>
 ### array.rnumsort() ⇒ <code>[Array](#Array)</code>
 Sorts an array in place using a reverse numerical comparison algorithm
 (sorts numbers from highest to lowest) and returns the array.
@@ -455,7 +455,7 @@ console.log(a);
 
 ---
 
-<a name="Array#union"></a>
+<a name="Array+union"></a>
 ### array.union(...*arrays) ⇒ <code>[Array](#Array)</code>
 Returns an array that is the [union](http://en.wikipedia.org/wiki/Union_%28set_theory%29)
 of the array and the input array(s).
@@ -478,15 +478,15 @@ of the array and the input array(s).
 
 ---
 
-<a name="Array#uniq"></a>
+<a name="Array+uniq"></a>
 ### array.uniq()
-Alias of [unique](#Array#unique).
+Alias of [unique](#Array+unique).
 
-**See**: [unique](#Array#unique)  
+**See**: [unique](#Array+unique)  
 
 ---
 
-<a name="Array#unique"></a>
+<a name="Array+unique"></a>
 ### array.unique([isSorted]) ⇒ <code>[Array](#Array)</code>
 Returns a duplicate-free clone of the array.
 
@@ -513,7 +513,7 @@ Returns a duplicate-free clone of the array.
 
 ---
 
-<a name="Array#without"></a>
+<a name="Array+without"></a>
 ### array.without(...*items) ⇒ <code>[Array](#Array)</code>
 Returns a copy of the array without any elements from the input parameters.
 
@@ -535,7 +535,7 @@ Returns a copy of the array without any elements from the input parameters.
 
 ---
 
-<a name="Array#xor"></a>
+<a name="Array+xor"></a>
 ### array.xor(...*arrays) ⇒ <code>[Array](#Array)</code>
 Finds the [symmetric difference](https://en.wikipedia.org/wiki/Symmetric_difference)
 of the array and the input array(s).
