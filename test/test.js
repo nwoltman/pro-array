@@ -176,7 +176,7 @@ describe('Array', function() {
       seen.should.eql([
         {key: 0, value: 3, array: array},
         {key: 1, value: 4, array: array},
-        {key: 2, value: 5, array: array}
+        {key: 2, value: 5, array: array},
       ]);
     });
 
@@ -290,7 +290,7 @@ describe('Array', function() {
       'a1',
       'a2',
       'a',
-      'A3'
+      'A3',
     ];
 
     it('should return the array it was called on', function() {
@@ -303,7 +303,7 @@ describe('Array', function() {
         'a',
         'a1',
         'a2',
-        'a10'
+        'a10',
       ]);
     });
 
@@ -313,7 +313,7 @@ describe('Array', function() {
         'a1',
         'a2',
         'A3',
-        'a10'
+        'a10',
       ]);
     });
   });

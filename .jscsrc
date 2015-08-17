@@ -17,13 +17,15 @@
     "~",
     "!"
   ],
+  "disallowSpaceBeforeBinaryOperators": [
+    ","
+  ],
+  "disallowSpaceBeforeComma": true,
   "disallowSpaceBeforePostfixUnaryOperators": [
     "++",
     "--"
   ],
-  "disallowSpaceBeforeBinaryOperators": [
-    ","
-  ],
+  "disallowSpaceBeforeSemicolon": true,
   "disallowSpacesInNamedFunctionExpression": {
     "beforeOpeningRoundBrace": true
   },
@@ -41,6 +43,13 @@
   "disallowSpacesInsideParentheses": true,
   "disallowTrailingWhitespace": true,
   "disallowYodaConditions": true,
+  "maximumLineLength": {
+    "value": 120,
+    "allExcept": [
+      "regex",
+      "urlComments"
+    ]
+  },
   "requireBlocksOnNewline": true,
   "requireCamelCaseOrUpperCaseIdentifiers": true,
   "requireCapitalizedConstructors": true,
@@ -50,6 +59,7 @@
   ],
   "requireDotNotation": true,
   "requireLineFeedAtFileEnd": true,
+  "requirePaddingNewLinesAfterUseStrict": true,
   "requireParenthesesAroundIIFE": true,
   "requireSpaceAfterBinaryOperators": [
     "+",
@@ -86,6 +96,9 @@
     "!=",
     "!=="
   ],
+  "requireTrailingComma": {
+    "ignoreSingleLine": true
+  },
   "safeContextKeyword": "_this",
   "validateIndentation": 2,
   "validateQuoteMarks": "'"

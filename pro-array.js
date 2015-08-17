@@ -673,7 +673,7 @@ var properties = {
     }
 
     return result;
-  }
+  },
 };
 
 // Format the properties to be defined with Object.defineProperties()
@@ -681,7 +681,7 @@ for (var propName in properties) {
   properties[propName] = {
     value: properties[propName],
     configurable: true,
-    writable: true
+    writable: true,
   };
 }
 
