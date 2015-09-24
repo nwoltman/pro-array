@@ -43,6 +43,8 @@ The native Array object.
   * [.each(callback, [safeIteration])](#Array+each) ⇒ <code>[Array](#Array)</code>
     * [~eachCallback](#Array+each..eachCallback) : <code>function</code>
   * [.equals(array)](#Array+equals) ⇒ <code>boolean</code>
+  * [.flatten([isDeep])](#Array+flatten) ⇒ <code>[Array](#Array)</code>
+  * [.flattenDeep()](#Array+flattenDeep) ⇒ <code>[Array](#Array)</code>
   * [.get(index)](#Array+get) ⇒ <code>\*</code>
   * [.intersect(...*arrays)](#Array+intersect) ⇒ <code>[Array](#Array)</code>
   * [.natsort([caseInsensitive])](#Array+natsort) ⇒ <code>[Array](#Array)</code>
@@ -291,6 +293,46 @@ array.equals([1, 2, 3]);
 
 array.equals([3, 2, 1]);
 // -> false
+```
+
+---
+
+<a name="Array+flatten"></a>
+### array.flatten([isDeep]) ⇒ <code>[Array](#Array)</code>
+Flattens a nested array. If `isDeep` is true, the array is recursively
+flattened, otherwise it’s only flattened a single level.
+
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| [isDeep] | <code>boolean</code> | <code>false</code> | Specifies a deep flatten. |
+
+**Returns**: <code>[Array](#Array)</code> - The new flattened array.  
+
+**Example**
+```js
+[1, [2, 3, [4]]].flatten();
+// -> [1, 2, 3, [4]]
+
+// using `isDeep`
+[1, [2, 3, [4]]].flatten(true);
+// -> [1, 2, 3, 4]
+```
+
+---
+
+<a name="Array+flattenDeep"></a>
+### array.flattenDeep() ⇒ <code>[Array](#Array)</code>
+Recursively flattens a nested array.
+
+__Note:__ This method is __not__ susceptible to call stack limits.
+
+**Returns**: <code>[Array](#Array)</code> - The new flattened array.  
+
+**Example**
+```js
+[1, [2, 3, [4]]].flattenDeep();
+// -> [1, 2, 3, 4]
 ```
 
 ---

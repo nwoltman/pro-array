@@ -252,6 +252,84 @@ describe('Array', function() {
   });
 
 
+  describe('#flatten()', function() {
+    it('should perform a shallow flatten', function() {
+      [[['a']], [['b']]].flatten().should.deepEqual([['a'], ['b']]);
+    });
+
+    it('should treat sparse arrays as dense', function() {
+      var array = [[1, 2, 3], new Array(3)];
+      var expected = [1, 2, 3, undefined, undefined, undefined];
+      array.flatten().should.deepEqual(expected);
+    });
+
+    it('should work with empty arrays', function() {
+      var array = [[], [[]], [[], [[[]]]]];
+      array.flatten().should.deepEqual([[], [], [[[]]]]);
+    });
+
+    it('should support flattening of nested arrays', function() {
+      var array = [1, [[], 2, 3], 4, [[5]]];
+      array.flatten().should.deepEqual([1,[],  2, 3, 4, [5]]);
+    });
+
+    it('should call #flattenDeep() when isDeep is true', function() {
+      // Mock flattenDeep()
+      var flattenDeep = Array.prototype.flattenDeep;
+      var numCalls = 0;
+      Array.prototype.flattenDeep = function() {
+        numCalls++;
+      };
+
+      [].flatten(true);
+      numCalls.should.equal(1);
+
+      [2].flatten();
+      numCalls.should.equal(1);
+
+      [['a'], ['b']].flatten(true);
+      numCalls.should.equal(2);
+
+      // Restore flattenDeep()
+      Array.prototype.flattenDeep = flattenDeep;
+    });
+  });
+
+
+  describe('#flattenDeep()', function() {
+    it('should flatten shallow nested arrays', function() {
+      [['a'], ['b']].flattenDeep().should.deepEqual(['a', 'b']);
+    });
+
+    it('should treat sparse arrays as dense', function() {
+      var array = [[1, 2, 3], new Array(3)];
+      var expected = [1, 2, 3, undefined, undefined, undefined];
+      array.flattenDeep().should.deepEqual(expected);
+    });
+
+    it('should not be susceptible to call stack limits', function() {
+      var expected = [];
+      var array = [];
+      var nestedArray = array;
+      for (var i = 0; i < 100000; i++) {
+        expected.push(i);
+        nestedArray.push(i, nestedArray = []);
+      }
+      array.flattenDeep().should.deepEqual(expected);
+    });
+
+    it('should work with empty arrays', function() {
+      var array = [[], [[]], [[], [[[]]]]];
+      array.flattenDeep().should.deepEqual([]);
+    });
+
+    it('should support flattening of nested arrays', function() {
+      var array = [1, [[], 2, 3], 4, [[5]]];
+      array.flattenDeep().should.deepEqual([1, 2, 3, 4, 5]);
+    });
+  });
+
+
   describe('#get()', function() {
     var array = [1, 2, 3];
 

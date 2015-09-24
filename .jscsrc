@@ -99,7 +99,7 @@
   "requireTrailingComma": {
     "ignoreSingleLine": true
   },
-  "safeContextKeyword": "_this",
+  "safeContextKeyword": ["_this", "array"],
   "validateIndentation": 2,
   "validateQuoteMarks": "'"
 }

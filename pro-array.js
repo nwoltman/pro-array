@@ -351,6 +351,81 @@ var properties = {
   },
 
   /**
+   * Flattens a nested array. If `isDeep` is true, the array is recursively
+   * flattened, otherwise it’s only flattened a single level.
+   *
+   * @function Array#flatten
+   * @param {boolean} [isDeep=false] - Specifies a deep flatten.
+   * @returns {Array} The new flattened array.
+   *
+   * @example
+   * [1, [2, 3, [4]]].flatten();
+   * // -> [1, 2, 3, [4]]
+   *
+   * // using `isDeep`
+   * [1, [2, 3, [4]]].flatten(true);
+   * // -> [1, 2, 3, 4]
+   */
+  flatten: function(isDeep) {
+    if (isDeep) {
+      return this.flattenDeep();
+    }
+
+    var result = [];
+
+    for (var i = 0; i < this.length; i++) {
+      var value = this[i];
+      if (Array.isArray(value)) {
+        for (var j = 0; j < value.length; j++) {
+          result.push(value[j]);
+        }
+      } else {
+        result.push(value);
+      }
+    }
+
+    return result;
+  },
+
+  /**
+   * Recursively flattens a nested array.
+   *
+   * __Note:__ This method is __not__ susceptible to call stack limits.
+   *
+   * @function Array#flattenDeep
+   * @returns {Array} The new flattened array.
+   *
+   * @example
+   * [1, [2, 3, [4]]].flattenDeep();
+   * // -> [1, 2, 3, 4]
+   */
+  flattenDeep: function() {
+    var array = this;
+    var result = [];
+    var stackPointer = null;
+    var i = 0;
+
+    for (;;) {
+      if (i < array.length) {
+        var value = array[i++];
+        if (Array.isArray(value)) {
+          stackPointer = {array: array, index: i, previous: stackPointer};
+          array = value;
+          i = 0;
+        } else {
+          result.push(value);
+        }
+      } else if (stackPointer) { // Move back up the stack
+        array = stackPointer.array;
+        i = stackPointer.index;
+        stackPointer = stackPointer.previous;
+      } else { // Done flattening
+        return result;
+      }
+    }
+  },
+
+  /**
    * Retrieve an element in the array.
    *
    * @function Array#get
