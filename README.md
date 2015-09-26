@@ -51,6 +51,7 @@ The native Array object.
   * [.numsort()](#Array+numsort) ⇒ <code>[Array](#Array)</code>
   * [.pull()](#Array+pull)
   * [.remove(...*items)](#Array+remove) ⇒ <code>[Array](#Array)</code>
+  * [.rnatsort([caseInsensitive])](#Array+rnatsort) ⇒ <code>[Array](#Array)</code>
   * [.rnumsort()](#Array+rnumsort) ⇒ <code>[Array](#Array)</code>
   * [.union(...*arrays)](#Array+union) ⇒ <code>[Array](#Array)</code>
   * [.uniq()](#Array+uniq)
@@ -476,6 +477,30 @@ array.remove(3);
 
 array.remove(2, 5);
 // -> [4]
+```
+
+---
+
+<a name="Array+rnatsort"></a>
+### array.rnatsort([caseInsensitive]) ⇒ <code>[Array](#Array)</code>
+Sorts an array in place using a natural string comparison algorithm and returns the array.
+
+The same as [`.natsort()`](#Array+natsort) except the strings are sorted in descending order.
+
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| [caseInsensitive] | <code>boolean</code> | <code>false</code> | Set this to `true` to ignore letter casing when sorting. |
+
+**Returns**: <code>[Array](#Array)</code> - The array this method was called on.  
+
+**Example**
+```js
+var files = ['a.txt', 'a10.txt', 'a2.txt', 'a1.txt'];
+files.rnatsort();
+console.log(files);
+// -> ['a.txt', 'a1.txt', 'a2.txt', 'a10.txt']
+// -> ['a10.txt', 'a2.txt', 'a1.txt', 'a.txt']
 ```
 
 ---

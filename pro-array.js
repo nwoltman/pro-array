@@ -28,6 +28,14 @@ function numericalCompareReverse(a, b) {
   return b - a;
 }
 
+function reverseNaturalCompare(a, b) {
+  return String.naturalCompare(b, a);
+}
+
+function reverseNaturalCaseCompare(a, b) {
+  return String.naturalCaseCompare(b, a);
+}
+
 function xorBase(a, b) {
   var result = [];
   var item;
@@ -520,6 +528,26 @@ var properties = {
    */
   natsort: function(caseInsensitive) {
     return this.sort(caseInsensitive ? String.naturalCaseCompare : String.naturalCompare);
+  },
+
+  /**
+   * Sorts an array in place using a natural string comparison algorithm and returns the array.
+   *
+   * The same as {@link Array#natsort|`.natsort()`} except the strings are sorted in descending order.
+   *
+   * @function Array#rnatsort
+   * @param {boolean} [caseInsensitive=false] - Set this to `true` to ignore letter casing when sorting.
+   * @returns {Array} The array this method was called on.
+   *
+   * @example
+   * var files = ['a.txt', 'a10.txt', 'a2.txt', 'a1.txt'];
+   * files.rnatsort();
+   * console.log(files);
+   * // -> ['a.txt', 'a1.txt', 'a2.txt', 'a10.txt']
+   * // -> ['a10.txt', 'a2.txt', 'a1.txt', 'a.txt']
+   */
+  rnatsort: function(caseInsensitive) {
+    return this.sort(caseInsensitive ? reverseNaturalCaseCompare : reverseNaturalCompare);
   },
 
   /**

@@ -397,6 +397,41 @@ describe('Array', function() {
   });
 
 
+  describe('#rnatsort()', function() {
+    var array = [
+      'a10',
+      'a1',
+      'a2',
+      'a',
+      'A3',
+    ];
+
+    it('should return the array it was called on', function() {
+      array.rnatsort().should.equal(array);
+    });
+
+    it('should sort the array using natural string comparison, but in descending order', function() {
+      array.should.eql([
+        'a10',
+        'a2',
+        'a1',
+        'a',
+        'A3',
+      ]);
+    });
+
+    it('should sort perform a case-insensitive sort when caseInsensitive is true', function() {
+      array.rnatsort(true).should.equal(array).and.eql([
+        'a10',
+        'A3',
+        'a2',
+        'a1',
+        'a',
+      ]);
+    });
+  });
+
+
   describe('#numsort()', function() {
     var array = [1, 10, 2, 0, 3];
 
