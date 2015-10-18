@@ -20,6 +20,44 @@ function chunkSlice(array, start, end) {
   return result;
 }
 
+function flattenDeepBase(array, result) {
+  for (var i = 0; i < array.length; i++) {
+    var value = array[i];
+    if (Array.isArray(value)) {
+      flattenDeepBase(value, result);
+    } else {
+      result.push(value);
+    }
+  }
+
+  return result;
+}
+
+function flattenDeepNoCallStack(array) {
+  var result = [];
+  var stackPointer = null;
+  var i = 0;
+
+  for (;;) {
+    if (i < array.length) {
+      var value = array[i++];
+      if (Array.isArray(value)) {
+        stackPointer = {array: array, index: i, previous: stackPointer};
+        array = value;
+        i = 0;
+      } else {
+        result.push(value);
+      }
+    } else if (stackPointer) { // Move back up the stack
+      array = stackPointer.array;
+      i = stackPointer.index;
+      stackPointer = stackPointer.previous;
+    } else { // Done flattening
+      return result;
+    }
+  }
+}
+
 function numericalCompare(a, b) {
   return a - b;
 }
@@ -364,6 +402,8 @@ var properties = {
    *
    * @function Array#flatten
    * @param {boolean} [isDeep=false] - Specifies a deep flatten.
+   * @param {boolean} [noCallStack=false] - Specifies if an algorithm that is not susceptible to call stack limits
+   *     should be used, allowing very deeply nested arrays to be flattened. Ignored if `isDeep` is not `true`.
    * @returns {Array} The new flattened array.
    *
    * @example
@@ -374,9 +414,9 @@ var properties = {
    * [1, [2, 3, [4]]].flatten(true);
    * // -> [1, 2, 3, 4]
    */
-  flatten: function(isDeep) {
+  flatten: function(isDeep, noCallStack) {
     if (isDeep) {
-      return this.flattenDeep();
+      return this.flattenDeep(noCallStack);
     }
 
     var result = [];
@@ -398,39 +438,21 @@ var properties = {
   /**
    * Recursively flattens a nested array.
    *
-   * __Note:__ This method is __not__ susceptible to call stack limits.
-   *
    * @function Array#flattenDeep
+   * @param {boolean} [noCallStack=false] - Specifies if an algorithm that is not susceptible to call stack limits
+   *     should be used, allowing very deeply nested arrays (i.e. > 9000 levels) to be flattened.
    * @returns {Array} The new flattened array.
    *
    * @example
    * [1, [2, 3, [4]]].flattenDeep();
    * // -> [1, 2, 3, 4]
    */
-  flattenDeep: function() {
-    var array = this;
-    var result = [];
-    var stackPointer = null;
-    var i = 0;
-
-    for (;;) {
-      if (i < array.length) {
-        var value = array[i++];
-        if (Array.isArray(value)) {
-          stackPointer = {array: array, index: i, previous: stackPointer};
-          array = value;
-          i = 0;
-        } else {
-          result.push(value);
-        }
-      } else if (stackPointer) { // Move back up the stack
-        array = stackPointer.array;
-        i = stackPointer.index;
-        stackPointer = stackPointer.previous;
-      } else { // Done flattening
-        return result;
-      }
+  flattenDeep: function(noCallStack) {
+    if (noCallStack) {
+      return flattenDeepNoCallStack(this);
     }
+
+    return flattenDeepBase(this, []);
   },
 
   /**

@@ -43,8 +43,8 @@ The native Array object.
   * [.each(callback, [safeIteration])](#Array+each) ⇒ <code>[Array](#Array)</code>
     * [~eachCallback](#Array+each..eachCallback) : <code>function</code>
   * [.equals(array)](#Array+equals) ⇒ <code>boolean</code>
-  * [.flatten([isDeep])](#Array+flatten) ⇒ <code>[Array](#Array)</code>
-  * [.flattenDeep()](#Array+flattenDeep) ⇒ <code>[Array](#Array)</code>
+  * [.flatten([isDeep], [noCallStack])](#Array+flatten) ⇒ <code>[Array](#Array)</code>
+  * [.flattenDeep([noCallStack])](#Array+flattenDeep) ⇒ <code>[Array](#Array)</code>
   * [.get(index)](#Array+get) ⇒ <code>\*</code>
   * [.intersect(...*arrays)](#Array+intersect) ⇒ <code>[Array](#Array)</code>
   * [.natsort([caseInsensitive])](#Array+natsort) ⇒ <code>[Array](#Array)</code>
@@ -299,7 +299,7 @@ array.equals([3, 2, 1]);
 ---
 
 <a name="Array+flatten"></a>
-### array.flatten([isDeep]) ⇒ <code>[Array](#Array)</code>
+### array.flatten([isDeep], [noCallStack]) ⇒ <code>[Array](#Array)</code>
 Flattens a nested array. If `isDeep` is true, the array is recursively
 flattened, otherwise it’s only flattened a single level.
 
@@ -307,6 +307,7 @@ flattened, otherwise it’s only flattened a single level.
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
 | [isDeep] | <code>boolean</code> | <code>false</code> | Specifies a deep flatten. |
+| [noCallStack] | <code>boolean</code> | <code>false</code> | Specifies if an algorithm that is not susceptible to call stack limits     should be used, allowing very deeply nested arrays to be flattened. Ignored if `isDeep` is not `true`. |
 
 **Returns**: <code>[Array](#Array)</code> - The new flattened array.  
 
@@ -323,10 +324,13 @@ flattened, otherwise it’s only flattened a single level.
 ---
 
 <a name="Array+flattenDeep"></a>
-### array.flattenDeep() ⇒ <code>[Array](#Array)</code>
+### array.flattenDeep([noCallStack]) ⇒ <code>[Array](#Array)</code>
 Recursively flattens a nested array.
 
-__Note:__ This method is __not__ susceptible to call stack limits.
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| [noCallStack] | <code>boolean</code> | <code>false</code> | Specifies if an algorithm that is not susceptible to call stack limits     should be used, allowing very deeply nested arrays (i.e. > 9000 levels) to be flattened. |
 
 **Returns**: <code>[Array](#Array)</code> - The new flattened array.  
 
