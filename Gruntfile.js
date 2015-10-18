@@ -125,7 +125,7 @@ module.exports = function(grunt) {
           // Filter out messages that don't need to be in the changelog
           .replace(/^\+ (?:Update|Merge).*[\r\n]*/gm, '')
           // Generate links to the docs for mentioned functions
-          .replace(/[#.](\w+)\(\)/g, '[`.$1()`](' + repoUrl + '#Array#$1)');
+          .replace(/[#.](\w+)\(\)/g, '[`.$1()`](' + repoUrl + '#Array+$1)');
 
       changelog = '# CHANGELOG\n\n' +
                   versionHeader + changes + '\n' +
