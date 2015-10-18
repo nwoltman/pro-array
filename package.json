@@ -1,6 +1,6 @@
 {
   "name": "pro-array",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Extends the functionality of Arrays with useful methods of unparalleled performance",
   "main": "pro-array.js",
   "scripts": {
