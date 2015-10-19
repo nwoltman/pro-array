@@ -147,7 +147,7 @@ var properties = {
 
     if (compareFunction) {
       while (low < high) {
-        mid = (low + high) >>> 1;
+        mid = low + high >>> 1;
         var direction = compareFunction(this[mid], value);
         if (!direction) {
           return mid;
@@ -160,7 +160,7 @@ var properties = {
       }
     } else {
       while (low < high) {
-        mid = (low + high) >>> 1;
+        mid = low + high >>> 1;
         if (this[mid] === value) {
           return mid;
         }
@@ -198,7 +198,7 @@ var properties = {
     var result = new Array(numChunks);
 
     for (var i = 0, index = 0; i < numChunks; i++) {
-      result[i] = chunkSlice(this, index, (index += size));
+      result[i] = chunkSlice(this, index, index += size);
     }
 
     return result;

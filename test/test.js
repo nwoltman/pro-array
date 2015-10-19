@@ -279,7 +279,7 @@ describe('Array', function() {
 
     it('should support flattening of nested arrays', function() {
       var array = [1, [[], 2, 3], 4, [[5]]];
-      array.flatten().should.deepEqual([1,[], 2, 3, 4, [5]]);
+      array.flatten().should.deepEqual([1, [], 2, 3, 4, [5]]);
     });
 
     it('should ignore noCallStack if isDeep is not true', function() {

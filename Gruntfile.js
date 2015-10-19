@@ -1,7 +1,11 @@
 // jscs:disable requireTrailingComma
 
+'use strict';
+
+var fs = require('fs');
+var os = require('os');
+
 module.exports = function(grunt) {
-  'use strict';
 
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
@@ -65,7 +69,7 @@ module.exports = function(grunt) {
           ],
           separators: true,
           'sort-by': ['name'],
-          template: require('fs').readFileSync('jsdoc2md/README.hbs', {encoding: 'utf8'})
+          template: fs.readFileSync('jsdoc2md/README.hbs', {encoding: 'utf8'})
         },
         src: 'pro-array.js',
         dest: 'README.md'
@@ -88,8 +92,7 @@ module.exports = function(grunt) {
   grunt.registerTask('default', ['lint', 'test', 'docs']);
 
   grunt.registerTask('fixdocs', 'Standardizes the newlines in the produced documentation', function() {
-    var fs = require('fs');
-    var docs = fs.readFileSync('README.md', {encoding: 'utf8'}).replace(/\r\n|\r|\n/g, require('os').EOL);
+    var docs = fs.readFileSync('README.md', {encoding: 'utf8'}).replace(/\r\n|\r|\n/g, os.EOL);
     fs.writeFileSync('README.md', docs);
     grunt.log.ok('Fixed docs');
   });
@@ -108,7 +111,6 @@ module.exports = function(grunt) {
         grunt.fail.fatal(error);
       }
 
-      var fs = require('fs');
       var code = fs.readFileSync('pro-array.js', {encoding: 'utf8'});
       var curVersion = /@version (\d+\.\d+\.\d+)/.exec(code)[1];
       var date = new Date().toISOString().slice(0, 10);
@@ -135,4 +137,5 @@ module.exports = function(grunt) {
       grunt.log.ok('Added changes to the changelog.');
     });
   });
+
 };
