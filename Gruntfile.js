@@ -1,4 +1,4 @@
-// jscs:disable requireTrailingComma
+/* eslint comma-dangle: 0 */
 
 'use strict';
 
@@ -16,20 +16,8 @@ module.exports = function(grunt) {
       }
     },
 
-    jshint: {
-      all: {
-        src: ['*.js', 'test/*.js'],
-        options: {
-          jshintrc: true
-        }
-      }
-    },
-
-    jscs: {
+    eslint: {
       all: ['*.js', 'test/*.js'],
-      options: {
-        config: '.jscsrc'
-      }
     },
 
     mochacov: {
@@ -79,13 +67,12 @@ module.exports = function(grunt) {
 
   // Load the Grunt plugins
   grunt.loadNpmTasks('grunt-jsonlint');
-  grunt.loadNpmTasks('grunt-contrib-jshint');
-  grunt.loadNpmTasks('grunt-jscs');
+  grunt.loadNpmTasks('grunt-eslint');
   grunt.loadNpmTasks('grunt-mocha-cov');
   grunt.loadNpmTasks('grunt-jsdoc-to-markdown');
 
   // Register tasks
-  grunt.registerTask('lint', ['jsonlint', 'jshint', 'jscs']);
+  grunt.registerTask('lint', ['jsonlint', 'eslint']);
   grunt.registerTask('test', ['mochacov:test'].concat(process.env.CI ? ['mochacov:testAndCoverage'] : []));
   grunt.registerTask('coverage', ['mochacov:coverage']);
   grunt.registerTask('docs', ['jsdoc2md', 'fixdocs']);
@@ -105,6 +92,7 @@ module.exports = function(grunt) {
     var command =
       'git --no-pager log v' + pkg.version + '... --pretty=format:"+ %s ([view](' + repoUrl + '/commit/%H))"';
 
+    /* eslint global-require: 0 */
     require('child_process').exec(command, function(error, stdout) {
       if (error) {
         grunt.log.error('There was an error reading the git log output.');
