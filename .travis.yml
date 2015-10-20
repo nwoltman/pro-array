@@ -1,13 +1,13 @@
 language: node_js
 node_js:
   - '0.12'
-  - '4'
   - 'iojs'
+  - '4'
 before_script: npm install -g grunt-cli
 deploy:
   provider: npm
   email: nwoltman@outlook.com
   api_key:
-    secure: A0JrkJErayUL66RW/iZdHmHvFPJyG3LBtaaxs6UI5JzGC6zpaMdiTRZlZkIiSb4YM/bUq71GkIqCBZguvqTaXEFe960K7En+3YZQ8234rXDp3g5Xg8PDEp4NCvfn0r1SETCU0D+kGy3avyQHc7Ympk8OTAnMWdxsN4pKZM31z+0=
+    secure: HD/8J5TaxDQMws6ZiIzfUCm6JzcHlwxiFK4wWU+0btIvP53ukwxgr3Jpdwi0VADff8pQJDxywIcPp9T7BJDK9uC/SAwKVwvfdizVwIFODY1TbJXNDjrzm0YPkNcNsmlPl1xied9Nj6b2yUurfJ6n2viiB2sVSmZZdfwLpo72Zws=
   on:
     tags: true
