@@ -11,9 +11,7 @@ module.exports = function(grunt) {
     pkg: grunt.file.readJSON('package.json'),
 
     jsonlint: {
-      all: {
-        src: ['*.json', '.jshintrc']
-      }
+      all: '*.json',
     },
 
     eslint: {
