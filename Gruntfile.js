@@ -1,12 +1,10 @@
-/* eslint comma-dangle: 0 */
+/* eslint-disable comma-dangle */
 
 'use strict';
 
 var fs = require('fs');
-var os = require('os');
 
 module.exports = function(grunt) {
-
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
 
@@ -15,7 +13,7 @@ module.exports = function(grunt) {
     },
 
     eslint: {
-      all: ['*.js', 'test/*.js'],
+      all: ['*.js', '@(tasks|test)/*.js'],
     },
 
     mochacov: {
@@ -69,59 +67,13 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-mocha-cov');
   grunt.loadNpmTasks('grunt-jsdoc-to-markdown');
 
+  // Load custom tasks
+  grunt.loadTasks('tasks');
+
   // Register tasks
   grunt.registerTask('lint', ['jsonlint', 'eslint']);
   grunt.registerTask('test', ['mochacov:test'].concat(process.env.CI ? ['mochacov:testAndCoverage'] : []));
   grunt.registerTask('coverage', ['mochacov:coverage']);
   grunt.registerTask('docs', ['jsdoc2md', 'fixdocs']);
   grunt.registerTask('default', ['lint', 'test', 'docs']);
-
-  grunt.registerTask('fixdocs', 'Standardizes the newlines in the produced documentation', function() {
-    var docs = fs.readFileSync('README.md', {encoding: 'utf8'}).replace(/\r\n|\r|\n/g, os.EOL);
-    fs.writeFileSync('README.md', docs);
-    grunt.log.ok('Fixed docs');
-  });
-
-  grunt.registerTask('changelog', 'Add the changes since the last release to the changelog', function() {
-    var done = this.async();
-
-    var pkg = grunt.config.data.pkg;
-    var repoUrl = pkg.repository.url;
-    var command =
-      'git --no-pager log v' + pkg.version + '... --pretty=format:"+ %s ([view](' + repoUrl + '/commit/%H))"';
-
-    /* eslint global-require: 0 */
-    require('child_process').exec(command, function(error, stdout) {
-      if (error) {
-        grunt.log.error('There was an error reading the git log output.');
-        grunt.fail.fatal(error);
-      }
-
-      var code = fs.readFileSync('pro-array.js', {encoding: 'utf8'});
-      var curVersion = /@version (\d+\.\d+\.\d+)/.exec(code)[1];
-      var date = new Date().toISOString().slice(0, 10);
-      var versionHeader = '## ' + curVersion + ' (' + date + ')\n';
-      var changelog = fs.readFileSync('CHANGELOG.md', {encoding: 'utf8'});
-
-      if (changelog.indexOf(versionHeader, 13) >= 0) {
-        grunt.log.error('Changelog already updated.');
-        return done();
-      }
-
-      var changes =
-        stdout
-          // Filter out messages that don't need to be in the changelog
-          .replace(/^\+ (?:Update|Merge).*[\r\n]*/gm, '')
-          // Generate links to the docs for mentioned functions
-          .replace(/[#.](\w+)\(\)/g, '[`.$1()`](' + repoUrl + '#Array+$1)');
-
-      changelog = '# CHANGELOG\n\n' +
-                  versionHeader + changes + '\n' +
-                  changelog.replace(/^# CHANGELOG\s+/, '\n'); // Remove the current header
-
-      fs.writeFile('CHANGELOG.md', changelog, done);
-      grunt.log.ok('Added changes to the changelog.');
-    });
-  });
-
 };
