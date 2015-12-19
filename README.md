@@ -33,31 +33,31 @@ The native Array object.
 **See**: [MDN JavaScript Array Reference](http://goo.gl/Ijd3ks)  
 
 * [Array](#Array)
-  * [.bsearch(value, [compareFunction])](#Array+bsearch) ⇒ <code>number</code>
-  * [.chunk([size])](#Array+chunk) ⇒ <code>[Array](#Array)</code>
-  * [.clear()](#Array+clear) ⇒ <code>[Array](#Array)</code>
-  * [.clone()](#Array+clone) ⇒ <code>[Array](#Array)</code>
-  * [.compact()](#Array+compact) ⇒ <code>[Array](#Array)</code>
-  * [.diff()](#Array+diff)
-  * [.difference(...*arrays)](#Array+difference) ⇒ <code>[Array](#Array)</code>
-  * [.each(callback, [safeIteration])](#Array+each) ⇒ <code>[Array](#Array)</code>
-    * [~eachCallback](#Array+each..eachCallback) : <code>function</code>
-  * [.equals(array)](#Array+equals) ⇒ <code>boolean</code>
-  * [.flatten([isDeep], [noCallStack])](#Array+flatten) ⇒ <code>[Array](#Array)</code>
-  * [.flattenDeep([noCallStack])](#Array+flattenDeep) ⇒ <code>[Array](#Array)</code>
-  * [.get(index)](#Array+get) ⇒ <code>\*</code>
-  * [.intersect(...*arrays)](#Array+intersect) ⇒ <code>[Array](#Array)</code>
-  * [.natsort([caseInsensitive])](#Array+natsort) ⇒ <code>[Array](#Array)</code>
-  * [.numsort()](#Array+numsort) ⇒ <code>[Array](#Array)</code>
-  * [.pull()](#Array+pull)
-  * [.remove(...*items)](#Array+remove) ⇒ <code>[Array](#Array)</code>
-  * [.rnatsort([caseInsensitive])](#Array+rnatsort) ⇒ <code>[Array](#Array)</code>
-  * [.rnumsort()](#Array+rnumsort) ⇒ <code>[Array](#Array)</code>
-  * [.union(...*arrays)](#Array+union) ⇒ <code>[Array](#Array)</code>
-  * [.uniq()](#Array+uniq)
-  * [.unique([isSorted])](#Array+unique) ⇒ <code>[Array](#Array)</code>
-  * [.without(...*items)](#Array+without) ⇒ <code>[Array](#Array)</code>
-  * [.xor(...*arrays)](#Array+xor) ⇒ <code>[Array](#Array)</code>
+    * [.bsearch(value, [compareFunction])](#Array+bsearch) ⇒ <code>number</code>
+    * [.chunk([size])](#Array+chunk) ⇒ <code>[Array](#Array)</code>
+    * [.clear()](#Array+clear) ⇒ <code>[Array](#Array)</code>
+    * [.clone()](#Array+clone) ⇒ <code>[Array](#Array)</code>
+    * [.compact()](#Array+compact) ⇒ <code>[Array](#Array)</code>
+    * [.diff()](#Array+diff)
+    * [.difference(...*arrays)](#Array+difference) ⇒ <code>[Array](#Array)</code>
+    * [.each(callback, [safeIteration])](#Array+each) ⇒ <code>[Array](#Array)</code>
+        * [~eachCallback](#Array+each..eachCallback) : <code>function</code>
+    * [.equals(array)](#Array+equals) ⇒ <code>boolean</code>
+    * [.flatten([isDeep], [noCallStack])](#Array+flatten) ⇒ <code>[Array](#Array)</code>
+    * [.flattenDeep([noCallStack])](#Array+flattenDeep) ⇒ <code>[Array](#Array)</code>
+    * [.get(index)](#Array+get) ⇒ <code>\*</code>
+    * [.intersect(...*arrays)](#Array+intersect) ⇒ <code>[Array](#Array)</code>
+    * [.natsort([caseInsensitive])](#Array+natsort) ⇒ <code>[Array](#Array)</code>
+    * [.numsort()](#Array+numsort) ⇒ <code>[Array](#Array)</code>
+    * [.pull()](#Array+pull)
+    * [.remove(...*items)](#Array+remove) ⇒ <code>[Array](#Array)</code>
+    * [.rnatsort([caseInsensitive])](#Array+rnatsort) ⇒ <code>[Array](#Array)</code>
+    * [.rnumsort()](#Array+rnumsort) ⇒ <code>[Array](#Array)</code>
+    * [.union(...*arrays)](#Array+union) ⇒ <code>[Array](#Array)</code>
+    * [.uniq()](#Array+uniq)
+    * [.unique([isSorted])](#Array+unique) ⇒ <code>[Array](#Array)</code>
+    * [.without(...*items)](#Array+without) ⇒ <code>[Array](#Array)</code>
+    * [.xor(...*arrays)](#Array+xor) ⇒ <code>[Array](#Array)</code>
 
 
 ---
