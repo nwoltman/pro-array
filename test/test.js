@@ -349,6 +349,7 @@ describe('Array', function() {
     });
 
     it('should not be susceptible to call stack limits', function() {
+      this.timeout(0);
       var expected = [];
       var array = [];
       var nestedArray = array;
