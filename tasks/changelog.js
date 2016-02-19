@@ -26,7 +26,8 @@ module.exports = function(grunt) {
 
       if (changelog.indexOf(versionHeader, 13) >= 0) {
         grunt.log.error('Changelog already updated.');
-        return done();
+        done();
+        return;
       }
 
       var changes =

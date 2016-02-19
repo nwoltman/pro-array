@@ -183,9 +183,7 @@ describe('Array', function() {
       var seen = [];
       [1, 2, 3].each(function(v, k) {
         seen.push(v);
-        if (k === 1) {
-          return false;
-        }
+        return k !== 1;
       });
       seen.should.eql([1, 2]);
     });
