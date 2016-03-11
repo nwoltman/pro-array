@@ -2,7 +2,7 @@
  * ProArray
  * @version 1.2.0
  * @copyright 2015 Nathan Woltman
- * @license MIT https://github.com/woollybogger/pro-array/blob/master/LICENSE.txt
+ * @license MIT https://github.com/nwoltman/pro-array/blob/master/LICENSE.txt
  */
 
 'use strict';
@@ -536,7 +536,7 @@ var properties = {
    * ```
    *
    * For more ways to perform a natural ordering sort, see the
-   * [string-natural-compare documentation](https://github.com/woollybogger/string-natural-compare).
+   * [string-natural-compare documentation](https://github.com/nwoltman/string-natural-compare).
    *
    * @function Array#natsort
    * @param {boolean} [caseInsensitive=false] - Set this to `true` to ignore letter casing when sorting.
