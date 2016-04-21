@@ -1,11 +1,11 @@
 'use strict';
 
+var naturalCompare = require('string-natural-compare');
 var should = require('should');
 var sinon = require('sinon');
 
 require('../pro-array');
 require('should-sinon');
-require('string-natural-compare');
 
 should.Assertion.add('shallowEqual', function(expected) {
   this.params = {operator: 'to be shallowly equal'};
@@ -82,7 +82,7 @@ describe('Array', function() {
       array.bsearch(5, numericalCompareReverse).should.equal(1);
       array.bsearch(4, numericalCompareReverse).should.equal(2);
 
-      ['img1', 'img2', 'img10', 'img13'].bsearch('img2', String.naturalCompare).should.equal(1);
+      ['img1', 'img2', 'img10', 'img13'].bsearch('img2', naturalCompare).should.equal(1);
     });
   });
 

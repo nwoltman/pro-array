@@ -31,7 +31,7 @@
   },
   "homepage": "https://github.com/nwoltman/pro-array",
   "dependencies": {
-    "string-natural-compare": "^1.1.1"
+    "string-natural-compare": "^2.0.0"
   },
   "devDependencies": {
     "coveralls": "^2.11.9",

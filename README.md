@@ -100,9 +100,9 @@ var jake = {name: 'Jake', age: 28};
 });
 // -> 0
 
-['img1', 'img2', 'img10', 'img13'].bsearch('img2', String.naturalCompare);
+['img1', 'img2', 'img10', 'img13'].bsearch('img2', naturalCompare);
 // -> 1
-// `String.naturalCompare` is provided by the string-natural-compare npm module:
+// `naturalCompare` is provided by the string-natural-compare npm module:
 // https://www.npmjs.com/package/string-natural-compare
 ```
 
@@ -421,8 +421,8 @@ Sorts an array in place using a natural string comparison algorithm and returns 
 You can achieve a desired character ordering by configuring a custom alphabet like so:
 
 ```js
-// Estonian alphabet
-String.alphabet = 'ABDEFGHIJKLMNOPRSŠZŽTUVÕÄÖÜXYabdefghijklmnoprsšzžtuvõäöüxy';
+var naturalCompare = require('string-natural-compare')
+naturalCompare.alphabet = 'ABDEFGHIJKLMNOPRSŠZŽTUVÕÄÖÜXYabdefghijklmnoprsšzžtuvõäöüxy';
 ['t', 'z', 'x', 'õ'].natsort();
 // -> ['z', 't', 'õ', 'x']
 ```

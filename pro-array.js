@@ -7,7 +7,7 @@
 
 'use strict';
 
-require('string-natural-compare');
+var naturalCompare = require('string-natural-compare');
 
 function chunkSlice(array, start, end) {
   var length = Math.min(end, array.length) - start;
@@ -67,11 +67,11 @@ function numericalCompareReverse(a, b) {
 }
 
 function reverseNaturalCompare(a, b) {
-  return String.naturalCompare(b, a);
+  return naturalCompare(b, a);
 }
 
 function reverseNaturalCaseCompare(a, b) {
-  return String.naturalCaseCompare(b, a);
+  return naturalCompare.caseInsensitive(b, a);
 }
 
 function xorBase(a, b) {
@@ -135,9 +135,9 @@ var properties = {
    * });
    * // -> 0
    *
-   * ['img1', 'img2', 'img10', 'img13'].bsearch('img2', String.naturalCompare);
+   * ['img1', 'img2', 'img10', 'img13'].bsearch('img2', naturalCompare);
    * // -> 1
-   * // `String.naturalCompare` is provided by the string-natural-compare npm module:
+   * // `naturalCompare` is provided by the string-natural-compare npm module:
    * // https://www.npmjs.com/package/string-natural-compare
    */
   bsearch: function(value, compareFunction) {
@@ -529,8 +529,8 @@ var properties = {
    * You can achieve a desired character ordering by configuring a custom alphabet like so:
    *
    * ```js
-   * // Estonian alphabet
-   * String.alphabet = 'ABDEFGHIJKLMNOPRSŠZŽTUVÕÄÖÜXYabdefghijklmnoprsšzžtuvõäöüxy';
+   * var naturalCompare = require('string-natural-compare')
+   * naturalCompare.alphabet = 'ABDEFGHIJKLMNOPRSŠZŽTUVÕÄÖÜXYabdefghijklmnoprsšzžtuvõäöüxy';
    * ['t', 'z', 'x', 'õ'].natsort();
    * // -> ['z', 't', 'õ', 'x']
    * ```
@@ -549,7 +549,7 @@ var properties = {
    * // -> ['a.txt', 'a1.txt', 'a2.txt', 'a10.txt']
    */
   natsort: function(caseInsensitive) {
-    return this.sort(caseInsensitive ? String.naturalCaseCompare : String.naturalCompare);
+    return this.sort(caseInsensitive ? naturalCompare.caseInsensitive : naturalCompare);
   },
 
   /**
