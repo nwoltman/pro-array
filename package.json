@@ -3,6 +3,10 @@
   "version": "1.2.0",
   "description": "Extends Arrays with useful methods of unparalleled performance",
   "main": "pro-array.js",
+  "files": [
+    "pro-array.js",
+    "LICENSE.txt"
+  ],
   "scripts": {
     "test": "grunt"
   },
