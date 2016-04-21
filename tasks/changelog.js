@@ -1,48 +1,36 @@
 'use strict';
 
-var exec = require('child_process').exec;
+var execSync = require('child_process').execSync;
+var pkg = require('../package');
 var fs = require('fs');
+var semver = require('semver');
 
 module.exports = function(grunt) {
-  grunt.registerTask('changelog', 'Add the changes since the last release to the changelog', function() {
-    var done = this.async();
+  grunt.registerTask('changelog', 'Add the changes since the last release to the changelog', function(releaseType) {
+    var curVersion = pkg.version;
+    var nextVersion = semver.inc(curVersion, releaseType);
+    if (!nextVersion) {
+      grunt.fail.fatal('Invalid release type: ' + releaseType);
+    }
 
-    var pkg = grunt.config.data.pkg;
     var repoUrl = pkg.repository.url;
-    var command =
-      'git --no-pager log v' + pkg.version + '... --pretty=format:"+ %s ([view](' + repoUrl + '/commit/%H))"';
+    var getCommitLog =
+      'git --no-pager log v' + curVersion + '... --pretty=format:"+ %s ([%h](' + repoUrl + '/commit/%H))"';
+    var commitLog = execSync(getCommitLog).toString();
+    var changes = commitLog.replace(/^\+ Merge.*[\r\n]*/gm, ''); // Filter out merge commits
+    var date = new Date().toISOString().slice(0, 10);
+    var versionHeader = '## ' + nextVersion + ' (' + date + ')\n';
 
-    exec(command, function(error, stdout) {
-      if (error) {
-        grunt.log.error('There was an error reading the git log output.');
-        grunt.fail.fatal(error);
-      }
+    var changelog = fs.readFileSync('CHANGELOG.md', 'utf8');
+    if (changelog.indexOf(versionHeader, 13) >= 0) {
+      grunt.log.warn('Changelog already updated.');
+      return;
+    }
+    changelog = '# CHANGELOG\n\n' +
+                versionHeader + changes + '\n' +
+                changelog.replace(/^# CHANGELOG\s+/, '\n');
 
-      var code = fs.readFileSync('pro-array.js', {encoding: 'utf8'});
-      var curVersion = /@version (\d+\.\d+\.\d+)/.exec(code)[1];
-      var date = new Date().toISOString().slice(0, 10);
-      var versionHeader = '## ' + curVersion + ' (' + date + ')\n';
-      var changelog = fs.readFileSync('CHANGELOG.md', {encoding: 'utf8'});
-
-      if (changelog.indexOf(versionHeader, 13) >= 0) {
-        grunt.log.error('Changelog already updated.');
-        done();
-        return;
-      }
-
-      var changes =
-        stdout
-          // Filter out messages that don't need to be in the changelog
-          .replace(/^\+ (?:Update|Merge).*[\r\n]*/gm, '')
-          // Generate links to the docs for mentioned functions
-          .replace(/[#.](\w+)\(\)/g, '[`.$1()`](' + repoUrl + '#Array+$1)');
-
-      changelog = '# CHANGELOG\n\n' +
-                  versionHeader + changes + '\n' +
-                  changelog.replace(/^# CHANGELOG\s+/, '\n'); // Remove the current header
-
-      fs.writeFile('CHANGELOG.md', changelog, done);
-      grunt.log.ok('Added changes to the changelog.');
-    });
+    fs.writeFileSync('CHANGELOG.md', changelog);
+    grunt.log.ok('Added changes to the changelog.');
   });
 };
