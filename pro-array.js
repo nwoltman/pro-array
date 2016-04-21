@@ -583,7 +583,7 @@ var properties = {
    * __Note:__ Unlike {@link Array#without|`.without()`}, this method mutates the array.
    *
    * @function Array#remove
-   * @param {...*} *items - Items to remove from the array.
+   * @param {...*} items - Items to remove from the array.
    * @returns {Array} The array this method was called on.
    *
    * @example
@@ -713,7 +713,7 @@ var properties = {
    * Returns a copy of the array without any elements from the input parameters.
    *
    * @function Array#without
-   * @param {...*} *items - Items to leave out of the returned array.
+   * @param {...*} items - Items to leave out of the returned array.
    * @returns {Array} The new array of filtered values.
    *
    * @example

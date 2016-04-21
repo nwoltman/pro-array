@@ -51,13 +51,13 @@ The native Array object.
     * [.natsort([caseInsensitive])](#Array+natsort) ⇒ <code>[Array](#Array)</code>
     * [.numsort()](#Array+numsort) ⇒ <code>[Array](#Array)</code>
     * [.pull()](#Array+pull)
-    * [.remove(...*items)](#Array+remove) ⇒ <code>[Array](#Array)</code>
+    * [.remove(...items)](#Array+remove) ⇒ <code>[Array](#Array)</code>
     * [.rnatsort([caseInsensitive])](#Array+rnatsort) ⇒ <code>[Array](#Array)</code>
     * [.rnumsort()](#Array+rnumsort) ⇒ <code>[Array](#Array)</code>
     * [.union(...arrays)](#Array+union) ⇒ <code>[Array](#Array)</code>
     * [.uniq()](#Array+uniq)
     * [.unique([isSorted])](#Array+unique) ⇒ <code>[Array](#Array)</code>
-    * [.without(...*items)](#Array+without) ⇒ <code>[Array](#Array)</code>
+    * [.without(...items)](#Array+without) ⇒ <code>[Array](#Array)</code>
     * [.xor(...arrays)](#Array+xor) ⇒ <code>[Array](#Array)</code>
 
 
@@ -456,7 +456,7 @@ Alias of [remove](#Array+remove).
 
 <a name="Array+remove"></a>
 
-### array.remove(...*items) ⇒ <code>[Array](#Array)</code>
+### array.remove(...items) ⇒ <code>[Array](#Array)</code>
 Removes all occurrences of the passed in items from the array and returns the array.
 
 __Note:__ Unlike [`.without()`](#Array+without), this method mutates the array.
@@ -464,7 +464,7 @@ __Note:__ Unlike [`.without()`](#Array+without), this method mutates the array.
 
 | Param | Type | Description |
 | --- | --- | --- |
-| *items | <code>...\*</code> | Items to remove from the array. |
+| items | <code>...\*</code> | Items to remove from the array. |
 
 **Returns**: <code>[Array](#Array)</code> - The array this method was called on.  
 
@@ -589,13 +589,13 @@ Returns a duplicate-free clone of the array.
 
 <a name="Array+without"></a>
 
-### array.without(...*items) ⇒ <code>[Array](#Array)</code>
+### array.without(...items) ⇒ <code>[Array](#Array)</code>
 Returns a copy of the array without any elements from the input parameters.
 
 
 | Param | Type | Description |
 | --- | --- | --- |
-| *items | <code>...\*</code> | Items to leave out of the returned array. |
+| items | <code>...\*</code> | Items to leave out of the returned array. |
 
 **Returns**: <code>[Array](#Array)</code> - The new array of filtered values.  
 
