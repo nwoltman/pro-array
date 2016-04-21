@@ -265,7 +265,7 @@ var properties = {
    * any of the input arrays (performs a set difference).
    *
    * @function Array#difference
-   * @param {...Array} *arrays - A variable number of arrays.
+   * @param {...Array} arrays - A variable number of arrays.
    * @returns {Array} The new array of filtered values.
    *
    * @example
@@ -482,7 +482,7 @@ var properties = {
    * of the array and the input array(s).
    *
    * @function Array#intersect
-   * @param {...Array} *arrays - A variable number of arrays.
+   * @param {...Array} arrays - A variable number of arrays.
    * @returns {Array} The new array of unique values shared by all of the arrays.
    *
    * @example
@@ -648,7 +648,7 @@ var properties = {
    * of the array and the input array(s).
    *
    * @function Array#union
-   * @param {...Array} *arrays - A variable number of arrays.
+   * @param {...Array} arrays - A variable number of arrays.
    * @returns {Array} The new array containing every distinct element found in the arrays.
    *
    * @example
@@ -755,7 +755,7 @@ var properties = {
    * of the array and the input array(s).
    *
    * @function Array#xor
-   * @param {...Array} *arrays - A variable number of arrays.
+   * @param {...Array} arrays - A variable number of arrays.
    * @returns {Array} The new array of values.
    *
    * @example

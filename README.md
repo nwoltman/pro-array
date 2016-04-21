@@ -40,25 +40,25 @@ The native Array object.
     * [.clone()](#Array+clone) ⇒ <code>[Array](#Array)</code>
     * [.compact()](#Array+compact) ⇒ <code>[Array](#Array)</code>
     * [.diff()](#Array+diff)
-    * [.difference(...*arrays)](#Array+difference) ⇒ <code>[Array](#Array)</code>
+    * [.difference(...arrays)](#Array+difference) ⇒ <code>[Array](#Array)</code>
     * [.each(callback, [safeIteration])](#Array+each) ⇒ <code>[Array](#Array)</code>
         * [~eachCallback](#Array+each..eachCallback) : <code>function</code>
     * [.equals(array)](#Array+equals) ⇒ <code>boolean</code>
     * [.flatten([isDeep], [noCallStack])](#Array+flatten) ⇒ <code>[Array](#Array)</code>
     * [.flattenDeep([noCallStack])](#Array+flattenDeep) ⇒ <code>[Array](#Array)</code>
     * [.get(index)](#Array+get) ⇒ <code>\*</code>
-    * [.intersect(...*arrays)](#Array+intersect) ⇒ <code>[Array](#Array)</code>
+    * [.intersect(...arrays)](#Array+intersect) ⇒ <code>[Array](#Array)</code>
     * [.natsort([caseInsensitive])](#Array+natsort) ⇒ <code>[Array](#Array)</code>
     * [.numsort()](#Array+numsort) ⇒ <code>[Array](#Array)</code>
     * [.pull()](#Array+pull)
     * [.remove(...*items)](#Array+remove) ⇒ <code>[Array](#Array)</code>
     * [.rnatsort([caseInsensitive])](#Array+rnatsort) ⇒ <code>[Array](#Array)</code>
     * [.rnumsort()](#Array+rnumsort) ⇒ <code>[Array](#Array)</code>
-    * [.union(...*arrays)](#Array+union) ⇒ <code>[Array](#Array)</code>
+    * [.union(...arrays)](#Array+union) ⇒ <code>[Array](#Array)</code>
     * [.uniq()](#Array+uniq)
     * [.unique([isSorted])](#Array+unique) ⇒ <code>[Array](#Array)</code>
     * [.without(...*items)](#Array+without) ⇒ <code>[Array](#Array)</code>
-    * [.xor(...*arrays)](#Array+xor) ⇒ <code>[Array](#Array)</code>
+    * [.xor(...arrays)](#Array+xor) ⇒ <code>[Array](#Array)</code>
 
 
 ---
@@ -197,14 +197,14 @@ Alias of [difference](#Array+difference).
 
 <a name="Array+difference"></a>
 
-### array.difference(...*arrays) ⇒ <code>[Array](#Array)</code>
+### array.difference(...arrays) ⇒ <code>[Array](#Array)</code>
 Returns a new array with all of the values of the array that are not in
 any of the input arrays (performs a set difference).
 
 
 | Param | Type | Description |
 | --- | --- | --- |
-| *arrays | <code>...[Array](#Array)</code> | A variable number of arrays. |
+| arrays | <code>...[Array](#Array)</code> | A variable number of arrays. |
 
 **Returns**: <code>[Array](#Array)</code> - The new array of filtered values.  
 
@@ -391,14 +391,14 @@ array.get(5);
 
 <a name="Array+intersect"></a>
 
-### array.intersect(...*arrays) ⇒ <code>[Array](#Array)</code>
+### array.intersect(...arrays) ⇒ <code>[Array](#Array)</code>
 Returns an new array that is the [set intersection](http://en.wikipedia.org/wiki/Intersection_(set_theory))
 of the array and the input array(s).
 
 
 | Param | Type | Description |
 | --- | --- | --- |
-| *arrays | <code>...[Array](#Array)</code> | A variable number of arrays. |
+| arrays | <code>...[Array](#Array)</code> | A variable number of arrays. |
 
 **Returns**: <code>[Array](#Array)</code> - The new array of unique values shared by all of the arrays.  
 
@@ -539,14 +539,14 @@ console.log(a);
 
 <a name="Array+union"></a>
 
-### array.union(...*arrays) ⇒ <code>[Array](#Array)</code>
+### array.union(...arrays) ⇒ <code>[Array](#Array)</code>
 Returns an array that is the [union](http://en.wikipedia.org/wiki/Union_%28set_theory%29)
 of the array and the input array(s).
 
 
 | Param | Type | Description |
 | --- | --- | --- |
-| *arrays | <code>...[Array](#Array)</code> | A variable number of arrays. |
+| arrays | <code>...[Array](#Array)</code> | A variable number of arrays. |
 
 **Returns**: <code>[Array](#Array)</code> - The new array containing every distinct element found in the arrays.  
 
@@ -623,14 +623,14 @@ Returns a copy of the array without any elements from the input parameters.
 
 <a name="Array+xor"></a>
 
-### array.xor(...*arrays) ⇒ <code>[Array](#Array)</code>
+### array.xor(...arrays) ⇒ <code>[Array](#Array)</code>
 Finds the [symmetric difference](https://en.wikipedia.org/wiki/Symmetric_difference)
 of the array and the input array(s).
 
 
 | Param | Type | Description |
 | --- | --- | --- |
-| *arrays | <code>...[Array](#Array)</code> | A variable number of arrays. |
+| arrays | <code>...[Array](#Array)</code> | A variable number of arrays. |
 
 **Returns**: <code>[Array](#Array)</code> - The new array of values.  
 
