@@ -51,20 +51,20 @@ function flattenDeepNoCallStack(array) {
   }
 }
 
+function naturalCompareReverse(a, b) {
+  return naturalCompare(b, a);
+}
+
+function naturalCaseCompareReverse(a, b) {
+  return naturalCompare.caseInsensitive(b, a);
+}
+
 function numericalCompare(a, b) {
   return a - b;
 }
 
 function numericalCompareReverse(a, b) {
   return b - a;
-}
-
-function reverseNaturalCompare(a, b) {
-  return naturalCompare(b, a);
-}
-
-function reverseNaturalCaseCompare(a, b) {
-  return naturalCompare.caseInsensitive(b, a);
 }
 
 function xorBase(a, b) {
@@ -552,7 +552,7 @@ var properties = {
    * // -> ['a10.txt', 'a2.txt', 'a1.txt', 'a.txt']
    */
   rnatsort: function(caseInsensitive) {
-    return this.sort(caseInsensitive ? reverseNaturalCaseCompare : reverseNaturalCompare);
+    return this.sort(caseInsensitive ? naturalCaseCompareReverse : naturalCompareReverse);
   },
 
   /**
