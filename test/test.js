@@ -2,10 +2,8 @@
 
 var naturalCompare = require('string-natural-compare');
 var should = require('should');
-var sinon = require('sinon');
 
 require('../pro-array');
-require('should-sinon');
 
 should.Assertion.add('shallowEqual', function(expected) {
   this.params = {operator: 'to be shallowly equal'};
@@ -250,14 +248,6 @@ describe('Array', function() {
 
 
   describe('#flatten()', function() {
-    beforeEach(function() {
-      sinon.spy(Array.prototype, 'flattenDeep');
-    });
-
-    afterEach(function() {
-      Array.prototype.flattenDeep.restore();
-    });
-
     it('should perform a shallow flatten', function() {
       [[['a']], [['b']]].flatten().should.deepEqual([['a'], ['b']]);
     });
@@ -276,28 +266,6 @@ describe('Array', function() {
     it('should support flattening of nested arrays', function() {
       var array = [1, [[], 2, 3], 4, [[5]]];
       array.flatten().should.deepEqual([1, [], 2, 3, 4, [5]]);
-    });
-
-    it('should ignore noCallStack if isDeep is not true', function() {
-      var array = [1, 2, [3, [4]]];
-      array.flatten(null, true).should.deepEqual([1, 2, 3, [4]]);
-      array.flattenDeep.should.not.be.called();
-    });
-
-    it('should call #flattenDeep() when isDeep is true', function() {
-      var array = [1, 2, [3, [4]]];
-
-      array.flatten(true).should.deepEqual([1, 2, 3, 4]);
-      array.flattenDeep.should.be.calledOnce().and.be.calledWithExactly(undefined);
-
-      array.flatten();
-      array.flattenDeep.should.be.calledOnce();
-    });
-
-    it('should call #flattenDeep(noCallStack) when isDeep is true', function() {
-      var array = [1, 2, [3, [4]]];
-      array.flatten(true, true).should.deepEqual([1, 2, 3, 4]);
-      array.flattenDeep.should.be.calledWithExactly(true);
     });
   });
 

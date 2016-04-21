@@ -44,7 +44,7 @@ The native Array object.
     * [.each(callback, [safeIteration])](#Array+each) ⇒ <code>[Array](#Array)</code>
         * [~eachCallback](#Array+each..eachCallback) : <code>function</code>
     * [.equals(array)](#Array+equals) ⇒ <code>boolean</code>
-    * [.flatten([isDeep], [noCallStack])](#Array+flatten) ⇒ <code>[Array](#Array)</code>
+    * [.flatten()](#Array+flatten) ⇒ <code>[Array](#Array)</code>
     * [.flattenDeep([noCallStack])](#Array+flattenDeep) ⇒ <code>[Array](#Array)</code>
     * [.get(index)](#Array+get) ⇒ <code>\*</code>
     * [.intersect(...arrays)](#Array+intersect) ⇒ <code>[Array](#Array)</code>
@@ -311,26 +311,15 @@ array.equals([3, 2, 1]);
 
 <a name="Array+flatten"></a>
 
-### array.flatten([isDeep], [noCallStack]) ⇒ <code>[Array](#Array)</code>
-Flattens a nested array. If `isDeep` is true, the array is recursively
-flattened, otherwise it’s only flattened a single level.
-
-
-| Param | Type | Default | Description |
-| --- | --- | --- | --- |
-| [isDeep] | <code>boolean</code> | <code>false</code> | Specifies a deep flatten. |
-| [noCallStack] | <code>boolean</code> | <code>false</code> | Specifies if an algorithm that is not susceptible to call stack limits     should be used, allowing very deeply nested arrays to be flattened. Ignored if `isDeep` is not `true`. |
+### array.flatten() ⇒ <code>[Array](#Array)</code>
+Flattens a nested array a single level.
 
 **Returns**: <code>[Array](#Array)</code> - The new flattened array.  
 
 **Example**
 ```js
-[1, [2, 3, [4]]].flatten();
-// -> [1, 2, 3, [4]]
-
-// using `isDeep`
-[1, [2, 3, [4]]].flatten(true);
-// -> [1, 2, 3, 4]
+[1, [2, 3, [4]], 5].flatten();
+// -> [1, 2, 3, [4], 5]
 ```
 
 ---
@@ -349,8 +338,8 @@ Recursively flattens a nested array.
 
 **Example**
 ```js
-[1, [2, 3, [4]]].flattenDeep();
-// -> [1, 2, 3, 4]
+[1, [2, 3, [4]], 5].flattenDeep();
+// -> [1, 2, 3, 4, 5]
 ```
 
 ---

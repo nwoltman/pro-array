@@ -390,28 +390,16 @@ var properties = {
   },
 
   /**
-   * Flattens a nested array. If `isDeep` is true, the array is recursively
-   * flattened, otherwise it’s only flattened a single level.
+   * Flattens a nested array a single level.
    *
    * @function Array#flatten
-   * @param {boolean} [isDeep=false] - Specifies a deep flatten.
-   * @param {boolean} [noCallStack=false] - Specifies if an algorithm that is not susceptible to call stack limits
-   *     should be used, allowing very deeply nested arrays to be flattened. Ignored if `isDeep` is not `true`.
    * @returns {Array} The new flattened array.
    *
    * @example
-   * [1, [2, 3, [4]]].flatten();
-   * // -> [1, 2, 3, [4]]
-   *
-   * // using `isDeep`
-   * [1, [2, 3, [4]]].flatten(true);
-   * // -> [1, 2, 3, 4]
+   * [1, [2, 3, [4]], 5].flatten();
+   * // -> [1, 2, 3, [4], 5]
    */
-  flatten: function(isDeep, noCallStack) {
-    if (isDeep) {
-      return this.flattenDeep(noCallStack);
-    }
-
+  flatten: function() {
     var result = [];
 
     for (var i = 0; i < this.length; i++) {
@@ -437,8 +425,8 @@ var properties = {
    * @returns {Array} The new flattened array.
    *
    * @example
-   * [1, [2, 3, [4]]].flattenDeep();
-   * // -> [1, 2, 3, 4]
+   * [1, [2, 3, [4]], 5].flattenDeep();
+   * // -> [1, 2, 3, 4, 5]
    */
   flattenDeep: function(noCallStack) {
     if (noCallStack) {

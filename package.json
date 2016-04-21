@@ -43,8 +43,6 @@
     "istanbul": "^0.4.3",
     "jit-grunt": "^0.10.0",
     "mocha": "^2.4.5",
-    "should": "^8.2.2",
-    "should-sinon": "0.0.5",
-    "sinon": "^1.17.3"
+    "should": "^8.2.2"
   }
 }
