@@ -416,19 +416,10 @@ of the array and the input array(s).
 <a name="Array+natsort"></a>
 
 ### array.natsort([caseInsensitive]) ⇒ <code>[Array](#Array)</code>
-Sorts an array in place using a natural string comparison algorithm and returns the array.
+Sorts an array in place using a natural order string comparison algorithm.
 
-You can achieve a desired character ordering by configuring a custom alphabet like so:
-
-```js
-var naturalCompare = require('string-natural-compare')
-naturalCompare.alphabet = 'ABDEFGHIJKLMNOPRSŠZŽTUVÕÄÖÜXYabdefghijklmnoprsšzžtuvõäöüxy';
-['t', 'z', 'x', 'õ'].natsort();
-// -> ['z', 't', 'õ', 'x']
-```
-
-For more ways to perform a natural ordering sort, see the
-[string-natural-compare documentation](https://github.com/nwoltman/string-natural-compare).
+For more ways to perform a natural ordering sort, including configuring a custom alphabet, see the
+[`string-natural-compare` documentation](https://github.com/nwoltman/string-natural-compare).
 
 
 | Param | Type | Default | Description |
@@ -507,7 +498,7 @@ array.remove(2, 5);
 <a name="Array+rnatsort"></a>
 
 ### array.rnatsort([caseInsensitive]) ⇒ <code>[Array](#Array)</code>
-Sorts an array in place using a natural string comparison algorithm and returns the array.
+Sorts an array in place using a natural order string comparison algorithm.
 
 The same as [`.natsort()`](#Array+natsort) except the strings are sorted in descending order.
 
@@ -523,7 +514,6 @@ The same as [`.natsort()`](#Array+natsort) except the strings are sorted in desc
 var files = ['a.txt', 'a10.txt', 'a2.txt', 'a1.txt'];
 files.rnatsort();
 console.log(files);
-// -> ['a.txt', 'a1.txt', 'a2.txt', 'a10.txt']
 // -> ['a10.txt', 'a2.txt', 'a1.txt', 'a.txt']
 ```
 

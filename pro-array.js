@@ -1,10 +1,3 @@
-/**
- * ProArray
- * @version 1.2.0
- * @copyright 2015 Nathan Woltman
- * @license MIT https://github.com/nwoltman/pro-array/blob/master/LICENSE.txt
- */
-
 'use strict';
 
 var naturalCompare = require('string-natural-compare');
@@ -524,19 +517,10 @@ var properties = {
   },
 
   /**
-   * Sorts an array in place using a natural string comparison algorithm and returns the array.
+   * Sorts an array in place using a natural order string comparison algorithm.
    *
-   * You can achieve a desired character ordering by configuring a custom alphabet like so:
-   *
-   * ```js
-   * var naturalCompare = require('string-natural-compare')
-   * naturalCompare.alphabet = 'ABDEFGHIJKLMNOPRSŠZŽTUVÕÄÖÜXYabdefghijklmnoprsšzžtuvõäöüxy';
-   * ['t', 'z', 'x', 'õ'].natsort();
-   * // -> ['z', 't', 'õ', 'x']
-   * ```
-   *
-   * For more ways to perform a natural ordering sort, see the
-   * [string-natural-compare documentation](https://github.com/nwoltman/string-natural-compare).
+   * For more ways to perform a natural ordering sort, including configuring a custom alphabet, see the
+   * [`string-natural-compare` documentation](https://github.com/nwoltman/string-natural-compare).
    *
    * @function Array#natsort
    * @param {boolean} [caseInsensitive=false] - Set this to `true` to ignore letter casing when sorting.
@@ -553,7 +537,7 @@ var properties = {
   },
 
   /**
-   * Sorts an array in place using a natural string comparison algorithm and returns the array.
+   * Sorts an array in place using a natural order string comparison algorithm.
    *
    * The same as {@link Array#natsort|`.natsort()`} except the strings are sorted in descending order.
    *
@@ -565,7 +549,6 @@ var properties = {
    * var files = ['a.txt', 'a10.txt', 'a2.txt', 'a1.txt'];
    * files.rnatsort();
    * console.log(files);
-   * // -> ['a.txt', 'a1.txt', 'a2.txt', 'a10.txt']
    * // -> ['a10.txt', 'a2.txt', 'a1.txt', 'a.txt']
    */
   rnatsort: function(caseInsensitive) {
