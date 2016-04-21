@@ -353,6 +353,11 @@ describe('Array', function() {
       [1, 2, 3].intersect([2, 3, 4]).should.eql([2, 3]);
     });
 
+    it('should return the intersection when the arrays contain duplicates', function() {
+      [1, 2, 3].intersect([2, 3, 4, 2]).should.eql([2, 3]);
+      [1, 2, 3, 3].intersect([2, 3, 4]).should.eql([2, 3]);
+    });
+
     it('should return the intersection when given multiple arrays as input', function() {
       [1, 2, 3].intersect([107, 1, 50, 2], [2, 1]).should.eql([1, 2]);
       [1, 2, 3].intersect([1, 2, 3], [], [2, 3]).should.be.an.empty().Array();
