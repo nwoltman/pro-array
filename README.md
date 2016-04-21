@@ -27,6 +27,7 @@ Requires [browserify](https://www.npmjs.com/package/browserify) to work in the b
 # API Reference
 
 <a name="Array"></a>
+
 ## Array
 The native Array object.
 
@@ -63,6 +64,7 @@ The native Array object.
 ---
 
 <a name="Array+bsearch"></a>
+
 ### array.bsearch(value, [compareFunction]) ⇒ <code>number</code>
 Finds the index of a value in a sorted array using a binary search algorithm.
 
@@ -107,6 +109,7 @@ var jake = {name: 'Jake', age: 28};
 ---
 
 <a name="Array+chunk"></a>
+
 ### array.chunk([size]) ⇒ <code>[Array](#Array)</code>
 Creates an array of elements split into groups the length of `size`. If the array
 can't be split evenly, the final chunk will be the remaining elements.
@@ -134,6 +137,7 @@ can't be split evenly, the final chunk will be the remaining elements.
 ---
 
 <a name="Array+clear"></a>
+
 ### array.clear() ⇒ <code>[Array](#Array)</code>
 Removes all elements from the array.
 
@@ -150,6 +154,7 @@ console.log(array);
 ---
 
 <a name="Array+clone"></a>
+
 ### array.clone() ⇒ <code>[Array](#Array)</code>
 Creates a shallow copy of the array.
 
@@ -166,6 +171,7 @@ console.log(b, b === a);
 ---
 
 <a name="Array+compact"></a>
+
 ### array.compact() ⇒ <code>[Array](#Array)</code>
 Returns a new array with all falsey values removed. Falsey values
 are `false`, `0`, `""`, `null`, `undefined`, and `NaN`.
@@ -181,6 +187,7 @@ are `false`, `0`, `""`, `null`, `undefined`, and `NaN`.
 ---
 
 <a name="Array+diff"></a>
+
 ### array.diff()
 Alias of [difference](#Array+difference).
 
@@ -189,6 +196,7 @@ Alias of [difference](#Array+difference).
 ---
 
 <a name="Array+difference"></a>
+
 ### array.difference(...*arrays) ⇒ <code>[Array](#Array)</code>
 Returns a new array with all of the values of the array that are not in
 any of the input arrays (performs a set difference).
@@ -209,6 +217,7 @@ any of the input arrays (performs a set difference).
 ---
 
 <a name="Array+each"></a>
+
 ### array.each(callback, [safeIteration]) ⇒ <code>[Array](#Array)</code>
 Invokes a callback function on each element in the array.
 
@@ -257,6 +266,7 @@ new Array(1).each(console.log.bind(console), true);
 ---
 
 <a name="Array+each..eachCallback"></a>
+
 #### each~eachCallback : <code>function</code>
 
 | Param | Type | Description |
@@ -269,6 +279,7 @@ new Array(1).each(console.log.bind(console), true);
 ---
 
 <a name="Array+equals"></a>
+
 ### array.equals(array) ⇒ <code>boolean</code>
 Determines if the arrays are equal by doing a shallow comparison of their elements using strict equality.
 
@@ -299,6 +310,7 @@ array.equals([3, 2, 1]);
 ---
 
 <a name="Array+flatten"></a>
+
 ### array.flatten([isDeep], [noCallStack]) ⇒ <code>[Array](#Array)</code>
 Flattens a nested array. If `isDeep` is true, the array is recursively
 flattened, otherwise it’s only flattened a single level.
@@ -324,6 +336,7 @@ flattened, otherwise it’s only flattened a single level.
 ---
 
 <a name="Array+flattenDeep"></a>
+
 ### array.flattenDeep([noCallStack]) ⇒ <code>[Array](#Array)</code>
 Recursively flattens a nested array.
 
@@ -343,6 +356,7 @@ Recursively flattens a nested array.
 ---
 
 <a name="Array+get"></a>
+
 ### array.get(index) ⇒ <code>\*</code>
 Retrieve an element in the array.
 
@@ -376,6 +390,7 @@ array.get(5);
 ---
 
 <a name="Array+intersect"></a>
+
 ### array.intersect(...*arrays) ⇒ <code>[Array](#Array)</code>
 Returns an new array that is the [set intersection](http://en.wikipedia.org/wiki/Intersection_(set_theory))
 of the array and the input array(s).
@@ -399,6 +414,7 @@ of the array and the input array(s).
 ---
 
 <a name="Array+natsort"></a>
+
 ### array.natsort([caseInsensitive]) ⇒ <code>[Array](#Array)</code>
 Sorts an array in place using a natural string comparison algorithm and returns the array.
 
@@ -432,6 +448,7 @@ console.log(files);
 ---
 
 <a name="Array+numsort"></a>
+
 ### array.numsort() ⇒ <code>[Array](#Array)</code>
 Sorts an array in place using a numerical comparison algorithm
 (sorts numbers from lowest to highest) and returns the array.
@@ -449,6 +466,7 @@ console.log(a);
 ---
 
 <a name="Array+pull"></a>
+
 ### array.pull()
 Alias of [remove](#Array+remove).
 
@@ -457,6 +475,7 @@ Alias of [remove](#Array+remove).
 ---
 
 <a name="Array+remove"></a>
+
 ### array.remove(...*items) ⇒ <code>[Array](#Array)</code>
 Removes all occurrences of the passed in items from the array and returns the array.
 
@@ -486,6 +505,7 @@ array.remove(2, 5);
 ---
 
 <a name="Array+rnatsort"></a>
+
 ### array.rnatsort([caseInsensitive]) ⇒ <code>[Array](#Array)</code>
 Sorts an array in place using a natural string comparison algorithm and returns the array.
 
@@ -510,6 +530,7 @@ console.log(files);
 ---
 
 <a name="Array+rnumsort"></a>
+
 ### array.rnumsort() ⇒ <code>[Array](#Array)</code>
 Sorts an array in place using a reverse numerical comparison algorithm
 (sorts numbers from highest to lowest) and returns the array.
@@ -527,6 +548,7 @@ console.log(a);
 ---
 
 <a name="Array+union"></a>
+
 ### array.union(...*arrays) ⇒ <code>[Array](#Array)</code>
 Returns an array that is the [union](http://en.wikipedia.org/wiki/Union_%28set_theory%29)
 of the array and the input array(s).
@@ -550,6 +572,7 @@ of the array and the input array(s).
 ---
 
 <a name="Array+uniq"></a>
+
 ### array.uniq()
 Alias of [unique](#Array+unique).
 
@@ -558,6 +581,7 @@ Alias of [unique](#Array+unique).
 ---
 
 <a name="Array+unique"></a>
+
 ### array.unique([isSorted]) ⇒ <code>[Array](#Array)</code>
 Returns a duplicate-free clone of the array.
 
@@ -585,6 +609,7 @@ Returns a duplicate-free clone of the array.
 ---
 
 <a name="Array+without"></a>
+
 ### array.without(...*items) ⇒ <code>[Array](#Array)</code>
 Returns a copy of the array without any elements from the input parameters.
 
@@ -607,6 +632,7 @@ Returns a copy of the array without any elements from the input parameters.
 ---
 
 <a name="Array+xor"></a>
+
 ### array.xor(...*arrays) ⇒ <code>[Array](#Array)</code>
 Finds the [symmetric difference](https://en.wikipedia.org/wiki/Symmetric_difference)
 of the array and the input array(s).

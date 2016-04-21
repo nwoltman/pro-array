@@ -1,42 +1,45 @@
-/* eslint-disable comma-dangle */
+/* eslint-disable camelcase, global-require */
 
 'use strict';
 
-var fs = require('fs');
-
 module.exports = function(grunt) {
+  require('jit-grunt')(grunt, {
+    jsdoc2md: 'grunt-jsdoc-to-markdown',
+  })({
+    customTasksDir: 'tasks',
+  });
+
   grunt.initConfig({
-    pkg: grunt.file.readJSON('package.json'),
-
-    jsonlint: {
-      all: '*.json',
-    },
-
     eslint: {
       all: ['*.js', '@(tasks|test)/*.js'],
     },
 
-    mochacov: {
+    mochaTest: {
       test: {
-        options: {
-          reporter: 'spec'
-        }
-      },
-      coverage: {
-        options: {
-          reporter: 'html-cov',
-          quiet: true,
-          output: 'coverage/coverage.html'
-        }
-      },
-      testAndCoverage: {
-        options: {
-          coveralls: true
-        }
+        src: 'test/*.js',
       },
       options: {
-        files: 'test/*.js'
-      }
+        colors: true,
+      },
+    },
+
+    mocha_istanbul: {
+      coverage: {
+        src: 'test/*.js',
+        options: {
+          reportFormats: ['html'],
+        },
+      },
+      coveralls: {
+        src: 'test/*.js',
+        options: {
+          coverage: true,
+          reportFormats: ['lcovonly'],
+        },
+      },
+      options: {
+        mochaOptions: ['--colors'],
+      },
     },
 
     jsdoc2md: {
@@ -49,31 +52,25 @@ module.exports = function(grunt) {
             'jsdoc2md/partials/linked-type-list.hbs',
             'jsdoc2md/partials/params-table.hbs',
             'jsdoc2md/partials/param-table-name.hbs',
-            'jsdoc2md/partials/separator.hbs'
+            'jsdoc2md/partials/separator.hbs',
           ],
           separators: true,
           'sort-by': ['name'],
-          template: fs.readFileSync('jsdoc2md/README.hbs', {encoding: 'utf8'})
+          template: require('fs').readFileSync('jsdoc2md/README.hbs', 'utf8'),
         },
         src: 'pro-array.js',
-        dest: 'README.md'
-      }
-    }
+        dest: 'README.md',
+      },
+    },
   });
 
-  // Load the Grunt plugins
-  grunt.loadNpmTasks('grunt-jsonlint');
-  grunt.loadNpmTasks('grunt-eslint');
-  grunt.loadNpmTasks('grunt-mocha-cov');
-  grunt.loadNpmTasks('grunt-jsdoc-to-markdown');
+  grunt.event.on('coverage', function(lcov, done) {
+    require('coveralls').handleInput(lcov, done);
+  });
 
-  // Load custom tasks
-  grunt.loadTasks('tasks');
-
-  // Register tasks
-  grunt.registerTask('lint', ['jsonlint', 'eslint']);
-  grunt.registerTask('test', ['mochacov:test'].concat(process.env.CI ? ['mochacov:testAndCoverage'] : []));
-  grunt.registerTask('coverage', ['mochacov:coverage']);
+  grunt.registerTask('lint', ['eslint']);
+  grunt.registerTask('test', [process.env.CI ? 'mocha_istanbul:coveralls' : 'mochaTest']);
+  grunt.registerTask('coverage', ['mocha_istanbul:coverage']);
   grunt.registerTask('docs', ['jsdoc2md', 'fixdocs']);
   grunt.registerTask('default', ['lint', 'test', 'docs']);
 };

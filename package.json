@@ -30,22 +30,18 @@
     "url": "https://github.com/nwoltman/pro-array/issues"
   },
   "homepage": "https://github.com/nwoltman/pro-array",
-  "config": {
-    "blanket": {
-      "pattern": [
-        "pro-array.js"
-      ]
-    }
-  },
   "dependencies": {
     "string-natural-compare": "^1.1.1"
   },
   "devDependencies": {
+    "coveralls": "^2.11.9",
     "grunt": "~1.0.1",
     "grunt-eslint": "^18.0.0",
     "grunt-jsdoc-to-markdown": "~1.2.0",
-    "grunt-jsonlint": "^1.0.7",
-    "grunt-mocha-cov": "~0.4.0",
+    "grunt-mocha-istanbul": "^4.0.2",
+    "grunt-mocha-test": "^0.12.7",
+    "istanbul": "^0.4.3",
+    "jit-grunt": "^0.10.0",
     "mocha": "^2.4.5",
     "should": "^8.2.2",
     "should-sinon": "0.0.5",
