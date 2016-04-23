@@ -1,5 +1,18 @@
 # CHANGELOG
 
+## 2.0.0 (2016-04-23)
+
+#### Breaking Changes:
++ Remove parameter options from [`#flatten()`](https://github.com/nwoltman/pro-array#Array+flatten) ([28dac11](https://github.com/nwoltman/pro-array/commit/28dac11fd9b45a4505c7704974163cf5695275d1))
+  + This means if you want to flatten a nested array more than one level, you'll need to use [`#flattenDeep()`](https://github.com/nwoltman/pro-array#Array+flattenDeep) instead
++ Update `string-natural-compare` to v2 ([ab3491a](https://github.com/nwoltman/pro-array/commit/ab3491a1c556bb46f97e76fa7879c62d66348148))
+  + See the `string-natural-compare` [documentation](https://github.com/nwoltman/string-natural-compare#usage) if you were using a custom alphabet, otherwise no action is needed when upgrading to v2
+
+#### Other Changes:
++ Update license year ([515c30c](https://github.com/nwoltman/pro-array/commit/515c30c3e609c97eeb1860304d743664b66bcd03))
++ Update Node versions to test ([9820fa0](https://github.com/nwoltman/pro-array/commit/9820fa02a78bbbc019b995c0dec9c96aba6bcfa8))
++ Improve documentation
+
 ## 1.2.0 (2015-10-18)
 + Use a faster version of [`.flattenDeep()`](https://github.com/nwoltman/pro-array#Array+flattenDeep) by default ([048f9fe](https://github.com/nwoltman/pro-array/commit/048f9fe123803c181f36d0a66b52e37c3365b279))
 + Implement [`.rnatsort()`](https://github.com/nwoltman/pro-array#Array+rnatsort) ([0aca5bf](https://github.com/nwoltman/pro-array/commit/0aca5bf4fb376bf0f6ce53fe394da0ac0cd58ed9))
