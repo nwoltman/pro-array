@@ -7,6 +7,6 @@ deploy:
   provider: npm
   email: nwoltman@outlook.com
   api_key:
-    secure: HD/8J5TaxDQMws6ZiIzfUCm6JzcHlwxiFK4wWU+0btIvP53ukwxgr3Jpdwi0VADff8pQJDxywIcPp9T7BJDK9uC/SAwKVwvfdizVwIFODY1TbJXNDjrzm0YPkNcNsmlPl1xied9Nj6b2yUurfJ6n2viiB2sVSmZZdfwLpo72Zws=
+    secure: RvbWk+aLjEsXDxR7Polxd1+4J9KVryTeYBcqXS37m0m0DkX0tb+GQfn3F0t04b3QpjueMkOGyMt25VbJgwy5PHvfCcQBn7CJ0saryxsEkLhXTGlbaMWNHv/UbEKqGNs8s5MoLg7CYWL9r02/HqQiBdPzNO24kq+oMOF91I+71r4=
   on:
     tags: true
